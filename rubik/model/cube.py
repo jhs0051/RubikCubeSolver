@@ -13,15 +13,15 @@ class Cube:
         rotatedCubeList = cubeList[:]
         
         # rotate front face
-        rotatedCubeList[2] = cubeList[0]
-        rotatedCubeList[5] = cubeList[1]
-        rotatedCubeList[8] = cubeList[2]
-        rotatedCubeList[1] = cubeList[3]
-        rotatedCubeList[4] = cubeList[4]
-        rotatedCubeList[7] = cubeList[5]
-        rotatedCubeList[0] = cubeList[6]
-        rotatedCubeList[3] = cubeList[7]
-        rotatedCubeList[6] = cubeList[8]
+        rotatedCubeList[FTR] = cubeList[FTL]
+        rotatedCubeList[FMR] = cubeList[FTM]
+        rotatedCubeList[FBR] = cubeList[FTR]
+        rotatedCubeList[FTM] = cubeList[FML]
+        rotatedCubeList[FMM] = cubeList[FMM]
+        rotatedCubeList[FBM] = cubeList[FMR]
+        rotatedCubeList[FTL] = cubeList[FBL]
+        rotatedCubeList[FML] = cubeList[FBM]
+        rotatedCubeList[FBL] = cubeList[FBR]
         
         self.cube = "".join(rotatedCubeList)
         return self.cube
