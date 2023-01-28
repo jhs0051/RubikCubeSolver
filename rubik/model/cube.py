@@ -6,7 +6,7 @@ class Cube:
     '''
 
     def __init__(self, encodedCube):
-        self._cubeModel = encodedCube
+        self._cubeModel = list(encodedCube)
     
     def get(self):
         return "".join(self._cubeModel)
