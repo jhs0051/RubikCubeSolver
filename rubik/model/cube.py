@@ -6,10 +6,18 @@ class Cube:
     '''
 
     def __init__(self, encodedCube):
-        self.cube = encodedCube
+        self._cube = encodedCube
+    
+    def get(self):
+        return self._cube
         
     def rotate(self, directions):
-        cubeList = list(self.cube)
+        self._rotateF()
+        return self._cube
+    
+
+    def _rotateF(self):
+        cubeList = list(self._cube)
         rotatedCubeList = cubeList[:]
         
         # rotate front face
@@ -27,25 +35,22 @@ class Cube:
         rotatedCubeList[RTL] = cubeList[UBL]
         rotatedCubeList[RML] = cubeList[UBM]
         rotatedCubeList[RBL] = cubeList[UBR]
-
+        
         #rotate right to bottom
         rotatedCubeList[DTR] = cubeList[RTL]
         rotatedCubeList[DTM] = cubeList[RML]
         rotatedCubeList[DTL] = cubeList[RBL]
-
+        
         #rotate bottom to left
         rotatedCubeList[LTR] = cubeList[DTL]
         rotatedCubeList[LMR] = cubeList[DTM]
         rotatedCubeList[LBR] = cubeList[DTR]
-
+        
         #rotate left to top
         rotatedCubeList[UBR] = cubeList[LTR]
         rotatedCubeList[UBM] = cubeList[LMR]
         rotatedCubeList[UBL] = cubeList[LBR]
         
         self.cube = "".join(rotatedCubeList)
-        return self.cube
-    
-    def get(self):
-        return self.cube
+
         
