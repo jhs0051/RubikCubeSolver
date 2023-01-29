@@ -259,24 +259,14 @@ class Cube:
         
         # rotate left face
         rotatedCubeList[LTR] = self._cubeModel[LTL]
-        rotatedCubeList[LMR] = self._cubeModel[BTM]
+        rotatedCubeList[LMR] = self._cubeModel[LTM]
         rotatedCubeList[LBR] = self._cubeModel[LTR]
-        rotatedCubeList[BTM] = self._cubeModel[LML]
+        rotatedCubeList[LTM] = self._cubeModel[LML]
         rotatedCubeList[LMM] = self._cubeModel[LMM]
         rotatedCubeList[LBM] = self._cubeModel[LMR]
         rotatedCubeList[LTL] = self._cubeModel[LBL]
         rotatedCubeList[LML] = self._cubeModel[LBM]
         rotatedCubeList[LBL] = self._cubeModel[LBR]
-
-        # rotate front to bottom
-        rotatedCubeList[DTL] = self._cubeModel[FTL]
-        rotatedCubeList[DML] = self._cubeModel[FML]
-        rotatedCubeList[DBL] = self._cubeModel[FBL]
-
-        # rotate back to top
-        rotatedCubeList[UBL] = self._cubeModel[BTR]
-        rotatedCubeList[UML] = self._cubeModel[BMR]
-        rotatedCubeList[UTL] = self._cubeModel[BBR]
 
         # rotate top to front 
         rotatedCubeList[FTL] = self._cubeModel[UTL]
@@ -287,6 +277,16 @@ class Cube:
         rotatedCubeList[BBR] = self._cubeModel[DTL]
         rotatedCubeList[BMR] = self._cubeModel[DML]
         rotatedCubeList[BTR] = self._cubeModel[DBL]
+        
+        # rotate front to bottom
+        rotatedCubeList[DTL] = self._cubeModel[FTL]
+        rotatedCubeList[DML] = self._cubeModel[FML]
+        rotatedCubeList[DBL] = self._cubeModel[FBL]
+
+        # rotate back to top
+        rotatedCubeList[UBL] = self._cubeModel[BTR]
+        rotatedCubeList[UML] = self._cubeModel[BMR]
+        rotatedCubeList[UTL] = self._cubeModel[BBR]
         
         self._cubeModel = ''.join(rotatedCubeList)
     
