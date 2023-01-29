@@ -124,8 +124,8 @@ class Cube:
         rotatedCubeList[RBL] = self._cubeModel[RBR]
 
         # rotate back to top
-        rotatedCubeList[BML] = self._cubeModel[UBR]
-        rotatedCubeList[BTL] = self._cubeModel[UMR]
+        rotatedCubeList[BTL] = self._cubeModel[UBR]
+        rotatedCubeList[BML] = self._cubeModel[UMR]
         rotatedCubeList[BBL] = self._cubeModel[UTR]
         
         # rotate top to front  
