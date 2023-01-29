@@ -284,9 +284,9 @@ class Cube:
         rotatedCubeList[FBL] = self._cubeModel[UBL]
 
         # rotate bottom to back
-        rotatedCubeList[BTR] = self._cubeModel[DTL]
+        rotatedCubeList[BTR] = self._cubeModel[DBL]
+        rotatedCubeList[BBR] = self._cubeModel[DTL]
         rotatedCubeList[BMR] = self._cubeModel[DML]
-        rotatedCubeList[BBR] = self._cubeModel[DBL]
         
         self._cubeModel = ''.join(rotatedCubeList)
     
