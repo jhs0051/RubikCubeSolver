@@ -87,17 +87,17 @@ class Cube:
         rotatedCubeList[FMR] = self._cubeModel[FBM]
         rotatedCubeList[FTR] = self._cubeModel[FBR]
 
-        # rotate up to right
+        # rotate right to top
         rotatedCubeList[UBL] = self._cubeModel[RTL]
         rotatedCubeList[UBM] = self._cubeModel[RML]
         rotatedCubeList[UBR] = self._cubeModel[RBL]
 
-        # rotate bottom to left
+        # rotate left to bottom
         rotatedCubeList[DTL] = self._cubeModel[LTR]
         rotatedCubeList[DTM] = self._cubeModel[LMR]
         rotatedCubeList[DTR] = self._cubeModel[LBR]
 
-        # rotate up to left
+        # rotate top to left
         rotatedCubeList[LBR] = self._cubeModel[UBL]
         rotatedCubeList[LMR] = self._cubeModel[UBM]
         rotatedCubeList[LTR] = self._cubeModel[UBR]
@@ -110,7 +110,40 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
         
     def _rotateR(self):
-        pass
+        rotatedCubeList = self._cubeModel[:]
+        
+        # rotate right face
+        rotatedCubeList[RTR] = self._cubeModel[RTL]
+        rotatedCubeList[RMR] = self._cubeModel[RTM]
+        rotatedCubeList[RBR] = self._cubeModel[RTR]
+        rotatedCubeList[RTM] = self._cubeModel[RML]
+        rotatedCubeList[RMM] = self._cubeModel[RMM]
+        rotatedCubeList[RBM] = self._cubeModel[RMR]
+        rotatedCubeList[RTL] = self._cubeModel[RBL]
+        rotatedCubeList[RML] = self._cubeModel[RBM]
+        rotatedCubeList[RBL] = self._cubeModel[RBR]
+
+        # rotate back to top
+        rotatedCubeList[BML] = self._cubeModel[UBR]
+        rotatedCubeList[BTL] = self._cubeModel[UMR]
+        rotatedCubeList[BBL] = self._cubeModel[UTR]
+        
+        # rotate top to front  
+        rotatedCubeList[UTR] = self._cubeModel[FTR]
+        rotatedCubeList[UMR] = self._cubeModel[FMR]
+        rotatedCubeList[UBR] = self._cubeModel[FBR]
+
+        # rotate bottom to back
+        rotatedCubeList[DBR] = self._cubeModel[BTL]
+        rotatedCubeList[DMR] = self._cubeModel[BML]
+        rotatedCubeList[DTR] = self._cubeModel[BBL]
+
+        # rotate front to bottom
+        rotatedCubeList[FTR] = self._cubeModel[DTR]
+        rotatedCubeList[FMR] = self._cubeModel[DMR]
+        rotatedCubeList[FBR] = self._cubeModel[DBR]
+        
+        self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotater(self):
         pass
