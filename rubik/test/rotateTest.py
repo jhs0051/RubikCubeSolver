@@ -3,14 +3,13 @@ from rubik.view.rotate import rotate
  
 class RotateTest(TestCase):
         
-# Happy path
-#    Test that the stubbed rotate returns the correct result
-    def test100_rotate_returnStubbedSolution(self):
-        encodedCube = 'bbbbbbbbbrrrrrrrrrooooooooogggggggggyyyyyyyyywwwwwwwww'
+    def test_rotate_010_ErrorOnMissingCube(self):
         parms = {}
-        parms['cube'] = encodedCube
+        parms['cube'] = ''
         parms['dir'] = 'F'
-        result = rotate(parms)
-        self.assertIn('status', result)
-        self.assertEqual('ok', result['status'])
-        self.assertEqual(encodedCube, result.get('cube'))
+        
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid cube'
+            
+        actualResult = rotate(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
