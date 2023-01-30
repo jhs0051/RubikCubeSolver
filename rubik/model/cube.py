@@ -323,7 +323,6 @@ class Cube:
         rotatedCubeList[BBR] = self._cubeModel[UTL]
         rotatedCubeList[BMR] = self._cubeModel[UML]
         rotatedCubeList[BTR] = self._cubeModel[UBL]
-
         
         self._cubeModel = ''.join(rotatedCubeList)
     
@@ -360,11 +359,43 @@ class Cube:
         rotatedCubeList[FTL] = self._cubeModel[RTL]
         rotatedCubeList[FTM] = self._cubeModel[RTM]
         rotatedCubeList[FTR] = self._cubeModel[RTR]
-
         
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateu(self):
-        pass
+        rotatedCubeList = self._cubeModel[:]
+        
+        # rotate top
+        rotatedCubeList[UBL] = self._cubeModel[UTL]
+        rotatedCubeList[UML] = self._cubeModel[UTM]
+        rotatedCubeList[UTL] = self._cubeModel[UTR]
+        rotatedCubeList[UBM] = self._cubeModel[UML]
+        rotatedCubeList[UMM] = self._cubeModel[UMM]
+        rotatedCubeList[UTM] = self._cubeModel[UMR]
+        rotatedCubeList[UBR] = self._cubeModel[UBL]
+        rotatedCubeList[UMR] = self._cubeModel[UBM]
+        rotatedCubeList[UTR] = self._cubeModel[UBR]
+
+        # rotate front to right
+        rotatedCubeList[RTL] = self._cubeModel[FTL]
+        rotatedCubeList[RTM] = self._cubeModel[FTM]
+        rotatedCubeList[RTR] = self._cubeModel[FTR]
+
+        # rotate bottom to left 
+        rotatedCubeList[LTL] = self._cubeModel[BTL]
+        rotatedCubeList[LTM] = self._cubeModel[BTM]
+        rotatedCubeList[LTR] = self._cubeModel[BTR]
+
+        # rotate left to front
+        rotatedCubeList[FTL] = self._cubeModel[LTL]
+        rotatedCubeList[FTM] = self._cubeModel[LTM]
+        rotatedCubeList[FTR] = self._cubeModel[LTR]
+
+        # rotate right to bottom
+        rotatedCubeList[BTL] = self._cubeModel[RTL]
+        rotatedCubeList[BTM] = self._cubeModel[RTM]
+        rotatedCubeList[BTR] = self._cubeModel[RTR]
+        
+        self._cubeModel = ''.join(rotatedCubeList)
 
         
