@@ -34,6 +34,8 @@ class Cube:
                     self._rotateU()
                 case 'u':
                     self._rotateu() 
+                case '':
+                    self._rotateF()
         
         return self._cubeModel
     
