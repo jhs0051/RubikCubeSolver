@@ -4,10 +4,20 @@ def rotate(parms):
     """Return rotated cube""" 
     result = {}
     
-    encodedCube = parms.get('cube')
+    try:
+        encodedCube = parms.get('cube')
+    except:
+        result['status'] = 'error: invalid cube'
+        return result
+        
     theCube = Cube(encodedCube)
     
-    directions = parms.get('dir')
+    try:
+        directions = parms.get('dir')
+    except:
+        result['status'] = 'error: invalid cube'
+        return result
+    
     theCube.rotate(directions)
     
     result['cube'] = theCube.get()
