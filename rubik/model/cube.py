@@ -12,31 +12,34 @@ class Cube:
         return "".join(self._cubeModel)
         
     def rotate(self, directions):
-        for rotationDirection in directions:
-            match rotationDirection:
-                case 'F':
-                    self._rotateF()
-                case 'f':
-                    self._rotatef()
-                case 'R':
-                    self._rotateR()
-                case 'r':
-                    self._rotater()
-                case 'B':
-                    self._rotateB()
-                case 'b':
-                    self._rotateb()
-                case 'L':
-                    self._rotateL()
-                case 'l':
-                    self._rotatel()
-                case 'U':
-                    self._rotateU()
-                case 'u':
-                    self._rotateu() 
-                case '':
-                    self._rotateF()
-        
+        if directions == '':
+            self._rotateF()
+        else:
+            for rotationDirection in directions:
+                match rotationDirection:
+                    case 'F':
+                        self._rotateF()
+                    case 'f':
+                        self._rotatef()
+                    case 'R':
+                        self._rotateR()
+                    case 'r':
+                        self._rotater()
+                    case 'B':
+                        self._rotateB()
+                    case 'b':
+                        self._rotateb()
+                    case 'L':
+                        self._rotateL()
+                    case 'l':
+                        self._rotatel()
+                    case 'U':
+                        self._rotateU()
+                    case 'u':
+                        self._rotateu() 
+                    case '':
+                        self._rotateF()
+            
         return self._cubeModel
     
 
