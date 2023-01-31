@@ -47,39 +47,39 @@ class Cube:
         
     def rotate(self, directions):
         if directions == '':
-            self._rotateF()
+            self._rotate_F()
         else:
             for rotationDirection in directions:
                 match rotationDirection:
                     case 'F':
-                        self._rotateF()
+                        self._rotate_F()
                     case 'f':
-                        self._rotatef()
+                        self._rotate_f()
                     case 'R':
-                        self._rotateR()
+                        self._rotate_R()
                     case 'r':
-                        self._rotater()
+                        self._rotate_r()
                     case 'B':
-                        self._rotateB()
+                        self._rotate_B()
                     case 'b':
-                        self._rotateb()
+                        self._rotate_b()
                     case 'L':
-                        self._rotateL()
+                        self._rotate_L()
                     case 'l':
-                        self._rotatel()
+                        self._rotate_l()
                     case 'U':
-                        self._rotateU()
+                        self._rotate_U()
                     case 'u':
-                        self._rotateu() 
+                        self._rotate_u() 
                     case '':
-                        self._rotateF()
+                        self._rotate_F()
                     case _:
                         return False
             
         return self._cubeModel
     
 
-    def _rotateF(self):
+    def _rotate_F(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -116,7 +116,7 @@ class Cube:
         
         self._cubeModel = "".join(rotatedCubeList)
         
-    def _rotatef(self):
+    def _rotate_f(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -153,7 +153,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
         
-    def _rotateR(self):
+    def _rotate_R(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -190,7 +190,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotater(self):
+    def _rotate_r(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -227,7 +227,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotateB(self):
+    def _rotate_B(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -264,7 +264,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotateb(self):
+    def _rotate_b(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -301,7 +301,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotateL(self):
+    def _rotate_L(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -338,7 +338,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotatel(self):
+    def _rotate_l(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -375,7 +375,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotateU(self):
+    def _rotate_U(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
@@ -412,7 +412,7 @@ class Cube:
         
         self._cubeModel = ''.join(rotatedCubeList)
     
-    def _rotateu(self):
+    def _rotate_u(self):
         cubeList = list(self._cubeModel)
         rotatedCubeList = cubeList[:]
         
