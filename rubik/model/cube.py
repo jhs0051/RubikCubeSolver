@@ -15,6 +15,7 @@ class Cube:
     def _validation(encodedCube, directions):
         cube = encodedCube
         validDirections = 'F,f,R,r,B,b,L,l,U,u'
+        validColors ='b,y,g,o,w,r'
         
         middleColorsList = list()
         middleColorsList.append(cube[FMM])
@@ -38,6 +39,8 @@ class Cube:
              cube.count('o') > 9 or \
              cube.count('w') > 9 or \
              cube.count('r') > 9:
+            return False
+        elif any(color not in validColors for color in cube):
             return False
         else:
             return True
