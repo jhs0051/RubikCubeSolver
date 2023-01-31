@@ -18,7 +18,7 @@ def rotate(parms):
         result['status'] = 'error: invalid cube'
         return result
     
-    if Cube._validation(theCube) == False:
+    if Cube._validation(encodedCube) == False:
         result['status'] = 'error: invalid cube'
         return result
     
