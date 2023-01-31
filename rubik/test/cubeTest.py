@@ -9,7 +9,7 @@ import rubik.model.cube as cube
 
 class CubeTest(unittest.TestCase):
 
-
+    # Happy Path Tests  
     def test_rotate_010_ShouldRotateCubeInFDirection(self):
         cubeToRotate = 'ygrwbgyggbobrryrrwobrggrgwywyryorbbggwwbyybwwooyowbooo'
         theCube = cube.Cube(cubeToRotate)
@@ -75,5 +75,7 @@ class CubeTest(unittest.TestCase):
         theCube = cube.Cube(cubeToRotate)
         rotatedCube = theCube.rotate('')
         self.assertEqual(rotatedCube,'ywygbgggrbobwrywrwobrggrgwywyoyoobbygwwbyygrrrrbowbooo')
+        
+    # Sad Path Tests 
         
     

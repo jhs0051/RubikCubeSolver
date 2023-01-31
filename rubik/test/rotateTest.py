@@ -43,11 +43,23 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_rotate_920_ErrorWhenSingleMultipleRotationIsInvalid(self):
+    def test_rotate_920_ErrorWhenMultipleRotationIsInvalid(self):
         parms = {}
         parms['op'] = 'rotate'
         parms['cube'] = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         parms['dir'] = 'abcdefg'
+        
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid cube'
+
+        actualResult = rotate(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
+    def test_rotate_930_ErrorWithMoreThan9ValidColorLetters(self):
+        parms = {}
+        parms['op'] = 'rotate'
+        parms['cube'] = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwwr'
+        parms['dir'] = 'f'
         
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
