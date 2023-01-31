@@ -5,24 +5,21 @@ class Cube:
     Rubik's cube
     '''
 
-    def __init__(self, encodedCube, result=None):
-        if self._validation(encodedCube):
-            self._cubeModel = list(encodedCube)
-        else:
-            result['status'] = 'error: invalid cube'
+    def __init__(self, encodedCube):
+        self._cubeModel = list(encodedCube)
     
     def get(self):
         return "".join(self._cubeModel)
     
-    def _validation(self, encodedCube, result=None):
+    def _validation(encodedCube):
         cube = encodedCube
         
         if len(cube) != 54:
-            result['status'] = 'error: invalid cube' 
+            return False
         else:
             return True
         
-    def rotate(self, directions, result):
+    def rotate(self, directions):
         if directions == '':
             self._rotateF()
         else:
@@ -50,8 +47,6 @@ class Cube:
                         self._rotateu() 
                     case '':
                         self._rotateF()
-                    case _:
-                        result['status'] = 'error: invalid cube'
             
         return self._cubeModel
     
