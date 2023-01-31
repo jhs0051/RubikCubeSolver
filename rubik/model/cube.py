@@ -15,7 +15,7 @@ class Cube:
     def _validation(encodedCube, directions):
         cube = encodedCube
         validDirections = 'F,f,R,r,B,b,L,l,U,u'
-        validColors ='b,y,g,o,w,r'
+        validColors = 'b,y,g,o,w,r'
         
         middleColorsList = list()
         middleColorsList.append(cube[FMM])
@@ -80,7 +80,8 @@ class Cube:
     
 
     def _rotateF(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate front face
         rotatedCubeList[FTR] = self._cubeModel[FTL]
@@ -116,7 +117,8 @@ class Cube:
         self._cubeModel = "".join(rotatedCubeList)
         
     def _rotatef(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate front face
         rotatedCubeList[FBL] = self._cubeModel[FTL]
@@ -152,7 +154,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
         
     def _rotateR(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate right face
         rotatedCubeList[RTR] = self._cubeModel[RTL]
@@ -188,7 +191,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotater(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate right face
         rotatedCubeList[RBL] = self._cubeModel[RTL]
@@ -224,7 +228,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateB(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate back face
         rotatedCubeList[BTR] = self._cubeModel[BTL]
@@ -260,7 +265,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateb(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate back face
         rotatedCubeList[BBL] = self._cubeModel[BTL]
@@ -296,7 +302,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateL(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate left face
         rotatedCubeList[LTR] = self._cubeModel[LTL]
@@ -332,7 +339,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotatel(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate left face
         rotatedCubeList[LBL] = self._cubeModel[LTL]
@@ -368,7 +376,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateU(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate top
         rotatedCubeList[UTR] = self._cubeModel[UTL]
@@ -404,7 +413,8 @@ class Cube:
         self._cubeModel = ''.join(rotatedCubeList)
     
     def _rotateu(self):
-        rotatedCubeList = self._cubeModel[:]
+        cubeList = list(self._cubeModel)
+        rotatedCubeList = cubeList[:]
         
         # rotate top
         rotatedCubeList[UBL] = self._cubeModel[UTL]
