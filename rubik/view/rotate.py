@@ -10,8 +10,11 @@ def rotate(parms):
         result['status'] = 'error: invalid cube'
         return result
         
-    theCube = Cube(encodedCube)
-    
+    if encodedCube == None or encodedCube == '':
+        result['status'] = 'error: invalid cube'
+        return result
+    else:
+        theCube = Cube(encodedCube)
     
     try:
         directions = parms.get('dir')
