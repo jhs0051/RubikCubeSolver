@@ -11,10 +11,14 @@ class Cube:
     def get(self):
         return "".join(self._cubeModel)
     
-    def _validation(encodedCube):
+    @staticmethod
+    def _validation(encodedCube, directions):
         cube = encodedCube
+        validDirections = 'F,f,R,r,B,b,L,l,U,u'
         
         if len(cube) != 54:
+            return False
+        elif any(letter not in validDirections for letter in directions):
             return False
         else:
             return True
@@ -47,6 +51,8 @@ class Cube:
                         self._rotateu() 
                     case '':
                         self._rotateF()
+                    case _:
+                        return False
             
         return self._cubeModel
     
