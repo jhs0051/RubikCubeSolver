@@ -20,6 +20,13 @@ class Cube:
             return False
         elif any(letter not in validDirections for letter in directions):
             return False
+        elif cube.count('b') > 9 or \
+             cube.count('y') > 9 or \
+             cube.count('g') > 9 or \
+             cube.count('o') > 9 or \
+             cube.count('w') > 9 or \
+             cube.count('r') > 9:
+            return False
         else:
             return True
         
