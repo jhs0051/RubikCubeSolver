@@ -16,13 +16,12 @@ class Cube:
         cube = encodedCube
         validDirections = 'F,f,R,r,B,b,L,l,U,u'
         
-        middleColorsList = list()
-        middleColorsList.append(cube[FMM])
-        middleColorsList.append(cube[RMM])
-        middleColorsList.append(cube[BMM])
-        middleColorsList.append(cube[LMM])
-        middleColorsList.append(cube[UMM])
-        middleColorsList.append(cube[DMM])
+        middleColorsList = cube[FMM] + \
+                           cube[RMM] + \
+                           cube[BMM] + \
+                           cube[LMM] + \
+                           cube[UMM] + \
+                           cube[DMM]
         
         for val in middleColorsList:
             if middleColorsList.count(val) > 1:
