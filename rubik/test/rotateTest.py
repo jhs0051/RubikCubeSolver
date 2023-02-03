@@ -103,7 +103,7 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_rotate_960_Rotate_on_direction_d_Not_Supported(self):
+    def test_rotate_970_Rotate_on_direction_d_Not_Supported(self):
         parms = {}
         parms['op'] = 'rotate'
         parms['cube'] = 'ogwwrywybgyrgbgrrwoogpgwyrworyryggwbbbyyowgobroobwoybr'
