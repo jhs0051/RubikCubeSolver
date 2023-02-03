@@ -16,8 +16,11 @@ class Cube:
         cube = encodedCube
         validDirections = 'F,f,R,r,B,b,L,l,U,u'
         validColors = 'b,y,g,o,w,r'
-        
         middleColorsList = list()
+        
+        if len(cube) != 54:
+            return False
+        
         middleColorsList.append(cube[FMM])
         middleColorsList.append(cube[RMM])
         middleColorsList.append(cube[BMM])
@@ -29,9 +32,9 @@ class Cube:
             if middleColorsList.count(currentSquare) > 1:
                 return False   
         
-        if len(cube) != 54:
+        if any(letter not in validDirections for letter in directions):
             return False
-        elif any(letter not in validDirections for letter in directions):
+        elif any(color not in validColors for color in cube):
             return False
         elif cube.count('b') > 9 or \
              cube.count('y') > 9 or \
@@ -39,8 +42,6 @@ class Cube:
              cube.count('o') > 9 or \
              cube.count('w') > 9 or \
              cube.count('r') > 9:
-            return False
-        elif any(color not in validColors for color in cube):
             return False
         else:
             return True
