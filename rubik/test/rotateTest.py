@@ -27,7 +27,6 @@ class RotateTest(TestCase):
         expectedResult['status'] = 'error: extraneous key detected'
 
         actualResult = rotate(parms)
-        self.assertEqual(expectedResult.get('cube'), actualResult.get('cube')) 
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     # Sad Path Tests  

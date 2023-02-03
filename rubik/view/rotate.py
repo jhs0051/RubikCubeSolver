@@ -4,6 +4,14 @@ def rotate(parms):
     """Return rotated cube""" 
     result = {}
     
+    validKeys = 'cube', 'dir', 'op'
+    keys = parms.keys()
+    
+    for key in keys:
+        if key not in validKeys:
+            result['status'] = 'error: extraneous key detected'
+            return result
+        
     try:
         encodedCube = parms.get('cube')
     except:
