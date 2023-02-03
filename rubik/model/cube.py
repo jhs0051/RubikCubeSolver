@@ -32,6 +32,9 @@ class Cube:
             if middleColorsList.count(currentSquare) > 1:
                 return False   
         
+        if directions == '' or directions == None:
+            return True
+ 
         if any(letter not in validDirections for letter in directions):
             return False
         elif any(color not in validColors for color in cube):
