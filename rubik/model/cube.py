@@ -47,7 +47,7 @@ class Cube:
             return True
         
     def rotate(self, directions):
-        if directions == '' or None:
+        if directions == '' or directions == None:
             self._rotate_F()
         else:
             for rotationDirection in directions:
