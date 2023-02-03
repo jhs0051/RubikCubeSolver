@@ -15,7 +15,7 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
 
-    def test_rotate_020_ShouldRotateCubeWithExtraneousKey(self):
+    def test_rotate_020_ErrorWithExtraneousKey(self):
         parms = {}
         parms['op'] = 'rotate'
         parms['extraneous'] = 'key'
@@ -24,7 +24,7 @@ class RotateTest(TestCase):
         
         expectedResult = {}
         expectedResult['cube'] = 'wwoyrgbywgyrobgbrwoogbgwyrworrryogwobbyyowbgyrggbwoybr'
-        expectedResult['status'] = 'ok'
+        expectedResult['status'] = 'error: extraneous key detected'
 
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('cube'), actualResult.get('cube')) 
