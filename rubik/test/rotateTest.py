@@ -41,6 +41,18 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
+    def test_rotate_040_ErrorOnLongCube(self):
+        parms = {}
+        parms['op'] = 'rotate'
+        parms['cube'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybrrrr'
+        parms['dir'] = 'r'
+        
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid cube'
+
+        actualResult = rotate(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
     # Sad Path Tests  
     def test_rotate_910_ErrorWhenSingleRotationIsInvalid(self):
         parms = {}
