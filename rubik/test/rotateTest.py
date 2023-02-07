@@ -129,7 +129,7 @@ class RotateTest(TestCase):
     def test_rotate_950_ErrorOnNonUniqueNonStandardMiddleColors(self):
         parms = {}
         parms['op'] = 'rotate'
-        parms['cube'] = '111111111EEEEEEEEEGGGGGGGGGbbbbbbbbb999999999ccccccccc'
+        parms['cube'] = '111111111EEEEEEEEEGGGGGGGGGbbbbbbbb9999999999ccccccccc'
         parms['dir'] = 'F'
         
         expectedResult = {}

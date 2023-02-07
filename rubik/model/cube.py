@@ -1,4 +1,5 @@
 from rubik.model.constants import *
+from collections import Counter
 
 class Cube:
     '''
@@ -31,17 +32,14 @@ class Cube:
             if middleColorsList.count(currentSquare) > 1:
                 return False   
         
+        for value in Counter(cube).values():
+            if value != 9:
+                return False
+        
         if directions == '' or directions == None:
             return True
  
         if any(letter not in validDirections for letter in directions):
-            return False
-        elif cube.count('b') > 9 or \
-             cube.count('y') > 9 or \
-             cube.count('g') > 9 or \
-             cube.count('o') > 9 or \
-             cube.count('w') > 9 or \
-             cube.count('r') > 9:
             return False
         else:
             return True
