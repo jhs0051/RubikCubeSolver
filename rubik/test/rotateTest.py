@@ -114,7 +114,7 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_rotate_940_ErrorOnNonUniqueMiddleColors(self):
+    def test_rotate_940_ErrorOnNonUniqueStandardMiddleColors(self):
         parms = {}
         parms['op'] = 'rotate'
         parms['cube'] = 'rbbbbbbbbrrrrbrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
