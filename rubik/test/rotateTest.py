@@ -126,17 +126,6 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_rotate_950_ErrorOnNonSupportedColors(self):
-        parms = {}
-        parms['op'] = 'rotate'
-        parms['cube'] = 'ogwwrywybgyrgbgrrwoogpgwyrworyryggwbbbyyowgobroobwoybr'
-        parms['dir'] = 'F'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'error: invalid cube'
-
-        actualResult = rotate(parms)
-        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_960_RotateOnDirection_D_notSupported(self):
         parms = {}
