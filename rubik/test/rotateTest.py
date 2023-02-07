@@ -65,6 +65,18 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
+    def test_rotate_060_NonStandardCubeLettersReturnsOk(self):
+        parms = {}
+        parms['op'] = 'rotate'
+        parms['cube'] = 'bb0bPP00P6f44fbbff0f060066f46P4b4Pfff0b0446Pb6b4P664PP'
+        parms['dir'] = 'F'
+        
+        expectedResult = {}
+        expectedResult['status'] = 'ok'
+        
+        actualResult = rotate(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
     # Sad Path Tests  
     def test_rotate_910_ErrorWhenSingleRotationIsInvalid(self):
         parms = {}
