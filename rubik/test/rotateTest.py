@@ -163,3 +163,15 @@ class RotateTest(TestCase):
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
+    def test_rotate_980_ErrorOnIllegalCharacters(self):
+        parms = {}
+        parms['op'] = 'rotate'
+        parms['cube'] = '   bbbbbbrrr      ooorrrrrrbbbooooooyyyyyyyyywwwwwwwww'
+        parms['dir'] = 'F'
+        
+        expectedResult = {}
+        expectedResult['status'] = 'error: invalid cube'
+
+        actualResult = rotate(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
