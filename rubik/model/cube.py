@@ -16,6 +16,7 @@ class Cube:
     def _validation(encodedCube, directions):
         cube = encodedCube
         validDirections = 'F,f,R,r,B,b,L,l,U,u'
+        validCharacters = 'Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,v,b,n,m,1,2,3,4,5,6,7,8,9,0'
         middleColorsList = list()
         
         if len(cube) != 54:
@@ -40,6 +41,8 @@ class Cube:
             return True
  
         if any(letter not in validDirections for letter in directions):
+            return False        
+        elif any(character not in validCharacters for character in cube):
             return False
         else:
             return True
