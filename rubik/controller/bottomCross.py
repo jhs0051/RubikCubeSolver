@@ -1,12 +1,27 @@
 import rubik.model.constants
+from rubik.model.constants import *
 from rubik.model.cube import Cube
 
 def solveBottomCross(theCube: Cube) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cube into the down-face cross configuration.
+    if doesBottomCrossExist(theCube):
+        return theCube
         
-        input:  an instance of the cube class
-        output: the rotations required to transform the input cube into the down-face cross 
-    '''  
-    return 'F'      #TODO:  remove this stubbed value
+
+def doesBottomCrossExist(cube):
+    if cube[FMM] != cube[FBM]:
+        return False
+    elif cube[LMM] != cube[LBM]:
+        return False
+    elif cube[RMM] != cube[RBM]:
+        return False
+    elif cube[BMM] != cube[BBM]:
+        return False
+    elif cube[DMM] != cube[DTM]:
+        return False
+    elif cube[DMM] != cube[DML]:
+        return False
+    elif cube[DMM] != cube[DMR]:
+        return False
+    elif cube[DMM] != cube[DBM]:
+        return False
+    return True
