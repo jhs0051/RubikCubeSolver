@@ -2,9 +2,9 @@ import rubik.model.constants
 from rubik.model.constants import *
 from rubik.model.cube import Cube
 
-def solveBottomCross(theCube: Cube) -> str:
+def solveBottomCross(theCube: Cube, solution) -> str:
     if doesBottomCrossExist(theCube):
-        return theCube
+        return theCube, solution
         
 
 def doesBottomCrossExist(cube):
