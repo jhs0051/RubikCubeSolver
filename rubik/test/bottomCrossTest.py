@@ -51,4 +51,17 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectedCube, actualCube)
         
+    def test_bottomCross_040_MakesBottomCrossWithStatusOk(self):
+        inputDict = {}
+        inputDict['op'] = 'solve'
+        inputDict['cube'] = 'yoyoyggwbogrrobooowooywbbwrwybwrwgbwgbbrgyrggrrwrbyygy'
+
+        expectResult = {}
+        expectedRotations = 'LbUBUULLBUbUFFfuFUUUBBUUURR'
+        expectResult['status'] = 'ok'
+
+        actualResult = solve.solve(inputDict)
+        self.assertEqual(expectedRotations, actualResult.get('solution'))
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
     
