@@ -12,15 +12,19 @@ def solveBottomCross(theCube: Cube, solution) -> str:
     theCube, currentCubeIndex, currentRotationList = makeBottomDaisy(theCube)
     directionList += currentRotationList
     
+    if currentCubeIndex == - FTM:
+        theCube, currentCubeIndex, currentRotationList = rotateMiddleLeftCorner(theCube)
+        directionList += currentRotationList
+        
+    if currentCubeIndex == - FTM:
+        theCube, currentCubeIndex, directionList = rotateMiddleTopMiddle(theCube)
+        directionList += currentRotationList
+    
     theCube, currentCubeIndex, currentRotationList = rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex)
     directionList += currentRotationList
     
     theCube, currentCubeIndex, currentRotationList = rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex)
     directionList += currentRotationList
-    
-    if currentCubeIndex == - FTM:
-        theCube, currentCubeIndex, currentRotationList = rotateMiddleLeftCorner(theCube)
-        directionList += currentRotationList
     
     solution = solution + directionList
     
@@ -170,6 +174,40 @@ def rotateMiddleLeftCorner(theCube):
             theCube = rotate(parms)[cube]
 
             return theCube, currentCubeIndex, directionList
+        
+    return theCube, currentCubeIndex, directionList
+
+def rotateMiddleTopMiddle(theCube):
+    cube, direction, directionList = 'cube', 'dir', ''
+    topCornerPiecePairs = [(FTM, UBM, 'F'), (RTM, UMR, 'R'), (BTM, UTM, 'B'), (LTM, UML, 'L')]
+    currentCubeIndex = - FTM
+
+    for cornerPiece in topCornerPiecePairs:
+        if theCube[cornerPiece[FTM]] == theCube[DMM]:
+            return theCube, cornerPiece[FTL], directionList
+
+        elif theCube[cornerPiece[FTL]] == theCube[DMM]:
+            if cornerPiece[FTR] == 'F':
+                directionList += 'FRurf'
+                currentCubeIndex = BTM
+            elif cornerPiece[FTR] == 'B':
+                directionList += 'BLulb'
+                currentCubeIndex = FTM
+            elif cornerPiece[FTR] == 'L':
+                directionList += 'LFufl'
+                currentCubeIndex = RTM
+            elif cornerPiece[FTR] == 'R':
+                directionList += 'RBubr'
+                currentCubeIndex = LTM
+            else:
+                return False
+
+            parms = {cube: theCube, direction: directionList}
+            theCube = rotate(parms)[cube]
+
+            return theCube, currentCubeIndex, directionList
+
+    return theCube, currentCubeIndex, directionList
 
 
 
