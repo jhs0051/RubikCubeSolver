@@ -153,5 +153,23 @@ def rotateMiddleLeftCorner(theCube):
             
             return theCube, currentCubeIndex, directionList
 
+        elif theCube[cornerPiece[FTL]] == theCube[DMM]:
+            if cornerPiece[FML] == 'F':
+                currentCubeIndex = LTM
+            elif cornerPiece[FML] == 'B':
+                currentCubeIndex = RTM
+            elif cornerPiece[FTR] == 'L':
+                currentCubeIndex = BTM
+            elif cornerPiece[FML] == 'R':
+                currentCubeIndex = FTM
+            else:
+                return False
+
+            directionList += cornerPiece[FML] + 'U' + cornerPiece[FML].lower()
+            parms = {cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()}
+            theCube = rotate(parms)[cube]
+
+            return theCube, currentCubeIndex, directionList
+
 
 
