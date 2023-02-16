@@ -11,6 +11,9 @@ def solveBottomCross(theCube: Cube, solution) -> str:
     
     theCube, currentCubeIndex, currentRotationList = makeBottomDaisy(theCube)
     directionList += currentRotationList
+    
+    theCube, currentCubeIndex, currentRotationList = rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex)
+    directionList += currentRotationList
         
 
 def doesBottomCrossExist(cube):
@@ -36,7 +39,7 @@ def makeBottomDaisy(theCube):
     cube, direction, directionList = 'cube', 'dir', ''
     bottomDaisyListOfTupleCombos = [(DTM, FBM, 'F'), (DBM, BBM, 'B'), (DML, LBM, 'L'), (DMR, RBM, 'R')]
     middleCubeIndexes = [theCube[FMM], theCube[BMM], theCube[LMM], theCube[RMM]]
-    currentCubeIndex = -FTM
+    currentCubeIndex = - FTM
 
     for edgePiece, cornerPiece in enumerate(bottomDaisyListOfTupleCombos):
         if theCube[cornerPiece[FTL]] == theCube[DMM] and theCube[cornerPiece[FTM]] != middleCubeIndexes[edgePiece]:
@@ -76,6 +79,18 @@ def makeBottomDaisy(theCube):
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
+
+    return theCube, currentCubeIndex, directionList
+
+def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
+    cube, direction, directionList = 'cube', 'dir', ''
+
+    while theCube[currentCubeIndex] is not theCube[currentCubeIndex + FML]:
+        directionList = directionList + 'U'
+        theCube = rotate({cube: theCube, direction: 'U'})[cube]
+        currentCubeIndex = currentCubeIndex - RTL \
+            if currentCubeIndex != FTM \
+            else LTM
 
     return theCube, currentCubeIndex, directionList
 
