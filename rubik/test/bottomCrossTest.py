@@ -40,4 +40,15 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectedCube, actualCube)
         
+    def test_bottomCross_030_CubeRotatesCornerPieceFromBottomToTop(self):
+        cube = 'rrgbbwbbryrrgrrgyyyooggyogwbbwroogooyybyybbwrwwwwwgoog'
+        rotations = ''
+
+        expectedRotations = 'RUrUUBBRR'
+        expectedCube = 'ybybbybbwoyrrrogrrggoyggwggyrrroowoogoybygbybwwowwwrwb'
+
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
+        self.assertEqual(expectedRotations, actualRotations)
+        self.assertEqual(expectedCube, actualCube)
+        
     
