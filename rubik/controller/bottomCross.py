@@ -14,6 +14,11 @@ def solveBottomCross(theCube: Cube, solution) -> str:
     
     theCube, currentCubeIndex, currentRotationList = rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex)
     directionList += currentRotationList
+    
+    theCube, currentCubeIndex, currentRotationList = rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex)
+    directionList += currentRotationList
+    
+    return solveBottomCross(theCube, solution)
         
 
 def doesBottomCrossExist(cube):
@@ -92,6 +97,30 @@ def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
             if currentCubeIndex != FTM \
             else LTM
 
+    return theCube, currentCubeIndex, directionList
+
+def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
+    cube, direction, directionList = 'cube', 'dir', ''
+
+    if currentCubeIndex == FTM:
+        directionList = directionList + 'FF'
+        parms = {cube: theCube, direction: directionList}
+        theCube = rotate(parms)[cube]
+    elif currentCubeIndex == RTM:
+        directionList = directionList + 'RR'
+        parms = {cube: theCube, direction: directionList}
+        theCube = rotate(parms)[cube]
+    elif currentCubeIndex == BTM:
+        directionList = directionList + 'BB'
+        parms = {cube: theCube, direction: directionList}
+        theCube = rotate(parms)[cube]
+    elif currentCubeIndex == LTM:
+        directionList = directionList + 'LL'
+        parms = {cube: theCube, direction: directionList}
+        theCube = rotate(parms)[cube]
+    else:
+        return False
+    
     return theCube, currentCubeIndex, directionList
 
 
