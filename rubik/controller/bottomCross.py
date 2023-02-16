@@ -58,6 +58,25 @@ def makeBottomDaisy(theCube):
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
 
+        elif theCube[cornerPiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[cornerPiece[FTM]] == theCube[DMM]:
+            if cornerPiece[FTR] == 'F':
+                directionList += 'FlUL'
+                currentCubeIndex = BTM
+            elif cornerPiece[FTR] == 'B':
+                directionList += 'BrUR'
+                currentCubeIndex = FTM
+            elif cornerPiece[FTR] == 'L':
+                directionList += 'LbUB'
+                currentCubeIndex = RTM
+            elif cornerPiece[FTR] == 'R':
+                directionList += 'RfUF'
+                currentCubeIndex = LTM
+            else:
+                return False
+
+            parms = {cube: theCube, direction: directionList}
+            theCube = rotate(parms)[cube]
+
     return theCube, currentCubeIndex, directionList
 
 
