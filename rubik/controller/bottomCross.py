@@ -18,6 +18,8 @@ def solveBottomCross(theCube: Cube, solution) -> str:
     theCube, currentCubeIndex, currentRotationList = rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex)
     directionList += currentRotationList
     
+    solution = solution + directionList
+    
     return solveBottomCross(theCube, solution)
         
 
