@@ -24,7 +24,7 @@ class RotateTest(TestCase):
         
         expectedResult = {}
         expectedResult['cube'] = 'wwoyrgbywgyrobgbrwoogbgwyrworrryogwobbyyowbgyrggbwoybr'
-        expectedResult['status'] = 'error: extraneous key detected'
+        expectedResult['status'] = 'error: invalid key'
 
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
