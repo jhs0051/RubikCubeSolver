@@ -1,20 +1,15 @@
 from rubik.model.cube import Cube
+from pickle import FALSE
 
 def rotate(parms):
     """Return rotated cube""" 
     result = {}
     encodedCube = parms.get('cube')
     
-    validKeys = 'cube', 'dir', 'op', 'solve'
-    keys = parms.keys()
-    
-    for key in keys:
-        if key not in validKeys:
-            result['status'] = 'error: extraneous key detected'
-            return result
-        
-   
-    if not _cubeLengthValidation(encodedCube):
+    if not _validKeys(parms):
+        result['status'] = 'error: invalid key'
+        return result       
+    elif not _cubeLengthValidation(encodedCube):
         result['status'] = 'error: cube can not be empty'
         return result
     else:
@@ -42,4 +37,14 @@ def _cubeLengthValidation(encodedCube):
     if encodedCube == None or encodedCube == '':
         return False
     return True
+
+def _validKeys(parms):
+    validKeys = 'cube', 'dir', 'op', 'solve'
+    keys = parms.keys()
+    
+    for key in keys:
+        if key not in validKeys:
+            return False
+    return True
+    
     
