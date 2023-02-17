@@ -1,4 +1,3 @@
-import rubik.model.constants
 from rubik.model.constants import *
 from rubik.model.cube import Cube
 from rubik.view.rotate import rotate

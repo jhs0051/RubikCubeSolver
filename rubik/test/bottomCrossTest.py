@@ -6,8 +6,7 @@ import rubik.controller.bottomCross as bottomCross
 class BottomCrossTest(unittest.TestCase):
 
     # Happy Path Tests  
-    # Saving to end of iteration
-    """def test_bottomCross_010_SolvedCubeShouldReturnOkStatus(self):
+    def test_bottomCross_000_SolvedCubeShouldReturnOkStatus(self):
         parms = {}
         parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         parms['dir'] = 'R'
@@ -15,8 +14,8 @@ class BottomCrossTest(unittest.TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
 
-        actualResult = bottomCross.solveBottomCross(parms)
-        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))"""
+        actualResult = solve.solve(parms)
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_bottomCross_010_SolvedCubeContainsASolvedDaisyPattern(self):
         cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
