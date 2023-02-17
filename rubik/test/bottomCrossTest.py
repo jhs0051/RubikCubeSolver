@@ -52,16 +52,29 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         
     def test_bottomCross_040_MakesBottomCrossWithStatusOk(self):
-        inputDict = {}
-        inputDict['op'] = 'solve'
-        inputDict['cube'] = 'yoyoyggwbogrrobooowooywbbwrwybwrwgbwgbbrgyrggrrwrbyygy'
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'yoyoyggwbogrrobooowooywbbwrwybwrwgbwgbbrgyrggrrwrbyygy'
 
         expectResult = {}
         expectedRotations = 'LbUBUULLBUbUFFfuFUUUBBUUURR'
         expectResult['status'] = 'ok'
 
-        actualResult = solve.solve(inputDict)
+        actualResult = solve.solve(parms)
         self.assertEqual(expectedRotations, actualResult.get('solution'))
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
+    # Sad Path
+    def test_bottomCross_910_ErrorOnEmptyString(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = ''
+
+        expectResult = {}
+        expectResult['status'] = 'error: invalid cube'
+
+        actualResult = solve.solve(parms)
+
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
     

@@ -8,7 +8,7 @@ def rotate(parms):
     keys = parms.keys()
     
     for key in keys:
-        if key not in validKeys:
+        if key in validKeys:
             result['status'] = 'error: extraneous key detected'
             return result
         
