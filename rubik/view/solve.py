@@ -21,8 +21,8 @@ def solve(parms):
         futureRotations = solveUpSurface(theCube)        #iteration 5
         futureRotations = solveUpperLayer(theCube)       #iteration 6
     
-    result['solution'] = rotations
-    result['status'] = 'ok'    
-    result['integrity'] = ''                    #iteration 3
+        result['solution'] = rotations
+        result['status'] = 'ok'    
+        result['integrity'] = ''                    #iteration 3
                      
     return result
