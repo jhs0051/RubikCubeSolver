@@ -8,7 +8,7 @@ def rotate(parms):
     keys = parms.keys()
     
     for key in keys:
-        if key in validKeys:
+        if key not in validKeys:
             result['status'] = 'error: extraneous key detected'
             return result
         
@@ -20,7 +20,7 @@ def rotate(parms):
         
     if encodedCube == None or encodedCube == '':
         result['status'] = 'error: invalid cube'
-        return result
+        return False
     else:
         theCube = Cube(encodedCube)
     
