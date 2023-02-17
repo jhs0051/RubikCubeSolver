@@ -90,6 +90,19 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualResult.get('solution'))
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
+    def test_bottomCross_070_MakesBottomCrossWithStatusOk(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'rgwgggbwbbyoywwgbrgyborbowwrbygyoorwyryyboowgrryoorgbw'
+
+        expectResult = {}
+        expectedRotations = 'LLUBBBUbUFFLUlUULLUUURR'
+        expectResult['status'] = 'ok'
+
+        actualResult = solve.solve(parms)
+        self.assertEqual(expectedRotations, actualResult.get('solution'))
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
     # Sad Path
     def test_bottomCross_910_ErrorOnEmptyString(self):
         parms = {}
