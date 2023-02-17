@@ -103,6 +103,7 @@ class BottomCrossTest(unittest.TestCase):
         parms['op'] = 'solve'
         parms['cube'] = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
         cube, rotations = parms['cube'], ''
+        
         expectResult = {}
         expectedRotations = 'RUrUUURRruRUUFFLUlUUULLFRurfBB'
         expectResult['status'] = 'ok'
