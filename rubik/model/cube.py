@@ -15,11 +15,9 @@ class Cube:
     @staticmethod
     def _validation(encodedCube, directions):
         cube = encodedCube
-        validDirections = 'F,f,R,r,B,b,L,l,U,u'
-        validCharacters = 'Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,1,2,3,4,5,6,7,8,9,0'
         middleColorsList = list()
         
-        if len(cube) != 54:
+        if len(cube) != validCubeLength:
             return False
         
         middleColorsList.append(cube[FMM])
@@ -30,11 +28,11 @@ class Cube:
         middleColorsList.append(cube[DMM])
         
         for currentSquare in middleColorsList:
-            if middleColorsList.count(currentSquare) > 1:
+            if middleColorsList.count(currentSquare) > FTM:
                 return False   
         
         for value in Counter(cube).values():
-            if value != 9:
+            if value != validCubeColorCount:
                 return False
         
         if directions == '' or directions == None:
@@ -53,29 +51,18 @@ class Cube:
         else:
             for rotationDirection in directions:
                 match rotationDirection:
-                    case 'F':
-                        self._rotate_F()
-                    case 'f':
-                        self._rotate_f()
-                    case 'R':
-                        self._rotate_R()
-                    case 'r':
-                        self._rotate_r()
-                    case 'B':
-                        self._rotate_B()
-                    case 'b':
-                        self._rotate_b()
-                    case 'L':
-                        self._rotate_L()
-                    case 'l':
-                        self._rotate_l()
-                    case 'U':
-                        self._rotate_U()
-                    case 'u':
-                        self._rotate_u() 
-                    case '':
-                        self._rotate_F()
-                    case _:
+                    case 'F': self._rotate_F()
+                    case 'f': self._rotate_f()
+                    case 'R': self._rotate_R()
+                    case 'r': self._rotate_r()
+                    case 'B': self._rotate_B()
+                    case 'b': self._rotate_b()
+                    case 'L': self._rotate_L()
+                    case 'l': self._rotate_l()
+                    case 'U': self._rotate_U()
+                    case 'u': self._rotate_u() 
+                    case '':  self._rotate_F()
+                    case _: 
                         return False
             
         return self._cubeModel
