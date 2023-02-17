@@ -19,7 +19,7 @@ def rotate(parms):
     try:
         directions = parms.get('dir')
     except:
-        result['status'] = 'error: invalid cube'
+        result['status'] = 'error: could not get direction'
         return result
     
     if Cube._validation(encodedCube, directions) == False:
