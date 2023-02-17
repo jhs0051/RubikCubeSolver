@@ -26,7 +26,14 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = ''
         
         actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
-        
+        self.assertEqual(actualCube[FMM], actualCube[FBM])
+        self.assertEqual(actualCube[RMM], actualCube[RBM])
+        self.assertEqual(actualCube[BMM], actualCube[BBM])
+        self.assertEqual(actualCube[LMM], actualCube[LBM])
+        self.assertEqual(actualCube[DTM], actualCube[DMM])
+        self.assertEqual(actualCube[DML], actualCube[DMM])
+        self.assertEqual(actualCube[DMR], actualCube[DMM])
+        self.assertEqual(actualCube[DBM], actualCube[DMM])
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
         
@@ -38,6 +45,14 @@ class BottomCrossTest(unittest.TestCase):
         expectedCube = 'ryoobbybgwyyrrgrrrbggyggwgywrgoobbogorryybwobowywwwowb'
 
         actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
+        self.assertEqual(actualCube[FMM], actualCube[FBM])
+        self.assertEqual(actualCube[RMM], actualCube[RBM])
+        self.assertEqual(actualCube[BMM], actualCube[BBM])
+        self.assertEqual(actualCube[LMM], actualCube[LBM])
+        self.assertEqual(actualCube[DTM], actualCube[DMM])
+        self.assertEqual(actualCube[DML], actualCube[DMM])
+        self.assertEqual(actualCube[DMR], actualCube[DMM])
+        self.assertEqual(actualCube[DBM], actualCube[DMM])
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectedCube, actualCube)
         
@@ -49,6 +64,14 @@ class BottomCrossTest(unittest.TestCase):
         expectedCube = 'ybybbybbwoyrrrogrrggoyggwggyrrroowoogoybygbybwwowwwrwb'
 
         actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
+        self.assertEqual(actualCube[FMM], actualCube[FBM])
+        self.assertEqual(actualCube[RMM], actualCube[RBM])
+        self.assertEqual(actualCube[BMM], actualCube[BBM])
+        self.assertEqual(actualCube[LMM], actualCube[LBM])
+        self.assertEqual(actualCube[DTM], actualCube[DMM])
+        self.assertEqual(actualCube[DML], actualCube[DMM])
+        self.assertEqual(actualCube[DMR], actualCube[DMM])
+        self.assertEqual(actualCube[DBM], actualCube[DMM])
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectedCube, actualCube)
         
