@@ -1,5 +1,4 @@
 from rubik.model.cube import Cube
-from pickle import FALSE
 
 def rotate(parms):
     """Return rotated cube""" 
@@ -22,11 +21,11 @@ def rotate(parms):
         result['status'] = 'error: could not get direction'
         return result
     
-    if Cube._validation(encodedCube, directions) == False:
+    if not _isCubeValid(encodedCube, directions):
         result['status'] = 'error: invalid cube'
         return result
-    
-    theCube.rotate(directions)
+    else:
+        theCube.rotate(directions)
      
     
     result['cube'] = theCube.get()
@@ -45,6 +44,11 @@ def _validKeys(parms):
     for key in keys:
         if key not in validKeys:
             return False
+    return True
+
+def _isCubeValid(encodedCube, directions):
+    if Cube._validation(encodedCube, directions) == False:
+        return False
     return True
     
     
