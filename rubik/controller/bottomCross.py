@@ -50,7 +50,9 @@ def doesBottomCrossExist(cube):
     return True
 
 def makeBottomDaisy(theCube):
-    cube, direction, directionList = 'cube', 'dir', ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
     bottomDaisyListOfTupleCombos = [(DTM, FBM, 'F'), (DBM, BBM, 'B'), (DML, LBM, 'L'), (DMR, RBM, 'R')]
     middleCubeIndexes = [theCube[FMM], theCube[BMM], theCube[LMM], theCube[RMM]]
     currentCubeIndex = - FTM
@@ -93,7 +95,9 @@ def makeBottomDaisy(theCube):
     return theCube, currentCubeIndex, directionList
 
 def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
-    cube, direction, directionList = 'cube', 'dir', ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
 
     while theCube[currentCubeIndex] is not theCube[currentCubeIndex + FML]:
         directionList = directionList + 'U'
@@ -105,7 +109,9 @@ def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
-    cube, direction, directionList = 'cube', 'dir', ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
 
     if currentCubeIndex == FTM:
         directionList = directionList + 'FF'
@@ -127,7 +133,9 @@ def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateMiddleLeftCorner(theCube):
-    cube, direction, directionList = 'cube', 'dir', ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
     edgePieceCornerPiecePairs = [(FMR, RML, 'f', 'R'), (RMR, BML, 'r', 'B'), (BMR, LML, 'b', 'L'), (LMR, FML, 'l', 'F')]
     currentCubeIndex = - FTM
 
@@ -167,7 +175,9 @@ def rotateMiddleLeftCorner(theCube):
     return theCube, currentCubeIndex, directionList
 
 def rotateMiddleTopMiddle(theCube):
-    cube, direction, directionList = 'cube', 'dir', ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
     topCornerPiecePairs = [(FTM, UBM, 'F'), (RTM, UMR, 'R'), (BTM, UTM, 'B'), (LTM, UML, 'L')]
     currentCubeIndex = - FTM
 
