@@ -1,3 +1,8 @@
+'''
+Created on Feb 12, 2023
+
+@author: jonhoustonseibert
+'''
 import unittest
 import rubik.view.solve as solve
 import rubik.controller.bottomCross as bottomCross
