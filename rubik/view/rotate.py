@@ -8,7 +8,7 @@ def rotate(parms):
     if not _validKeys(parms):
         result['status'] = 'error: invalid key'
         return result       
-    elif not _cubeLengthValidation(encodedCube):
+    elif not cubeLengthValidation(encodedCube):
         result['status'] = 'error: cube can not be empty'
         return result
     else:
@@ -32,7 +32,7 @@ def rotate(parms):
     result['status'] = 'ok'                     
     return result
 
-def _cubeLengthValidation(encodedCube):
+def cubeLengthValidation(encodedCube):
     if encodedCube == None or encodedCube == '':
         return False
     return True

@@ -71,7 +71,7 @@ class BottomCrossTest(unittest.TestCase):
         parms['cube'] = ''
 
         expectResult = {}
-        expectResult['status'] = 'error: invalid cube'
+        expectResult['status'] = 'error: cube can not be empty'
 
         actualResult = solve.solve(parms)
 
