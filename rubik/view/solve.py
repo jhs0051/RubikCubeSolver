@@ -9,17 +9,14 @@ from rubik.model.cube import Cube
 def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
-     
-    encodedCube = parms.get('cube')
-    theCube = Cube(encodedCube)
+    theCube, rotations = parms.get('cube'), ''
     
-    rotations = ""
-    rotations += solveBottomCross(theCube)      #iteration 2
-    rotations += solveBottomLayer(theCube)      #iteration 3
-    rotations += solveMiddleLayer(theCube)      #iteration 4
-    rotations += solveUpCross(theCube)          #iteration 5
-    rotations += solveUpSurface(theCube)        #iteration 5
-    rotations += solveUpperLayer(theCube)       #iteration 6
+    _, rotations = solveBottomCross(theCube, rotations)      #iteration 2
+    futureRotations = solveBottomLayer(theCube)      #iteration 3
+    futureRotations = solveMiddleLayer(theCube)      #iteration 4
+    futureRotations = solveUpCross(theCube)          #iteration 5
+    futureRotations = solveUpSurface(theCube)        #iteration 5
+    futureRotations = solveUpperLayer(theCube)       #iteration 6
     
     result['solution'] = rotations
     result['status'] = 'ok'    
