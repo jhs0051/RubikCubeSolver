@@ -102,7 +102,7 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualResult.get('solution'))
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    # Sad Path
+    # Sad Path Tests
     def test_bottomCross_910_ErrorOnEmptyString(self):
         parms = {}
         parms['op'] = 'solve'
@@ -112,7 +112,6 @@ class BottomCrossTest(unittest.TestCase):
         expectResult['status'] = 'error: cube can not be empty'
 
         actualResult = solve.solve(parms)
-
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
     
