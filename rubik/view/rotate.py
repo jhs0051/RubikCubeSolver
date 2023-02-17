@@ -3,6 +3,7 @@ from rubik.model.cube import Cube
 def rotate(parms):
     """Return rotated cube""" 
     result = {}
+    encodedCube = parms.get('cube')
     
     validKeys = 'cube', 'dir', 'op', 'solve'
     keys = parms.keys()
@@ -12,17 +13,13 @@ def rotate(parms):
             result['status'] = 'error: extraneous key detected'
             return result
         
-    try:
-        encodedCube = parms.get('cube')
-    except:
-        result['status'] = 'error: invalid cube'
+   
+    if not _cubeLengthValidation(encodedCube):
+        result['status'] = 'error: cube can not be empty'
         return result
-        
-    if encodedCube == None or encodedCube == '':
-        result['status'] = 'error: invalid cube'
-        return False
     else:
         theCube = Cube(encodedCube)
+        
     
     try:
         directions = parms.get('dir')
@@ -40,3 +37,9 @@ def rotate(parms):
     result['cube'] = theCube.get()
     result['status'] = 'ok'                     
     return result
+
+def _cubeLengthValidation(encodedCube):
+    if encodedCube == None or encodedCube == '':
+        return False
+    return True
+    

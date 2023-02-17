@@ -10,7 +10,7 @@ class RotateTest(TestCase):
         parms['dir'] = 'F'
         
         expectedResult = {}
-        expectedResult['status'] = 'error: invalid cube'
+        expectedResult['status'] = 'error: cube can not be empty'
             
         actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
