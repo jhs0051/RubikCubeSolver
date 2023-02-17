@@ -70,8 +70,6 @@ def makeBottomDaisy(theCube):
             elif cornerPiece[FTR] == 'R':
                 directionList += 'RR'
                 currentCubeIndex = RTM
-            else:
-                return False
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
@@ -89,8 +87,6 @@ def makeBottomDaisy(theCube):
             elif cornerPiece[FTR] == 'R':
                 directionList += 'RfUF'
                 currentCubeIndex = LTM
-            else:
-                return False
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
@@ -128,8 +124,6 @@ def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
         directionList = directionList + 'RR'
         parms = {cube: theCube, direction: directionList}
         theCube = rotate(parms)[cube]
-    else:
-        return False
     
     return theCube, currentCubeIndex, directionList
 
@@ -148,8 +142,6 @@ def rotateMiddleLeftCorner(theCube):
                 currentCubeIndex = FTM
             elif cornerPiece[FTR] == 'r':
                 currentCubeIndex = BTM
-            else:
-                return False
 
             directionList += cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()
             parms = {cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()}
@@ -166,8 +158,6 @@ def rotateMiddleLeftCorner(theCube):
                 currentCubeIndex = BTM
             elif cornerPiece[FML] == 'R':
                 currentCubeIndex = FTM
-            else:
-                return False
 
             directionList += cornerPiece[FML] + 'U' + cornerPiece[FML].lower()
             parms = {cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()}
@@ -199,8 +189,6 @@ def rotateMiddleTopMiddle(theCube):
             elif cornerPiece[FTR] == 'R':
                 directionList += 'RBubr'
                 currentCubeIndex = LTM
-            else:
-                return False
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
