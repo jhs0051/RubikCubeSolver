@@ -4,7 +4,7 @@ def rotate(parms):
     """Return rotated cube""" 
     result = {}
     
-    validKeys = 'cube', 'dir', 'op'
+    validKeys = 'cube', 'dir', 'op', 'solve'
     keys = parms.keys()
     
     for key in keys:
