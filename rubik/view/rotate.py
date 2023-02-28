@@ -5,7 +5,7 @@ def rotate(parms):
     result = {}
     encodedCube = parms.get('cube')
     
-    if not _validKeys(parms):
+    if not validKeys(parms):
         result['status'] = 'error: invalid key'
         return result       
     elif not cubeLengthValidation(encodedCube):
@@ -21,7 +21,7 @@ def rotate(parms):
         result['status'] = 'error: could not get direction'
         return result
     
-    if not _isCubeValid(encodedCube, directions):
+    if not isCubeValid(encodedCube, directions):
         result['status'] = 'error: invalid cube'
         return result
     else:
@@ -37,7 +37,7 @@ def cubeLengthValidation(encodedCube):
         return False
     return True
 
-def _validKeys(parms):
+def validKeys(parms):
     validKeys = 'cube', 'dir', 'op', 'solve'
     keys = parms.keys()
     
@@ -46,7 +46,7 @@ def _validKeys(parms):
             return False
     return True
 
-def _isCubeValid(encodedCube, directions):
+def isCubeValid(encodedCube, directions):
     if Cube._validation(encodedCube, directions) == False:
         return False
     return True
