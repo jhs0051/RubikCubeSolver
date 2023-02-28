@@ -38,3 +38,10 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test950_solve_ErrorOnInvalidKey(self):
+        parms = {}
+        parms['key'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr'
+        result = solve(parms)
+        self.assertIn('status', result)
+        self.assertEqual('error: invalid key', result['status'])
