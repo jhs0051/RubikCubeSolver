@@ -31,3 +31,10 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test940_solve_ErrorOnNonUniqueMiddleCharacter(self):
+        parms = {}
+        parms['cube'] = 'rbbbbbbbbrrrrbrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
+        result = solve(parms)
+        self.assertIn('status', result)
+        self.assertEqual('error: invalid cube', result['status'])
