@@ -10,3 +10,10 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test910_solve_ErrorOnLongCube(self):
+        parms = {}
+        parms['cube'] = 'PFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPUPrFLLFUPPFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPU'
+        result = solve(parms)
+        self.assertIn('status', result)
+        self.assertEqual('error: invalid cube', result['status'])
