@@ -22,3 +22,14 @@ class BottomLayerTest(unittest.TestCase):
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
+    def test_bottomLayer_010_SolvedCubeDoesNotContainRotations(self):
+        cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        rotations = ''
+        
+        expectedCube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        expectedRotations = ''
+        
+        actualCube, actualRotations = bottomLayer.solveBottomLayer(cube, rotations)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedRotations, actualRotations)
