@@ -161,7 +161,7 @@ def rotateMiddleLeftCorner(theCube):
                 currentCubeIndex = LTM
             elif cornerPiece[FML] == 'B':
                 currentCubeIndex = RTM
-            elif cornerPiece[FTR] == 'L':
+            elif cornerPiece[FML] == 'L':
                 currentCubeIndex = BTM
             elif cornerPiece[FML] == 'R':
                 currentCubeIndex = FTM

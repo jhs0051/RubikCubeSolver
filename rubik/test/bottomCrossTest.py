@@ -156,7 +156,7 @@ class BottomCrossTest(unittest.TestCase):
         cube, rotations = parms['cube'], ''
 
         expectResult = {}
-        expectedRotations = 'LLUBBBUbUFFLUlUULLUUURR'
+        expectedRotations = 'LLUBBBUbUFFLUlURRULL'
         expectResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
