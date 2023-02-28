@@ -172,6 +172,29 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualResult.get('solution'))
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
+    def test_bottomCross_080_MakesBottomCrossWithStatusOk(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'dk999dif7f9k9i7if77kidkfd9ffkkddiki997ddfffid7ik77ki79'
+        cube, rotations = parms['cube'], ''
+
+        expectResult = {}
+        expectedRotations = 'BBLLUURRBBUUFFFUfLLUUUBB'
+        expectResult['status'] = 'ok'
+
+        actualResult = solve.solve(parms)
+        actualCube, _ = bottomCross.solveBottomCross(cube, rotations)
+        self.assertEqual(actualCube[FMM], actualCube[FBM])
+        self.assertEqual(actualCube[RMM], actualCube[RBM])
+        self.assertEqual(actualCube[BMM], actualCube[BBM])
+        self.assertEqual(actualCube[LMM], actualCube[LBM])
+        self.assertEqual(actualCube[DTM], actualCube[DMM])
+        self.assertEqual(actualCube[DML], actualCube[DMM])
+        self.assertEqual(actualCube[DMR], actualCube[DMM])
+        self.assertEqual(actualCube[DBM], actualCube[DMM])
+        self.assertEqual(expectedRotations, actualResult.get('solution'))
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
     # Sad Path Tests
     def test_bottomCross_910_ErrorOnEmptyString(self):
         parms = {}
