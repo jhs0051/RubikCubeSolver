@@ -17,3 +17,10 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test920_solve_ErrorOnCubeWithIllegalCharacters(self):
+        parms = {}
+        parms['cube'] = 'bbbbbbbbb*********rrrrrrrrroooooooooyyyyyyyyywwwwwwwww'
+        result = solve(parms)
+        self.assertIn('status', result)
+        self.assertEqual('error: invalid cube', result['status'])
