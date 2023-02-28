@@ -41,7 +41,8 @@ class SolveTest(TestCase):
         
     def test950_solve_ErrorOnInvalidKey(self):
         parms = {}
-        parms['key'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr'
+        parms['cube'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr'
+        parms['extra'] = 'key'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid key', result['status'])
