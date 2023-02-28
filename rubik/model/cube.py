@@ -34,13 +34,14 @@ class Cube:
         for value in Counter(cube).values():
             if value != validCubeColorCount:
                 return False
- 
-        if any(letter not in validDirections for letter in directions):
-            return False        
-        elif any(character not in validCharacters for character in cube):
+        
+        if any(character not in validCharacters for character in cube):
             return False
-        elif directions == '' or directions == None:
+        
+        if directions == '' or directions == None:
             return True
+        elif any(letter not in validDirections for letter in directions):
+            return False 
         else:
             return True
         
