@@ -24,3 +24,10 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
+        
+    def test930_solve_ErrorOnMoreThan9OfAColor(self):
+        parms = {}
+        parms['cube'] = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwwb'
+        result = solve(parms)
+        self.assertIn('status', result)
+        self.assertEqual('error: invalid cube', result['status'])
