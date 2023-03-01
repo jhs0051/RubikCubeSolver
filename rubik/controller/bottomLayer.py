@@ -1,7 +1,7 @@
 import rubik.model.constants
 from rubik.model.cube import Cube
 
-def solveBottomLayer(theCube: Cube) -> str:
+def solveBottomLayer(theCube: Cube, solution) -> str:
     '''
         This is the top-level function  for rotating
         a cube so that the bottom layer is solved.
