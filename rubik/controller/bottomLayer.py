@@ -63,5 +63,22 @@ def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
-    pass
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
+
+    if currentCubeIndex is LTR:
+        directionList += 'FUfu'
+    elif currentCubeIndex is RTR:
+        directionList += 'BUbu'
+    elif currentCubeIndex is BTR:
+        directionList += 'LUlu'
+    elif currentCubeIndex is FTR:
+        directionList += 'RUru'
+
+    parms = {cube: theCube, direction: directionList}
+    theCube = rotate(parms)[cube]
+    currentCubeIndex += FBL
+
+    return theCube, currentCubeIndex, directionList
 
