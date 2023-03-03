@@ -1,4 +1,5 @@
 from rubik.model.constants import *
+from rubik.view.rotate import rotate
 from rubik.model.cube import Cube
 
 def solveBottomLayer(theCube: Cube, solution) -> str:
@@ -35,4 +36,29 @@ def isBottomLayerSolved(theCube):
     return True
 
 def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
-    pass
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
+
+    bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
+                          (theCube[BMM], theCube[LMM], theCube[DMM]), (theCube[LMM], theCube[FMM], theCube[DMM])]
+
+    topEdgePieces = [(theCube[FTR], theCube[RTL], theCube[UBR]), (theCube[RTR], theCube[BTL], theCube[UTR]),
+                       (theCube[BTR], theCube[LTL], theCube[UTL]), (theCube[LTR], theCube[FTL], theCube[UBL])]
+
+    while sorted(bottomEdgePieces[int((currentCubeIndex - FTR) / RTL)]) \
+            != sorted(topEdgePieces[int((currentCubeIndex - FTR) / RTL)]):
+        directionList = directionList + 'U'
+        theCube = {cube: theCube, direction: 'U'}
+        theCube = rotate(theCube)[cube]
+        
+        if currentCubeIndex != FTR:
+            currentCubeIndex = currentCubeIndex - RTL
+        else:
+            currentCubeIndex = LTR
+
+        topEdgePieces = [(theCube[FTR], theCube[RTL], theCube[UBR]), (theCube[RTR], theCube[BTL], theCube[UTR]),
+                         (theCube[BTR], theCube[LTL], theCube[UTL]), (theCube[LTR], theCube[FTL], theCube[UBL])]
+
+    return theCube, currentCubeIndex, directionList
+
