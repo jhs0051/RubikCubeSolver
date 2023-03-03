@@ -57,3 +57,17 @@ class BottomLayerTest(unittest.TestCase):
         actualCube, _, actualSolution = bottomLayer.rotateBottomEdgePieceToTopEdgePiece(cube, cubeIndex)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedsolution, actualSolution)
+        
+    def test_bottomCorners_035_TestBottomEdgePieceGetsRotatedToTopEdge(self):
+        cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
+        cubeIndex = BTR
+
+        expectedCube = 'grobbbggggororororbbyggwbbborwgorwrobwwgyyrywyyywwwoyy'
+        expectedSolution = 'LUlu'
+        expectedCubeIndex = BBR
+
+
+        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateBottomEdgePieceToTopEdgePiece(cube, cubeIndex)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedCubeIndex, currentCubeIndex)
+        self.assertEqual(expectedSolution, actualSolution)
