@@ -79,6 +79,18 @@ def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     parms = {cube: theCube, direction: directionList}
     theCube = rotate(parms)[cube]
     currentCubeIndex += FBL
+    
+    if currentCubeIndex is LBR:
+        directionList += 'FUfuFUfu'
+    elif currentCubeIndex is RBR:
+        directionList += 'BUbuBUbu'
+    elif currentCubeIndex is BBR:
+        directionList += 'LUluLUlu'
+    elif currentCubeIndex is FBR:
+        directionList += 'RUruRUru'
+
+    parms = {cube: theCube, direction: directionList}
+    theCube = rotate(parms)[cube]
 
     return theCube, currentCubeIndex, directionList
 
