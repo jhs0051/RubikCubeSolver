@@ -62,3 +62,6 @@ def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
+def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
+    pass
+
