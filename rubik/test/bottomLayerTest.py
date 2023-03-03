@@ -33,3 +33,16 @@ class BottomLayerTest(unittest.TestCase):
         actualCube, actualRotations = bottomLayer.solveBottomLayer(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
+        
+    def test_bottomCorners_011_TestEdgePieceGetsRotatedToDifferentFaceSameEdge(self):
+        cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
+        cubeIndex = 18
+
+        expectedCube = 'rorbbbgggbbbororororogggbbbgggrororowywwywwywyyywwwyyy'
+        expectedsolution = 'U'
+        expectedLocation = 9
+
+        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateEdgePieceToDifferentFace(cube, cubeIndex)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedLocation, currentCubeIndex)
+        self.assertEqual(expectedsolution, actualSolution)

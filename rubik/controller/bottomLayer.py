@@ -33,3 +33,6 @@ def isBottomLayerSolved(theCube):
     elif theCube[DMM] != theCube[DBR]:
         return False
     return True
+
+def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
+    pass
