@@ -34,7 +34,7 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
         
-    def test_bottomCorners_011_TestEdgePieceGetsRotatedToDifferentFaceSameEdge(self):
+    def test_bottomCorners_020_TestEdgePieceGetsRotatedToDifferentFaceSameEdge(self):
         cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
         cubeIndex = BTL
 
