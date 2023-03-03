@@ -80,6 +80,6 @@ class BottomLayerTest(unittest.TestCase):
         expectedSolution = 'LUluLUlu'
 
 
-        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateBottomEdgePieceToTopEdgePiece(cube, cubeIndex)
+        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateBottomEdgeCW(cube, cubeIndex)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedSolution, actualSolution)
