@@ -83,7 +83,21 @@ def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgeCW(theCube, currentCubeIndex):
-    #I don't think the code will work in the rotateBottomEdgePieceToTopEdgePiece with the current code so breaking this into its own method
-    # will run another red light when changing the test to use this function then green light when I re-implement the algorithm 
-    pass
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
+
+    if currentCubeIndex is LBR:
+        directionList += 'FUfuFUfu'
+    elif currentCubeIndex is RBR:
+        directionList += 'BUbuBUbu'
+    elif currentCubeIndex is BBR:
+        directionList += 'LUluLUlu'
+    elif currentCubeIndex is FBR:
+        directionList += 'RUruRUru'
+
+    parms = {cube: theCube, direction: directionList}
+    theCube = rotate(parms)[cube]
+
+    return theCube, currentCubeIndex, directionList
 
