@@ -36,7 +36,15 @@ def isBottomLayerSolved(theCube):
     return True
 
 def doBottomEdgePieceColorsMatch(theCube):
-    pass
+    currentCubeIndex = None
+    topEdgePieces = [(theCube[FTR], theCube[RTL], theCube[UBR]), (theCube[RTR], theCube[BTL], theCube[UTR]),
+                     (theCube[BTR], theCube[LTL], theCube[UTL]), (theCube[LTR], theCube[FTL], theCube[UBL])]
+
+    for cubePiece, edgePiece in enumerate(topEdgePieces):
+        if edgePiece.count(theCube[DMM]) > FTL:
+            currentCubeIndex = FTR + cubePiece * RTL
+
+    return currentCubeIndex
 
 def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     cube = 'cube'
