@@ -35,6 +35,9 @@ def isBottomLayerSolved(theCube):
         return False
     return True
 
+def doBottomEdgePieceColorsMatch(theCube):
+    pass
+
 def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
