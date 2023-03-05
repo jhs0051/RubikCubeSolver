@@ -113,3 +113,11 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedCubeIndex, currentCubeIndex)
         self.assertEqual(expectedSolution, actualSolution)
+        
+    def test_bottomCorners_080_TestBottomEdgePieceGetsRotatedToTop(self):
+        cube = 'ryborbrrgyggrgbwggobroogoooggbrbybbbyyyoyyyrowwrwwwwww'
+
+        expectedCubeIndex = FBR
+
+        currentCubeIndex = bottomLayer.rotateBottomEdgesInCorrectPosition(cube)
+        self.assertEqual(expectedCubeIndex, currentCubeIndex)
