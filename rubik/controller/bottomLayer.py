@@ -74,24 +74,44 @@ def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
-    cube = 'cube'
-    direction = 'dir'
-    directionList = ''
+    if currentCubeIndex is not None:
+        cube = 'cube'
+        direction = 'dir'
+        directionList = ''
 
-    if currentCubeIndex is LTR:
-        directionList += 'FUfu'
-    elif currentCubeIndex is RTR:
-        directionList += 'BUbu'
-    elif currentCubeIndex is BTR:
-        directionList += 'LUlu'
-    elif currentCubeIndex is FTR:
-        directionList += 'RUru'
+        if currentCubeIndex is LTR:
+            directionList += 'FUfu'
+        elif currentCubeIndex is RTR:
+            directionList += 'BUbu'
+        elif currentCubeIndex is BTR:
+            directionList += 'LUlu'
+        elif currentCubeIndex is FTR:
+            directionList += 'RUru'
 
-    parms = {cube: theCube, direction: directionList}
-    theCube = rotate(parms)[cube]
-    currentCubeIndex += FBL
+        parms = {cube: theCube, direction: directionList}
+        theCube = rotate(parms)[cube]
+        currentCubeIndex += FBL
 
-    return theCube, currentCubeIndex, directionList
+        return theCube, currentCubeIndex, directionList
+    
+    if currentCubeIndex is None:
+        directionList = ''
+
+        bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
+                            (theCube[BMM], theCube[LMM], theCube[DMM]), (theCube[LMM], theCube[FMM], theCube[DMM])]
+
+        currentEdgePieces = [(theCube[FBR], theCube[RBL], theCube[DTR]), (theCube[RBR], theCube[BBL], theCube[DBR]),
+                             (theCube[BBR], theCube[LBL], theCube[DBL]), (theCube[LBR], theCube[FBL], theCube[DTL])]
+
+        for cubePiece, edgePiece in enumerate(currentEdgePieces):
+            if sorted(edgePiece) != edgePiece.count(theCube[DMM]):
+                if sorted(bottomEdgePieces[cubePiece]):
+                    theCube, currentCubeIndex, directionList = \
+                        rotateBottomEdgePieceToTopEdgePiece(theCube, FTR + cubePiece * RTL)
+                    currentCubeIndex = FTR + cubePiece * RTL
+                    break
+
+        return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgeCW(theCube, currentCubeIndex):
     cube = 'cube'
