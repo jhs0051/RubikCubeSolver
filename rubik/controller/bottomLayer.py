@@ -113,5 +113,16 @@ def rotateBottomEdgeCW(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
-    pass
+    if currentCubeIndex is LBR:
+        if theCube[DTL] is theCube[DMM]:
+            return True
+    elif currentCubeIndex is FBR:
+        if theCube[DTR] is theCube[DMM]:
+            return True
+    elif currentCubeIndex is BBR:
+        if theCube[DBL] is theCube[DMM]:
+            return True
+    elif currentCubeIndex is RBR:
+        if theCube[DBR] is theCube[DMM]:
+            return True
 
