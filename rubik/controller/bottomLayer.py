@@ -147,6 +147,20 @@ def doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
             return True
         
 def rotateBottomEdgesInCorrectPosition(theCube):
-    pass
+    currentCubeIndex = None
+
+    bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
+                        (theCube[BMM], theCube[LMM], theCube[DMM]), (theCube[LMM], theCube[FMM], theCube[DMM])]
+
+    currentEdgePieces = [(theCube[FBR], theCube[RBL], theCube[DTR]), (theCube[RBR], theCube[BBL], theCube[DBR]),
+                         (theCube[BBR], theCube[LBL], theCube[DBL]), (theCube[LBR], theCube[FBL], theCube[DTL])]
+
+    for cubePiece, edgePiece in enumerate(currentEdgePieces):
+        if sorted(bottomEdgePieces[cubePiece]) == sorted(edgePiece):
+            if bottomEdgePieces[cubePiece][FTR] != edgePiece[FTR]:
+                currentCubeIndex = FBR + cubePiece * RTL
+                break
+
+    return currentCubeIndex
 
 
