@@ -3,10 +3,33 @@ from rubik.view.rotate import rotate
 from rubik.model.cube import Cube
 
 def solveBottomLayer(theCube: Cube, solution) -> str:
-    directionList = ''
+    startingCubeIndex = FTL
     
     if isBottomLayerSolved(theCube):
         return theCube, solution
+    
+    currentCubeIndex = doBottomEdgePieceColorsMatch(theCube)
+
+    if currentCubeIndex is None:
+        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdgePiece(theCube)
+        solution += currentDirectionList
+
+    if currentCubeIndex is None:
+        currentCubeIndex = rotateBottomEdgesInCorrectPosition(theCube)
+    elif currentCubeIndex is not None:
+        theCube, currentCubeIndex, currentDirectionList = rotateEdgePieceToDifferentFace(theCube, currentCubeIndex)
+        solution += currentDirectionList
+
+        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex)
+        solution += currentDirectionList
+
+    if startingCubeIndex < FML:
+        while not doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
+            theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgeCW(theCube, currentCubeIndex)
+            solution += currentDirectionList
+            startingCubeIndex += FTM
+
+    return solveBottomLayer(theCube, solution)
 
 def isBottomLayerSolved(theCube):
     if theCube[FMM] != theCube[FBL]:
