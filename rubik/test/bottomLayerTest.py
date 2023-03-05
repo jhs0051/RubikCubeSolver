@@ -91,3 +91,12 @@ class BottomLayerTest(unittest.TestCase):
 
         currentCubeIndex = bottomLayer.doBottomEdgePieceColorsMatch(cube)
         self.assertEqual(expectedCubeIndex, currentCubeIndex)
+        
+    def test_bottomCorners_060_TestBottomColorsMatch(self):
+        cube = 'wwwwwwwwwrrrrrrrrryyyyyyyyyooooooooobbbbbbbbbggggggggg'
+        currentCubeIndex = FBR
+
+        expectedResult = True
+
+        actualResult = bottomLayer.doBottomColorsMatchBottomFaceColors(cube, currentCubeIndex)
+        self.assertEqual(expectedResult, actualResult)

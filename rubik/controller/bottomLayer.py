@@ -112,3 +112,6 @@ def rotateBottomEdgeCW(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
+def doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
+    pass
+
