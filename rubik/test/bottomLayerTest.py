@@ -136,3 +136,18 @@ class BottomLayerTest(unittest.TestCase):
         actualCube, actualRotations = bottomLayer.solveBottomLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
+    def test_bottomCorners_100_TestSolveBottomLayerProducesSolutionToSolvedBottomLayerCube(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw'
+
+        expectResult = {}
+        expectedRotations = 'RRUUUBBRRUULLluLUUURRRBubrUUUFFUUURUruRUruRUruUUUBUbuLUluUUUFUfuFUfuFUfuFUfuFUfuULUlu'
+        expectResult['status'] = 'ok'
+        
+        actualResult = solve.solve(parms)
+        self.assertEqual(expectedRotations, actualResult.get('solution'))
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
+    
