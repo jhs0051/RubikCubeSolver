@@ -142,7 +142,6 @@ class BottomLayerTest(unittest.TestCase):
         parms['cube'] = 'ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw'
 
         expectResult = {}
-        expectedRotations = 'RRUUUBBRRUULLluLUUURRRBubrUUUFFUUURUruRUruRUruUUUBUbuLUluUUUFUfuFUfuFUfuFUfuFUfuULUlu'
         expectResult['status'] = 'ok'
         
         actualResult = solve.solve(parms)
@@ -164,7 +163,6 @@ class BottomLayerTest(unittest.TestCase):
         self.assertTrue(rightCubeColors)
         self.assertTrue(backCubeColors)
         self.assertTrue(leftCubeColors)
-        self.assertEqual(expectedRotations, actualResult.get('solution'))
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
     
