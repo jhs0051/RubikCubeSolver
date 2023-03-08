@@ -21,8 +21,8 @@ def solve(parms):
         result['status'] = 'error: invalid key'
         return result
     else:
-        _, bottomCrossRotations = solveBottomCross(theCube, rotations)      #iteration 2
-        _, bottomLayerRotations = solveBottomLayer(theCube, rotations)      #iteration 3
+        theCube, bottomCrossRotations = solveBottomCross(theCube, rotations)      #iteration 2
+        theCube, bottomLayerRotations = solveBottomLayer(theCube, rotations)      #iteration 3
         futureRotations = solveMiddleLayer(theCube)      #iteration 4
         futureRotations = solveUpCross(theCube)          #iteration 5
         futureRotations = solveUpSurface(theCube)        #iteration 5
