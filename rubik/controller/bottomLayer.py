@@ -11,7 +11,7 @@ def solveBottomLayer(theCube: Cube, solution) -> str:
     currentCubeIndex = doBottomEdgePieceColorsMatch(theCube)
 
     if currentCubeIndex is None:
-        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdgePiece(theCube)
+        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdge(theCube)
         solution += currentDirectionList
 
     if currentCubeIndex is None:
@@ -66,6 +66,7 @@ def doBottomEdgePieceColorsMatch(theCube):
     for cubePiece, edgePiece in enumerate(topEdgePieces):
         if edgePiece.count(theCube[DMM]) > FTL:
             currentCubeIndex = FTR + cubePiece * RTL
+            break
 
     return currentCubeIndex
 
@@ -97,44 +98,44 @@ def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
-    if currentCubeIndex is not None:
-        cube = 'cube'
-        direction = 'dir'
-        directionList = ''
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
 
-        if currentCubeIndex is LTR:
-            directionList += 'FUfu'
-        elif currentCubeIndex is RTR:
-            directionList += 'BUbu'
-        elif currentCubeIndex is BTR:
-            directionList += 'LUlu'
-        elif currentCubeIndex is FTR:
-            directionList += 'RUru'
+    if currentCubeIndex is LTR:
+        directionList += 'FUfu'
+    elif currentCubeIndex is RTR:
+        directionList += 'BUbu'
+    elif currentCubeIndex is BTR:
+        directionList += 'LUlu'
+    elif currentCubeIndex is FTR:
+        directionList += 'RUru'
 
-        parms = {cube: theCube, direction: directionList}
-        theCube = rotate(parms)[cube]
-        currentCubeIndex += FBL
+    parms = {cube: theCube, direction: directionList}
+    theCube = rotate(parms)[cube]
+    currentCubeIndex += FBL
 
-        return theCube, currentCubeIndex, directionList
-    
-    if currentCubeIndex is None:
-        directionList = ''
+    return theCube, currentCubeIndex, directionList
 
-        bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
-                            (theCube[BMM], theCube[LMM], theCube[DMM]), (theCube[LMM], theCube[FMM], theCube[DMM])]
+def rotateBottomEdgePieceToTopEdge(theCube):
+    currentCubeIndex = None
+    directionList = ''
 
-        currentEdgePieces = [(theCube[FBR], theCube[RBL], theCube[DTR]), (theCube[RBR], theCube[BBL], theCube[DBR]),
-                             (theCube[BBR], theCube[LBL], theCube[DBL]), (theCube[LBR], theCube[FBL], theCube[DTL])]
+    bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
+                        (theCube[BMM], theCube[LMM], theCube[DMM]), (theCube[LMM], theCube[FMM], theCube[DMM])]
 
-        for cubePiece, edgePiece in enumerate(currentEdgePieces):
-            if sorted(edgePiece) != edgePiece.count(theCube[DMM]):
-                if sorted(bottomEdgePieces[cubePiece]):
-                    theCube, currentCubeIndex, directionList = \
-                        rotateBottomEdgePieceToTopEdgePiece(theCube, FTR + cubePiece * RTL)
-                    currentCubeIndex = FTR + cubePiece * RTL
-                    break
+    currentEdgePieces = [(theCube[FBR], theCube[RBL], theCube[DTR]), (theCube[RBR], theCube[BBL], theCube[DBR]),
+                         (theCube[BBR], theCube[LBL], theCube[DBL]), (theCube[LBR], theCube[FBL], theCube[DTL])]
 
-        return theCube, currentCubeIndex, directionList
+    for cubePiece, edgePiece in enumerate(currentEdgePieces):
+        if edgePiece.count(theCube[DMM]):
+            if sorted(edgePiece) != sorted(bottomEdgePieces[cubePiece]):
+                theCube, currentCubeIndex, directionList = \
+                    rotateBottomEdgePieceToTopEdgePiece(theCube, FTR + cubePiece * RTL)
+                currentCubeIndex = FTR + cubePiece * RTL
+                break
+
+    return theCube, currentCubeIndex, directionList
 
 def rotateBottomEdgeCW(theCube, currentCubeIndex):
     cube = 'cube'
@@ -185,5 +186,4 @@ def rotateBottomEdgesInCorrectPosition(theCube):
                 break
 
     return currentCubeIndex
-
 
