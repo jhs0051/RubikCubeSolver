@@ -6,6 +6,7 @@ Created on Feb 28, 2023
 import unittest
 import rubik.view.solve as solve
 import rubik.controller.bottomLayer as bottomLayer
+from rubik.view.rotate import rotate
 from rubik.model.constants import *
 
 
@@ -145,6 +146,24 @@ class BottomLayerTest(unittest.TestCase):
         expectResult['status'] = 'ok'
         
         actualResult = solve.solve(parms)
+        
+        rotatedCube = {}
+        rotatedCube['cube'] = parms.get('cube')
+        rotatedCube['dir'] = actualResult.get('solution')
+        actualCube = rotate(rotatedCube).get('cube')
+
+        bottomCubeColors = actualCube[45] is actualCube[46] is actualCube[47] is actualCube[48] is actualCube[49] \
+                           is actualCube[50] is actualCube[51] is actualCube[52] is actualCube[53]
+        frontCubeColors = actualCube[6] is actualCube[7] is actualCube[8]
+        rightCubeColors = actualCube[15] is actualCube[16] is actualCube[17]
+        backCubeColors = actualCube[24] is actualCube[25] is actualCube[26]
+        leftCubeColors = actualCube[33] is actualCube[34] is actualCube[35]
+
+        self.assertTrue(bottomCubeColors)
+        self.assertTrue(frontCubeColors)
+        self.assertTrue(rightCubeColors)
+        self.assertTrue(backCubeColors)
+        self.assertTrue(leftCubeColors)
         self.assertEqual(expectedRotations, actualResult.get('solution'))
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
