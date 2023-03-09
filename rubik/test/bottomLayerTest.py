@@ -307,7 +307,5 @@ class BottomLayerTest(unittest.TestCase):
         self.assertTrue(rightCubeColors)
         self.assertTrue(backCubeColors)
         self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-
-        
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))     
     

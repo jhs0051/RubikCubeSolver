@@ -46,3 +46,14 @@ class SolveTest(TestCase):
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid key', result['status'])
+        
+    def test_bottomCross_960_ErrorOnEmptyString(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = ''
+
+        expectResult = {}
+        expectResult['status'] = 'error: cube can not be empty'
+
+        actualResult = solve(parms)
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
