@@ -74,6 +74,7 @@ def makeBottomDaisy(theCube):
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
+            break
 
         elif theCube[cornerPiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[cornerPiece[FTM]] == theCube[DMM]:
             if cornerPiece[FTR] == 'F':
@@ -91,6 +92,7 @@ def makeBottomDaisy(theCube):
 
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
+            break
 
     return theCube, currentCubeIndex, directionList
 
@@ -154,7 +156,7 @@ def rotateMiddleLeftCorner(theCube):
             parms = {cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()}
             theCube = rotate(parms)[cube]
             
-            return theCube, currentCubeIndex, directionList
+            break
 
         elif theCube[cornerPiece[FTL]] == theCube[DMM]:
             if cornerPiece[FML] == 'F':
@@ -170,7 +172,7 @@ def rotateMiddleLeftCorner(theCube):
             parms = {cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()}
             theCube = rotate(parms)[cube]
 
-            return theCube, currentCubeIndex, directionList
+            break
         
     return theCube, currentCubeIndex, directionList
 
@@ -202,7 +204,7 @@ def rotateMiddleTopMiddle(theCube):
             parms = {cube: theCube, direction: directionList}
             theCube = rotate(parms)[cube]
 
-            return theCube, currentCubeIndex, directionList
+            break
 
     return theCube, currentCubeIndex, directionList
 

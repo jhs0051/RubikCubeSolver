@@ -172,7 +172,7 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualRotations)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomCross_080_MakesBottomCrossWithStatusOk(self):
+    def test_bottomCross_080_MakesBottomCrossWithStatusOkForFailingTestCase(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'dk999dif7f9k9i7if77kidkfd9ffkkddiki997ddfffid7ik77ki79'
