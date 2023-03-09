@@ -88,7 +88,7 @@ class BottomLayerTest(unittest.TestCase):
     def test_bottomCorners_050_TestChangeCubeIndexForRotation(self):
         cube = 'rgwyobooybobobrgbbygybrbrrrgrbygrgggooogyyyyowwrwwwwww'
 
-        expectedCubeIndex = 2
+        expectedCubeIndex = FTR
 
         currentCubeIndex = bottomLayer.doBottomEdgePieceColorsMatch(cube)
         self.assertEqual(expectedCubeIndex, currentCubeIndex)
@@ -102,18 +102,17 @@ class BottomLayerTest(unittest.TestCase):
         actualResult = bottomLayer.doBottomColorsMatchBottomFaceColors(cube, currentCubeIndex)
         self.assertEqual(expectedResult, actualResult)
         
-    '''def test_bottomCorners_070_TestBottomEdgePieceGetsRotatedToTop(self):
-        cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
-        currentCubeIndex = None
+    def test_bottomCorners_070_TestBottomEdgePieceGetsRotatedToTop(self):
+        cube = 'gwogwbbyrbyowroyyowwwgyogoorrwyowwrrbrbbbgroyybgggrgby'
 
-        expectedCube = 'ggybbwgggrowbroworborgggbbbbrorororowyoyybwwgyyrwwwyyy'
+        expectedCube = 'gwggwrbyoywbwroyyowyogyogoowrwyowwrrbgrbbbrorybbggrgby'
         expectedSolution = 'RUru'
         expectedCubeIndex = FTR
 
-        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateBottomEdgePieceToTopEdgePiece(cube, currentCubeIndex)
+        actualCube, currentCubeIndex, actualSolution = bottomLayer.rotateBottomEdgePieceToTopEdge(cube)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedCubeIndex, currentCubeIndex)
-        self.assertEqual(expectedSolution, actualSolution)'''
+        self.assertEqual(expectedSolution, actualSolution)
         
     def test_bottomCorners_080_TestBottomEdgePieceGetsRotatedToTop(self):
         cube = 'ryborbrrgyggrgbwggobroogoooggbrbybbbyyyoyyyrowwrwwwwww'
@@ -136,7 +135,7 @@ class BottomLayerTest(unittest.TestCase):
         actualCube, actualRotations = bottomLayer.solveBottomLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
         
-    def test_bottomCorners_100_TestSolveBottomLayerProducesSolutionToSolvedBottomLayerCube(self):
+    def test_bottomCorners_100_TestSolvedCubeColorsMatch(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw'
@@ -165,7 +164,7 @@ class BottomLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomCorners_110_TestSolveBottomLayerProducesSolutionToSolvedBottomLayerCube(self):
+    def test_bottomCorners_110_TestSolvedCubeColorsMatch(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'orgrrwoyrygygbwooorybrgwggbrwwowogrwygwyoogbwrbbyybybb'
@@ -194,7 +193,7 @@ class BottomLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomCorners_120_TestSolveBottomLayerProducesSolutionToSolvedBottomLayerCube(self):
+    def test_bottomCorners_120_TestSolvedCubeColorsMatch(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'brwybbywogoywrwgoyrywggrbrgbwryogoobobgrybwbrroygwywgo'
