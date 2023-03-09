@@ -150,12 +150,12 @@ class BottomLayerTest(unittest.TestCase):
         rotatedCube['dir'] = actualResult.get('solution')
         actualCube = rotate(rotatedCube).get('cube')
 
-        bottomCubeColors = actualCube[45] is actualCube[46] is actualCube[47] is actualCube[48] is actualCube[49] \
-                           is actualCube[50] is actualCube[51] is actualCube[52] is actualCube[53]
-        frontCubeColors = actualCube[6] is actualCube[7] is actualCube[8]
-        rightCubeColors = actualCube[15] is actualCube[16] is actualCube[17]
-        backCubeColors = actualCube[24] is actualCube[25] is actualCube[26]
-        leftCubeColors = actualCube[33] is actualCube[34] is actualCube[35]
+        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
+        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
+        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
+        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
 
         self.assertTrue(bottomCubeColors)
         self.assertTrue(frontCubeColors)
@@ -179,12 +179,13 @@ class BottomLayerTest(unittest.TestCase):
         rotatedCube['dir'] = actualResult.get('solution')
         actualCube = rotate(rotatedCube).get('cube')
 
-        bottomCubeColors = actualCube[45] is actualCube[46] is actualCube[47] is actualCube[48] is actualCube[49] \
-                           is actualCube[50] is actualCube[51] is actualCube[52] is actualCube[53]
-        frontCubeColors = actualCube[6] is actualCube[7] is actualCube[8]
-        rightCubeColors = actualCube[15] is actualCube[16] is actualCube[17]
-        backCubeColors = actualCube[24] is actualCube[25] is actualCube[26]
-        leftCubeColors = actualCube[33] is actualCube[34] is actualCube[35]
+        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
+        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
+        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
+        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
+
 
         self.assertTrue(bottomCubeColors)
         self.assertTrue(frontCubeColors)
@@ -208,12 +209,13 @@ class BottomLayerTest(unittest.TestCase):
         rotatedCube['dir'] = actualResult.get('solution')
         actualCube = rotate(rotatedCube).get('cube')
 
-        bottomCubeColors = actualCube[45] is actualCube[46] is actualCube[47] is actualCube[48] is actualCube[49] \
-                           is actualCube[50] is actualCube[51] is actualCube[52] is actualCube[53]
-        frontCubeColors = actualCube[6] is actualCube[7] is actualCube[8]
-        rightCubeColors = actualCube[15] is actualCube[16] is actualCube[17]
-        backCubeColors = actualCube[24] is actualCube[25] is actualCube[26]
-        leftCubeColors = actualCube[33] is actualCube[34] is actualCube[35]
+        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
+        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
+        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
+        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
+
 
         self.assertTrue(bottomCubeColors)
         self.assertTrue(frontCubeColors)
