@@ -279,6 +279,35 @@ class BottomLayerTest(unittest.TestCase):
         self.assertTrue(backCubeColors)
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
+    def test_bottomCorners_150_TestSolvedCubeColorsMatchWithBottomCrossSolvedAlreadyAsInput(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
+
+        expectResult = {}
+        expectResult['status'] = 'ok'
+        
+        actualResult = solve.solve(parms)
+
+        rotatedCube = {}
+        rotatedCube['cube'] = parms.get('cube')
+        rotatedCube['dir'] = actualResult.get('solution')
+        actualCube = rotate(rotatedCube).get('cube')
+
+        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
+        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
+        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
+        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
+
+        self.assertTrue(bottomCubeColors)
+        self.assertTrue(frontCubeColors)
+        self.assertTrue(rightCubeColors)
+        self.assertTrue(backCubeColors)
+        self.assertTrue(leftCubeColors)
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
 
         
     
