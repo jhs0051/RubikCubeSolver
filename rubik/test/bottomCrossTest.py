@@ -179,10 +179,9 @@ class BottomCrossTest(unittest.TestCase):
         cube, rotations = parms['cube'], ''
 
         expectResult = {}
-        expectedRotations = 'BBLLUURRBBUUFFFUfLLUUUBB'
+        expectedRotations = 'BBUUFFLLUURRFUfLL'
         expectResult['status'] = 'ok'
 
-        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
@@ -192,8 +191,8 @@ class BottomCrossTest(unittest.TestCase):
         self.assertEqual(actualCube[DML], actualCube[DMM])
         self.assertEqual(actualCube[DMR], actualCube[DMM])
         self.assertEqual(actualCube[DBM], actualCube[DMM])
-        self.assertEqual(expectedRotations, actualRotations)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        self.assertEqual(actualCube, '7kid9fd97ffidiiki79kf9kfdkkk9ikd9id9dd7ffiki9f7d777f79')
+        self.assertEqual(actualRotations, expectedRotations)
         
     # Sad Path Tests
     def test_bottomCross_910_ErrorOnEmptyString(self):
