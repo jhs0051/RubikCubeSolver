@@ -9,20 +9,21 @@ from rubik.view.rotate import cubeLengthValidation, isCubeValid, validKeys
 def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
-    theCube, rotations = parms.get('cube'), ''
+    theCube =  parms.get('cube')
+    rotationList = ''
     
     if not cubeLengthValidation(theCube):
         result['status'] = 'error: cube can not be empty'
         return result
-    if not isCubeValid(theCube, rotations):
+    if not isCubeValid(theCube, rotationList):
         result['status'] = 'error: invalid cube'
         return result
     if not validKeys(parms):
         result['status'] = 'error: invalid key'
         return result
     else:
-        theCube, bottomCrossRotations = solveBottomCross(theCube, rotations)      #iteration 2
-        theCube, bottomLayerRotations = solveBottomLayer(theCube, rotations)      #iteration 3
+        theCube, bottomCrossRotations = solveBottomCross(theCube, rotationList)      #iteration 2
+        theCube, bottomLayerRotations = solveBottomLayer(theCube, rotationList)      #iteration 3
         futureRotations = solveMiddleLayer(theCube)      #iteration 4
         futureRotations = solveUpCross(theCube)          #iteration 5
         futureRotations = solveUpSurface(theCube)        #iteration 5

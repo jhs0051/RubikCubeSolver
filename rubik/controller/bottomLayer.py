@@ -1,8 +1,7 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
-from rubik.model.cube import Cube
 
-def solveBottomLayer(theCube: Cube, solution) -> str:
+def solveBottomLayer(theCube, solution) -> str:
     startingCubeIndex = FTL
     
     if isBottomLayerSolved(theCube):
@@ -186,4 +185,3 @@ def rotateBottomEdgesInCorrectPosition(theCube):
                 break
 
     return currentCubeIndex
-
