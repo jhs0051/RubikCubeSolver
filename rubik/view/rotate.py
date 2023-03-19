@@ -1,14 +1,14 @@
 from rubik.model.cube import Cube
 
-def rotate(parms):
+def _rotate(parms):
     """Return rotated cube""" 
     result = {}
     encodedCube = parms.get('cube')
     
-    if not validKeys(parms):
+    if not _validKeys(parms):
         result['status'] = 'error: invalid key'
         return result       
-    elif not cubeLengthValidation(encodedCube):
+    elif not _cubeLengthValidation(encodedCube):
         result['status'] = 'error: cube can not be empty'
         return result
     else:
@@ -21,7 +21,7 @@ def rotate(parms):
         result['status'] = 'error: could not get direction'
         return result
     
-    if not isCubeValid(encodedCube, directions):
+    if not _isCubeValid(encodedCube, directions):
         result['status'] = 'error: invalid cube'
         return result
     else:
@@ -32,12 +32,12 @@ def rotate(parms):
     result['status'] = 'ok'                     
     return result
 
-def cubeLengthValidation(encodedCube):
+def _cubeLengthValidation(encodedCube):
     if encodedCube == None or encodedCube == '':
         return False
     return True
 
-def validKeys(parms):
+def _validKeys(parms):
     validKeys = 'cube', 'dir', 'op', 'solve'
     keys = parms.keys()
     
@@ -46,7 +46,7 @@ def validKeys(parms):
             return False
     return True
 
-def isCubeValid(encodedCube, directions):
+def _isCubeValid(encodedCube, directions):
     if Cube._validation(encodedCube, directions) == False:
         return False
     return True
