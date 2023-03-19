@@ -1,5 +1,5 @@
 from rubik.model.constants import *
-from rubik.view.rotate import rotate
+from rubik.view.rotate import _rotate
 
 def _solveBottomCross(theCube, solution) -> str:
     directionList = ''
@@ -73,7 +73,7 @@ def _makeBottomDaisy(theCube):
                     currentCubeIndex = RTM
 
                 parms = {cube: theCube, direction: directionList}
-                theCube = rotate(parms)[cube]
+                theCube = _rotate(parms)[cube]
                 break
         elif theCube[cornerPiece[FTL]] == middleCubeIndexes[edgePiece]: 
             if theCube[cornerPiece[FTM]] == theCube[DMM]:
@@ -91,7 +91,7 @@ def _makeBottomDaisy(theCube):
                     currentCubeIndex = LTM
 
                 parms = {cube: theCube, direction: directionList}
-                theCube = rotate(parms)[cube]
+                theCube = _rotate(parms)[cube]
                 break
 
     return theCube, currentCubeIndex, directionList
@@ -103,7 +103,7 @@ def _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
 
     while theCube[currentCubeIndex] is not theCube[currentCubeIndex + FML]:
         directionList = directionList + 'U'
-        theCube = rotate({cube: theCube, direction: 'U'})[cube]
+        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
         currentCubeIndex = currentCubeIndex - RTL \
             if currentCubeIndex != FTM \
             else LTM
@@ -118,19 +118,19 @@ def _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     if currentCubeIndex is FTM:
         directionList = directionList + 'FF'
         parms = {cube: theCube, direction: directionList}
-        theCube = rotate(parms)[cube]
+        theCube = _rotate(parms)[cube]
     elif currentCubeIndex is BTM:
         directionList = directionList + 'BB'
         parms = {cube: theCube, direction: directionList}
-        theCube = rotate(parms)[cube]
+        theCube = _rotate(parms)[cube]
     elif currentCubeIndex is LTM:
         directionList = directionList + 'LL'
         parms = {cube: theCube, direction: directionList}
-        theCube = rotate(parms)[cube]
+        theCube = _rotate(parms)[cube]
     elif currentCubeIndex is RTM:
         directionList = directionList + 'RR'
         parms = {cube: theCube, direction: directionList}
-        theCube = rotate(parms)[cube]
+        theCube = _rotate(parms)[cube]
     
     return theCube, currentCubeIndex, directionList
 
@@ -154,7 +154,7 @@ def _rotateMiddleLeftCorner(theCube):
 
             directionList += cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()
             parms = {cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()}
-            theCube = rotate(parms)[cube]
+            theCube = _rotate(parms)[cube]
             break
         elif theCube[cornerPiece[FTL]] is theCube[DMM]:
             if cornerPiece[FML] == 'F':
@@ -168,7 +168,7 @@ def _rotateMiddleLeftCorner(theCube):
 
             directionList += cornerPiece[FML] + 'U' + cornerPiece[FML].lower()
             parms = {cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()}
-            theCube = rotate(parms)[cube]
+            theCube = _rotate(parms)[cube]
             break
         
     return theCube, currentCubeIndex, directionList
@@ -199,7 +199,7 @@ def _rotateMiddleTopMiddle(theCube):
                 currentCubeIndex = LTM
 
             parms = {cube: theCube, direction: directionList}
-            theCube = rotate(parms)[cube]
+            theCube = _rotate(parms)[cube]
             break
 
     return theCube, currentCubeIndex, directionList

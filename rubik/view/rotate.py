@@ -25,7 +25,7 @@ def _rotate(parms):
         result['status'] = 'error: invalid cube'
         return result
     else:
-        theCube.rotate(directions)
+        theCube._rotate(directions)
      
     
     result['cube'] = theCube.get()

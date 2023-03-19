@@ -1,5 +1,5 @@
 from rubik.model.constants import *
-from rubik.view.rotate import rotate
+from rubik.view.rotate import _rotate
 
 def _solveBottomLayer(theCube, solution) -> str:
     startingCubeIndex = FTL
@@ -84,7 +84,7 @@ def _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
             != sorted(topEdgePieces[int((currentCubeIndex - FTR) / RTL)]):
         directionList = directionList + 'U'
         theCube = {cube: theCube, direction: 'U'}
-        theCube = rotate(theCube)[cube]
+        theCube = _rotate(theCube)[cube]
         
         if currentCubeIndex != FTR:
             currentCubeIndex = currentCubeIndex - RTL
@@ -111,7 +111,7 @@ def _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
         directionList += 'RUru'
 
     parms = {cube: theCube, direction: directionList}
-    theCube = rotate(parms)[cube]
+    theCube = _rotate(parms)[cube]
     currentCubeIndex += FBL
 
     return theCube, currentCubeIndex, directionList
@@ -151,7 +151,7 @@ def _rotateBottomEdgeCW(theCube, currentCubeIndex):
         directionList += 'RUruRUru'
 
     parms = {cube: theCube, direction: directionList}
-    theCube = rotate(parms)[cube]
+    theCube = _rotate(parms)[cube]
 
     return theCube, currentCubeIndex, directionList
 

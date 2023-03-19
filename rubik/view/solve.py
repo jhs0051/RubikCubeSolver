@@ -4,7 +4,7 @@ from rubik.controller.middleLayer import solveMiddleLayer
 from rubik.controller.upFaceCross import solveUpCross
 from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
-from rubik.view.rotate import cubeLengthValidation, isCubeValid, validKeys
+from rubik.view.rotate import _cubeLengthValidation, _isCubeValid, _validKeys
  
 def _solve(parms):
     """Return rotates needed to solve input cube"""
@@ -12,13 +12,13 @@ def _solve(parms):
     theCube =  parms.get('cube')
     rotationList = ''
     
-    if not cubeLengthValidation(theCube):
+    if not _cubeLengthValidation(theCube):
         result['status'] = 'error: cube can not be empty'
         return result
-    if not isCubeValid(theCube, rotationList):
+    if not _isCubeValid(theCube, rotationList):
         result['status'] = 'error: invalid cube'
         return result
-    if not validKeys(parms):
+    if not _validKeys(parms):
         result['status'] = 'error: invalid key'
         return result
     else:
