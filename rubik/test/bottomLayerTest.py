@@ -21,7 +21,7 @@ class BottomLayerTest(unittest.TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
 
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_bottomLayer_010_SolvedCubeDoesNotContainRotations(self):
@@ -143,7 +143,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
         
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')
@@ -172,7 +172,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
 
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')
@@ -201,7 +201,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
 
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')
@@ -230,7 +230,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
 
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')
@@ -259,7 +259,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
 
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')
@@ -288,7 +288,7 @@ class BottomLayerTest(unittest.TestCase):
         expectResult = {}
         expectResult['status'] = 'ok'
         
-        actualResult = solve.solve(parms)
+        actualResult = solve._solve(parms)
 
         rotatedCube = {}
         rotatedCube['cube'] = parms.get('cube')

@@ -1,4 +1,4 @@
-from rubik.controller.bottomCross import solveBottomCross
+from rubik.controller.bottomCross import _solveBottomCross
 from rubik.controller.bottomLayer import solveBottomLayer
 from rubik.controller.middleLayer import solveMiddleLayer
 from rubik.controller.upFaceCross import solveUpCross
@@ -6,7 +6,7 @@ from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.view.rotate import cubeLengthValidation, isCubeValid, validKeys
  
-def solve(parms):
+def _solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
     theCube =  parms.get('cube')
@@ -22,7 +22,7 @@ def solve(parms):
         result['status'] = 'error: invalid key'
         return result
     else:
-        theCube, bottomCrossRotations = solveBottomCross(theCube, rotationList)      #iteration 2
+        theCube, bottomCrossRotations = _solveBottomCross(theCube, rotationList)      #iteration 2
         theCube, bottomLayerRotations = solveBottomLayer(theCube, rotationList)      #iteration 3
         futureRotations = solveMiddleLayer(theCube)      #iteration 4
         futureRotations = solveUpCross(theCube)          #iteration 5

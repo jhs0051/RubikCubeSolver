@@ -1,35 +1,35 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
 
-def solveBottomCross(theCube, solution) -> str:
+def _solveBottomCross(theCube, solution) -> str:
     directionList = ''
     
-    if doesBottomCrossExist(theCube):
+    if _doesBottomCrossExist(theCube):
         return theCube, solution
     
-    theCube, currentCubeIndex, currentRotationList = makeBottomDaisy(theCube)
+    theCube, currentCubeIndex, currentRotationList = _makeBottomDaisy(theCube)
     directionList += currentRotationList
     
     if currentCubeIndex is None:
-        theCube, currentCubeIndex, currentRotationList = rotateMiddleLeftCorner(theCube)
+        theCube, currentCubeIndex, currentRotationList = _rotateMiddleLeftCorner(theCube)
         directionList += currentRotationList
         
     if currentCubeIndex is None:
-        theCube, currentCubeIndex, directionList = rotateMiddleTopMiddle(theCube)
+        theCube, currentCubeIndex, directionList = _rotateMiddleTopMiddle(theCube)
         directionList += currentRotationList
     
-    theCube, currentCubeIndex, currentRotationList = rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex)
+    theCube, currentCubeIndex, currentRotationList = _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex)
     directionList += currentRotationList
     
-    theCube, currentCubeIndex, currentRotationList = rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex)
+    theCube, currentCubeIndex, currentRotationList = _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex)
     directionList += currentRotationList
     
     solution = solution + directionList
     
-    return solveBottomCross(theCube, solution)
+    return _solveBottomCross(theCube, solution)
         
 
-def doesBottomCrossExist(cube):
+def _doesBottomCrossExist(cube):
     if cube[FMM] != cube[FBM]:
         return False
     elif cube[LMM] != cube[LBM]:
@@ -48,7 +48,7 @@ def doesBottomCrossExist(cube):
         return False
     return True
 
-def makeBottomDaisy(theCube):
+def _makeBottomDaisy(theCube):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -96,7 +96,7 @@ def makeBottomDaisy(theCube):
 
     return theCube, currentCubeIndex, directionList
 
-def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
+def _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -110,7 +110,7 @@ def rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
-def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
+def _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -134,7 +134,7 @@ def rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     
     return theCube, currentCubeIndex, directionList
 
-def rotateMiddleLeftCorner(theCube):
+def _rotateMiddleLeftCorner(theCube):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -173,7 +173,7 @@ def rotateMiddleLeftCorner(theCube):
         
     return theCube, currentCubeIndex, directionList
 
-def rotateMiddleTopMiddle(theCube):
+def _rotateMiddleTopMiddle(theCube):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
