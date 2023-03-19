@@ -1,36 +1,36 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
 
-def solveBottomLayer(theCube, solution) -> str:
+def _solveBottomLayer(theCube, solution) -> str:
     startingCubeIndex = FTL
     
-    if isBottomLayerSolved(theCube):
+    if _isBottomLayerSolved(theCube):
         return theCube, solution
     
-    currentCubeIndex = doBottomEdgePieceColorsMatch(theCube)
+    currentCubeIndex = _doBottomEdgePieceColorsMatch(theCube)
 
     if currentCubeIndex is None:
-        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdge(theCube)
+        theCube, currentCubeIndex, currentDirectionList = _rotateBottomEdgePieceToTopEdge(theCube)
         solution += currentDirectionList
 
     if currentCubeIndex is None:
-        currentCubeIndex = rotateBottomEdgesInCorrectPosition(theCube)
+        currentCubeIndex = _rotateBottomEdgesInCorrectPosition(theCube)
     elif currentCubeIndex is not None:
-        theCube, currentCubeIndex, currentDirectionList = rotateEdgePieceToDifferentFace(theCube, currentCubeIndex)
+        theCube, currentCubeIndex, currentDirectionList = _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex)
         solution += currentDirectionList
 
-        theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex)
+        theCube, currentCubeIndex, currentDirectionList = _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex)
         solution += currentDirectionList
 
     if startingCubeIndex < FML:
-        while not doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
-            theCube, currentCubeIndex, currentDirectionList = rotateBottomEdgeCW(theCube, currentCubeIndex)
+        while not _doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
+            theCube, currentCubeIndex, currentDirectionList = _rotateBottomEdgeCW(theCube, currentCubeIndex)
             solution += currentDirectionList
             startingCubeIndex += FTM
 
-    return solveBottomLayer(theCube, solution)
+    return _solveBottomLayer(theCube, solution)
 
-def isBottomLayerSolved(theCube):
+def _isBottomLayerSolved(theCube):
     if theCube[FMM] != theCube[FBL]:
         return False
     elif theCube[FMM] != theCube[FBR]:
@@ -57,7 +57,7 @@ def isBottomLayerSolved(theCube):
         return False
     return True
 
-def doBottomEdgePieceColorsMatch(theCube):
+def _doBottomEdgePieceColorsMatch(theCube):
     currentCubeIndex = None
     topEdgePieces = [(theCube[FTR], theCube[RTL], theCube[UBR]), (theCube[RTR], theCube[BTL], theCube[UTR]),
                      (theCube[BTR], theCube[LTL], theCube[UTL]), (theCube[LTR], theCube[FTL], theCube[UBL])]
@@ -69,7 +69,7 @@ def doBottomEdgePieceColorsMatch(theCube):
 
     return currentCubeIndex
 
-def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
+def _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -96,7 +96,7 @@ def rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
-def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
+def _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -116,7 +116,7 @@ def rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
-def rotateBottomEdgePieceToTopEdge(theCube):
+def _rotateBottomEdgePieceToTopEdge(theCube):
     currentCubeIndex = None
     directionList = ''
 
@@ -130,13 +130,13 @@ def rotateBottomEdgePieceToTopEdge(theCube):
         if edgePiece.count(theCube[DMM]):
             if sorted(edgePiece) != sorted(bottomEdgePieces[cubePiece]):
                 theCube, currentCubeIndex, directionList = \
-                    rotateBottomEdgePieceToTopEdgePiece(theCube, FTR + cubePiece * RTL)
+                    _rotateBottomEdgePieceToTopEdgePiece(theCube, FTR + cubePiece * RTL)
                 currentCubeIndex = FTR + cubePiece * RTL
                 break
 
     return theCube, currentCubeIndex, directionList
 
-def rotateBottomEdgeCW(theCube, currentCubeIndex):
+def _rotateBottomEdgeCW(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
@@ -155,7 +155,7 @@ def rotateBottomEdgeCW(theCube, currentCubeIndex):
 
     return theCube, currentCubeIndex, directionList
 
-def doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
+def _doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
     if currentCubeIndex is LBR:
         if theCube[DTL] is theCube[DMM]:
             return True
@@ -169,7 +169,7 @@ def doBottomColorsMatchBottomFaceColors(theCube, currentCubeIndex):
         if theCube[DBR] is theCube[DMM]:
             return True
         
-def rotateBottomEdgesInCorrectPosition(theCube):
+def _rotateBottomEdgesInCorrectPosition(theCube):
     currentCubeIndex = None
 
     bottomEdgePieces = [(theCube[FMM], theCube[RMM], theCube[DMM]), (theCube[RMM], theCube[BMM], theCube[DMM]),
