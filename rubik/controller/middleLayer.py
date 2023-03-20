@@ -1,12 +1,26 @@
-import rubik.model.constants
-from rubik.model.cube import Cube
+from rubik.model.constants import *
 
 def _solveMiddleLayer(theCube, solution) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cube so that the middle layer is solved.
-        
-        input:  an instance of the cube class with the bottom layer solved
-        output: the rotations required to solve the middle layer  
-    '''  
-    return 'B'      #TODO:  remove this stubbed value
+    if _isMiddleLayerSolved(theCube):
+        return theCube, solution
+    
+    return _solveMiddleLayer(theCube, solution)
+
+def _isMiddleLayerSolved(theCube):
+    if theCube[FML] != theCube[FMM]:
+        return False
+    elif theCube[FMR] != theCube[FMM]:
+        return False
+    elif theCube[LML] != theCube[LMM]:
+        return False
+    elif theCube[LMR] != theCube[LMM]:
+        return False
+    elif theCube[RML] != theCube[RMM]:
+        return False
+    elif theCube[RMR] != theCube[RMM]:
+        return False
+    elif theCube[BML] != theCube[BMM]:
+        return False
+    elif theCube[BMR] != theCube[BMM]:
+        return False
+    return True
