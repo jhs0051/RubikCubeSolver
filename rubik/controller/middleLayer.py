@@ -58,4 +58,15 @@ def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
     return theCube, directionList    
 
 def _rotateMiddlePieceFromMiddleToTop(theCube, currentCubeIndex):
-    pass
+    rotatedCubeIndex = currentCubeIndex - FMM
+    theCube, directionList = _rotateMiddlePieceFromTopToMiddle(theCube, rotatedCubeIndex)
+
+    if currentCubeIndex is LMR:
+        currentCubeIndex = RTM
+    elif currentCubeIndex is RMR:
+        currentCubeIndex = LTM
+    elif currentCubeIndex is BMR:
+        currentCubeIndex = FTM
+    elif currentCubeIndex is FMR:
+        currentCubeIndex = BTM
+    return theCube, currentCubeIndex, directionList
