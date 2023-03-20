@@ -46,3 +46,14 @@ class MiddleLayerTest(unittest.TestCase):
         actualCube, actualSolution = middleLayer._rotateMiddlePieceFromTopToMiddle(cube, cubeIndex)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedsolution, actualSolution)
+        
+    def test_bottomLayer_030_CubeIndexProducesCorrectRotationListWhenMiddleIsAllignedWithTopColor(self):
+        cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
+        cubeIndex = BTM
+
+        expectedCube = 'woobbbgggggrorrrorbrwbggbbbgyororoworywoywbgwyyywwwyyy'
+        expectedsolution = 'urURUBub'
+
+        actualCube, actualSolution = middleLayer._rotateMiddlePieceFromTopToMiddle(cube, cubeIndex)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedsolution, actualSolution)
