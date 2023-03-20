@@ -56,3 +56,6 @@ def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
     theCube = _rotate(theCube)[cube]
 
     return theCube, directionList    
+
+def _rotateMiddlePieceFromMiddleToTop(theCube, currentCubeIndex):
+    pass
