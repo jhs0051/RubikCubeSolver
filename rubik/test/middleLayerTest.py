@@ -8,6 +8,7 @@ import rubik.view.solve as solve
 import rubik.controller.middleLayer as middleLayer
 from rubik.view.rotate import _rotate
 from rubik.model.constants import *
+from rubik.controller import middleLayer
 
 
 class MiddleLayerTest(unittest.TestCase):
@@ -23,3 +24,14 @@ class MiddleLayerTest(unittest.TestCase):
 
         actualResult = solve._solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
+    def test_bottomLayer_010_SolvedCubeDoesNotContainRotations(self):
+        cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        rotations = ''
+        
+        expectedCube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        expectedRotations = ''
+        
+        actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedRotations, actualRotations)
