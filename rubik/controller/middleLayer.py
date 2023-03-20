@@ -24,3 +24,6 @@ def _isMiddleLayerSolved(theCube):
     elif theCube[BMR] != theCube[BMM]:
         return False
     return True
+
+def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
+    pass

@@ -35,3 +35,14 @@ class MiddleLayerTest(unittest.TestCase):
         actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
+        
+    def test_bottomLayer_020_CubeIndexProducesCorrectRotationList(self):
+        cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
+        cubeIndex = RTM
+
+        expectedCube = 'gwobbbgggwgrorororbroyggbbbggwrororowywoywrbbyyywwwyyy'
+        expectedsolution = 'UBuburUR'
+
+        actualCube, actualSolution = middleLayer._rotateMiddlePieceFromTopToMiddle(cube, cubeIndex)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedsolution, actualSolution)
