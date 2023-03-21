@@ -70,3 +70,6 @@ def _rotateMiddlePieceFromMiddleToTop(theCube, currentCubeIndex):
     elif currentCubeIndex is FMR:
         currentCubeIndex = BTM
     return theCube, currentCubeIndex, directionList
+
+def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
+    pass
