@@ -84,3 +84,17 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedLocation, actualLocation)
         self.assertEqual(expectedSolution, actualSolution)
         
+    def test_bottomLayer_060_CubeIndexProducesNoRotationsToMatchTopEdgePieceWithCorrespondingPiece(self):
+        cube = 'bbbbbbgggoroorororggggggbbbrorrororowwwyyywwwyyywwwyyy'
+        location = FTM
+
+        expectedCube = 'bbbbbbgggoroorororggggggbbbrorrororowwwyyywwwyyywwwyyy'
+        expectedLocation = FTM
+        expectedSolution = ''
+
+        actualCube, actualLocation, actualSolution = middleLayer._alignEdgePieceWithAnotherTopPiece(cube, location)
+
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedLocation, actualLocation)
+        self.assertEqual(expectedSolution, actualSolution)
+        
