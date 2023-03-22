@@ -89,4 +89,18 @@ def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
     return theCube, currentCubeIndex, directionList
 
 def _matchCenterMiddlePieceWithOtherMiddleCenters(theCube):
-    pass
+    currentCubeIndex = None
+    upperEdgePieces = [(theCube[FTM], theCube[UBM]), (theCube[RTM], theCube[UMR]), (theCube[BTM], theCube[UTM]),
+                       (theCube[LTM], theCube[UML])]
+
+    centerMiddlePieces = [sorted((theCube[LMM], theCube[FMM])), sorted((theCube[RMM], theCube[BMM])),
+                          sorted((theCube[BMM], theCube[LMM])), sorted((theCube[FMM], theCube[RMM]))]
+
+    for cubePiece, edgePiece in enumerate(upperEdgePieces):
+        alignedEdgePieces = sorted(edgePiece)
+        
+        if centerMiddlePieces.count(alignedEdgePieces) > FTL:
+            currentCubeIndex = FTM + cubePiece * RTL
+            break
+
+    return currentCubeIndex
