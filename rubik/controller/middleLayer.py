@@ -106,4 +106,19 @@ def _matchCenterMiddlePieceWithOtherMiddleCenters(theCube):
     return currentCubeIndex
 
 def _alignCenterMiddlePieceWithEdgeMiddlePieces(theCube):
-    pass
+    currentCubeIndex = None
+    middleRowPieces = [(theCube[FMR], theCube[RML]), (theCube[RMR], theCube[BML]), (theCube[BMR], theCube[LML]),
+                       (theCube[LMR], theCube[FML])]
+
+    centerMiddlePieces = [(theCube[FMM], theCube[RMM]), (theCube[RMM], theCube[BMM]), (theCube[BMM], theCube[LMM]),
+                          (theCube[LMM], theCube[FMM])]
+
+    for cubePiece, middlePiece in enumerate(middleRowPieces):
+        centerMiddlePiece = centerMiddlePieces[cubePiece]
+
+        if middlePiece != centerMiddlePiece:
+            if theCube[UMM] not in middlePiece:
+                currentCubeIndex = FMR + cubePiece * RTL
+                break
+
+    return currentCubeIndex
