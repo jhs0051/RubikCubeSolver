@@ -104,3 +104,6 @@ def _matchCenterMiddlePieceWithOtherMiddleCenters(theCube):
             break
 
     return currentCubeIndex
+
+def _alignCenterMiddlePieceWithEdgeMiddlePieces(theCube):
+    pass
