@@ -87,3 +87,6 @@ def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
             currentCubeIndex = LTM
 
     return theCube, currentCubeIndex, directionList
+
+def _matchCenterMiddlePieceWithOtherMiddleCenters(theCube):
+    pass

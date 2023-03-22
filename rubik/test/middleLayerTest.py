@@ -98,3 +98,12 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedLocation, actualLocation)
         self.assertEqual(expectedSolution, actualSolution)
         
+    def test_bottomLayer_070_CubeIndexMatchesExpectedCubeIndex(self):
+        cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
+
+        expectedLocation = BTM
+
+        actualCubeIndex = middleLayer._matchCenterMiddlePieceWithOtherMiddleCenters(cube)
+
+        self.assertEqual(expectedLocation, actualCubeIndex)
+        
