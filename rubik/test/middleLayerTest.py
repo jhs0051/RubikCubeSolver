@@ -5,7 +5,6 @@ Created on March 19, 2023
 '''
 import unittest
 import rubik.view.solve as solve
-import rubik.controller.middleLayer as middleLayer
 from rubik.view.rotate import _rotate
 from rubik.model.constants import *
 from rubik.controller import middleLayer
@@ -115,4 +114,17 @@ class MiddleLayerTest(unittest.TestCase):
         actualCubeIndex = middleLayer._alignCenterMiddlePieceWithEdgeMiddlePieces(cube)
 
         self.assertEqual(expectedLocation, actualCubeIndex)
+        
+    def test_bottomLayer_090_CubeIndexMatchesExpectedCubeIndex(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww'
+        cube, rotations = parms['cube'], ''
+
+        expectResult = {}
+        expectedRotations = 'ulULUFuf'
+        expectResult['status'] = 'ok'
+
+        actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
+        self.assertEqual(expectedRotations, actualRotations)
         
