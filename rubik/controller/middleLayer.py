@@ -21,22 +21,9 @@ def _solveMiddleLayer(theCube, solution) -> str:
     return _solveMiddleLayer(theCube, solution)
 
 def _isMiddleLayerSolved(theCube):
-    if theCube[FML] != theCube[FMM]:
-        return False
-    elif theCube[FMR] != theCube[FMM]:
-        return False
-    elif theCube[LML] != theCube[LMM]:
-        return False
-    elif theCube[LMR] != theCube[LMM]:
-        return False
-    elif theCube[RML] != theCube[RMM]:
-        return False
-    elif theCube[RMR] != theCube[RMM]:
-        return False
-    elif theCube[BML] != theCube[BMM]:
-        return False
-    elif theCube[BMR] != theCube[BMM]:
-        return False
+    for currentCubeFace, matchingCubeFace in [(FML, FMM), (LML, LMM), (RML, RMM), (BML, BMM)]:
+        if theCube[currentCubeFace] is not theCube[matchingCubeFace]:
+            return False
     return True
 
 def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
