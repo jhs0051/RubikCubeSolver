@@ -136,176 +136,39 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEqual(expectedRotations, actualRotations)
         
     def test_bottomCorners_100_TestSolvedCubeColorsMatch(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
+        cubes = ['ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw',
+                 'orgrrwoyrygygbwooorybrgwggbrwwowogrwygwyoogbwrbbyybybb',
+                 'brwybbywogoywrwgoyrywggrbrgbwryogoobobgrybwbrroygwywgo',
+                 'yyggybgyorgyoorbowrbrwgyywbgrrwwogbowgworrorobbywbywgb',
+                 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr',
+                 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory']
+        for cube in cubes:
         
-        actualResult = solve._solve(parms)
-        
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-        
-    def test_bottomCorners_110_TestSolvedCubeColorsMatch(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'orgrrwoyrygygbwooorybrgwggbrwwowogrwygwyoogbwrbbyybybb'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
-        
-        actualResult = solve._solve(parms)
-
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-        
-    def test_bottomCorners_120_TestSolvedCubeColorsMatch(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'brwybbywogoywrwgoyrywggrbrgbwryogoobobgrybwbrroygwywgo'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
-        
-        actualResult = solve._solve(parms)
-
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-        
-    def test_bottomCorners_130_TestSolvedCubeColorsMatch(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'yyggybgyorgyoorbowrbrwgyywbgrrwwogbowgworrorobbywbywgb'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
-        
-        actualResult = solve._solve(parms)
-
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-        
-    def test_bottomCorners_140_TestSolvedCubeColorsMatch(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
-        
-        actualResult = solve._solve(parms)
-
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
-        
-    def test_bottomCorners_150_TestSolvedCubeColorsMatchWithBottomCrossSolvedAlreadyAsInput(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
-
-        expectResult = {}
-        expectResult['status'] = 'ok'
-        
-        actualResult = solve._solve(parms)
-
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
-        actualCube = _rotate(rotatedCube).get('cube')
-
-        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-        frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-        rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-        backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-        leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
-
-        self.assertTrue(bottomCubeColors)
-        self.assertTrue(frontCubeColors)
-        self.assertTrue(rightCubeColors)
-        self.assertTrue(backCubeColors)
-        self.assertTrue(leftCubeColors)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))     
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+    
+            expectResult = {}
+            expectResult['status'] = 'ok'
+    
+            actualResult = solve._solve(parms)
+    
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = _rotate(rotatedCube).get('cube')
+    
+            bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                               is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+            frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
+            rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
+            backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
+            leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
+    
+            self.assertTrue(bottomCubeColors)
+            self.assertTrue(frontCubeColors)
+            self.assertTrue(rightCubeColors)
+            self.assertTrue(backCubeColors)
+            self.assertTrue(leftCubeColors)
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))  
     
