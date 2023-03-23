@@ -4,7 +4,20 @@ from rubik.view.rotate import _rotate
 def _solveMiddleLayer(theCube, solution) -> str:
     if _isMiddleLayerSolved(theCube):
         return theCube, solution
-    
+
+    currentCubeIndex = _matchCenterMiddlePieceWithOtherMiddleCenters(theCube)
+
+    if currentCubeIndex is None:
+        currentCubeIndex = _alignCenterMiddlePieceWithEdgeMiddlePieces(theCube)
+        theCube, currentCubeIndex, currentDirectionList = _rotateMiddlePieceFromMiddleToTop(theCube, currentCubeIndex)
+        solution += currentDirectionList
+
+    theCube, currentCubeIndex, currentDirectionList = _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex)
+    solution += currentDirectionList
+
+    theCube, currentDirectionList = _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex)
+    solution += currentDirectionList
+
     return _solveMiddleLayer(theCube, solution)
 
 def _isMiddleLayerSolved(theCube):

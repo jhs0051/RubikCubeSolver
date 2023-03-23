@@ -115,7 +115,7 @@ class MiddleLayerTest(unittest.TestCase):
 
         self.assertEqual(expectedLocation, actualCubeIndex)
         
-    def test_bottomLayer_090_CubeIndexMatchesExpectedCubeIndex(self):
+    def test_bottomLayer_090_CubeProducesRotationsToSolveMiddleLayer(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww'
