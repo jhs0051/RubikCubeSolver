@@ -31,30 +31,10 @@ def _solveBottomLayer(theCube, solution) -> str:
     return _solveBottomLayer(theCube, solution)
 
 def _isBottomLayerSolved(theCube):
-    if theCube[FMM] != theCube[FBL]:
-        return False
-    elif theCube[FMM] != theCube[FBR]:
-        return False
-    elif theCube[RMM] != theCube[RBL]:
-        return False
-    elif theCube[RMM] != theCube[RBR]:
-        return False
-    elif theCube[BMM] != theCube[BBL]:
-        return False
-    elif theCube[BMM] != theCube[BBR]:
-        return False
-    elif theCube[LMM] != theCube[LBL]:
-        return False
-    elif theCube[LMM] != theCube[LBR]:
-        return False
-    elif theCube[DMM] != theCube[DTL]:
-        return False
-    elif theCube[DMM] != theCube[DTR]:
-        return False
-    elif theCube[DMM] != theCube[DBL]:
-        return False
-    elif theCube[DMM] != theCube[DBR]:
-        return False
+    for currentCubeFace, matchingCubeFace in [(FMM, FBL), (FMM, FBR), (RMM, RBL), (RMM, RBR), (BMM, BBL), (BMM, BBR),
+                                              (LMM, LBL), (LMM, LBR), (DMM, DTL), (DMM, DTR), (DMM, DBL), (DMM, DBR)]:
+        if theCube[currentCubeFace] is not theCube[matchingCubeFace]:
+            return False
     return True
 
 def _doBottomEdgePieceColorsMatch(theCube):
