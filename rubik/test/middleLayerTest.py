@@ -24,7 +24,7 @@ class MiddleLayerTest(unittest.TestCase):
         actualResult = solve._solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_010_SolvedCubeDoesNotContainRotations(self):
+    def test_middleLayer_010_SolvedCubeDoesNotContainRotations(self):
         cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         rotations = ''
         
@@ -35,7 +35,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
         
-    def test_bottomLayer_020_CubeIndexProducesCorrectRotationList(self):
+    def test_middleLayer_020_CubeIndexProducesCorrectRotationList(self):
         cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
         cubeIndex = RTM
 
@@ -46,7 +46,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedsolution, actualSolution)
         
-    def test_bottomLayer_030_CubeIndexProducesCorrectRotationListWhenMiddleIsAllignedWithTopColor(self):
+    def test_middleLayer_030_CubeIndexProducesCorrectRotationListWhenMiddleIsAllignedWithTopColor(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
         cubeIndex = BTM
 
@@ -57,7 +57,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedsolution, actualSolution)
         
-    def test_bottomLayer_040_CubeIndexProducesCorrectCubeIndexToRotateMiddlePieceToTopPiece(self):
+    def test_middleLayer_040_CubeIndexProducesCorrectCubeIndexToRotateMiddlePieceToTopPiece(self):
         cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
         location = BMR
 
@@ -69,7 +69,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedLocation, actualLocation)
         
-    def test_bottomLayer_050_CubeIndexProducesCorrectCubeIndexToMatchTopEdgePieceWithCorrespondingPiece(self):
+    def test_middleLayer_050_CubeIndexProducesCorrectCubeIndexToMatchTopEdgePieceWithCorrespondingPiece(self):
         cube = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
         location = BTM
 
@@ -83,7 +83,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedLocation, actualLocation)
         self.assertEqual(expectedSolution, actualSolution)
         
-    def test_bottomLayer_060_CubeIndexProducesNoRotationsToMatchTopEdgePieceWithCorrespondingPiece(self):
+    def test_middleLayer_060_CubeIndexProducesNoRotationsToMatchTopEdgePieceWithCorrespondingPiece(self):
         cube = 'bbbbbbgggoroorororggggggbbbrorrororowwwyyywwwyyywwwyyy'
         location = FTM
 
@@ -97,7 +97,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertEqual(expectedLocation, actualLocation)
         self.assertEqual(expectedSolution, actualSolution)
         
-    def test_bottomLayer_070_CubeIndexMatchesExpectedCubeIndex(self):
+    def test_middleLayer_070_CubeIndexMatchesExpectedCubeIndex(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
 
         expectedLocation = BTM
@@ -106,7 +106,7 @@ class MiddleLayerTest(unittest.TestCase):
 
         self.assertEqual(expectedLocation, actualCubeIndex)
         
-    def test_bottomLayer_080_CubeIndexMatchesExpectedCubeIndex(self):
+    def test_middleLayer_080_CubeIndexMatchesExpectedCubeIndex(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
 
         expectedLocation = FMR
@@ -115,7 +115,7 @@ class MiddleLayerTest(unittest.TestCase):
 
         self.assertEqual(expectedLocation, actualCubeIndex)
         
-    def test_bottomLayer_090_CubeProducesRotationsToSolveMiddleLayer(self):
+    def test_middleLayer_090_CubeProducesRotationsToSolveMiddleLayer(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww'
@@ -128,7 +128,7 @@ class MiddleLayerTest(unittest.TestCase):
         actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
         
-    def test_bottomLayer_100_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_100_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw'
@@ -161,7 +161,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_110_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_110_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'orgrrwoyrygygbwooorybrgwggbrwwowogrwygwyoogbwrbbyybybb'
@@ -194,7 +194,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_120_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_120_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'brwybbywogoywrwgoyrywggrbrgbwryogoobobgrybwbrroygwywgo'
@@ -227,7 +227,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_130_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_130_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'yyggybgyorgyoorbowrbrwgyywbgrrwwogbowgworrorobbywbywgb'
@@ -260,7 +260,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_140_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_140_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
@@ -293,7 +293,7 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
-    def test_bottomLayer_150_CubeFullySolvesMiddleLayerAndBelow(self):
+    def test_middleLayer_150_CubeFullySolvesMiddleLayerAndBelow(self):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
