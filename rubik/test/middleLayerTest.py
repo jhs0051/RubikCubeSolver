@@ -293,3 +293,36 @@ class MiddleLayerTest(unittest.TestCase):
         self.assertTrue(leftCubeColors)
         self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
+    def test_bottomLayer_150_CubeFullySolvesMiddleLayerAndBelow(self):
+        parms = {}
+        parms['op'] = 'solve'
+        parms['cube'] = 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
+
+        expectResult = {}
+        expectResult['status'] = 'ok'
+
+        actualResult = solve._solve(parms)
+
+        rotatedCube = {}
+        rotatedCube['cube'] = parms.get('cube')
+        rotatedCube['dir'] = actualResult.get('solution')
+        actualCube = _rotate(rotatedCube).get('cube')
+
+        bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
+                           is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
+        frontCubeColors = actualCube[FML] is actualCube[FMM] is actualCube[FMR] is actualCube[FBL] is actualCube[FBM] \
+                          is actualCube[FBR]
+        rightCubeColors = actualCube[RML] is actualCube[RMM] is actualCube[RMR] is actualCube[RBL] is actualCube[RBM] \
+                          is actualCube[RBR]
+        backCubeColors = actualCube[BML] is actualCube[BMM] is actualCube[BMR] is actualCube[BBL] is actualCube[BBM] \
+                         is actualCube[BBR]
+        leftCubeColors = actualCube[LML] is actualCube[LMM] is actualCube[LMR] is actualCube[LBL] is actualCube[LBM] \
+                         is actualCube[LBR]
+
+        self.assertTrue(bottomCubeColors)
+        self.assertTrue(frontCubeColors)
+        self.assertTrue(rightCubeColors)
+        self.assertTrue(backCubeColors)
+        self.assertTrue(leftCubeColors)
+        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
