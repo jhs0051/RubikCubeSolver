@@ -78,17 +78,10 @@ def _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     direction = 'dir'
     directionList = ''
 
-    if currentCubeIndex is FTM:
-        directionList += 'FF'
-        theCube = _rotate({cube: theCube, direction: directionList})[cube]
-    elif currentCubeIndex is BTM:
-        directionList += 'BB'
-        theCube = _rotate({cube: theCube, direction: directionList})[cube]
-    elif currentCubeIndex is LTM:
-        directionList += 'LL'
-        theCube = _rotate({cube: theCube, direction: directionList})[cube]
-    elif currentCubeIndex is RTM:
-        directionList += 'RR'
+    directions = {FTM: 'FF', BTM: 'BB', LTM: 'LL', RTM: 'RR'}
+
+    if currentCubeIndex in directions:
+        directionList += directions[currentCubeIndex]
         theCube = _rotate({cube: theCube, direction: directionList})[cube]
     
     return theCube, currentCubeIndex, directionList
@@ -102,34 +95,21 @@ def _rotateMiddleLeftCorner(theCube):
 
     for cornerPiece in edgePieceCornerPiecePairs:
         if theCube[cornerPiece[FTM]] is theCube[DMM]:
-            if cornerPiece[FTR] == 'f':
-                currentCubeIndex = RTM
-            elif cornerPiece[FTR] == 'b':
-                currentCubeIndex = LTM
-            elif cornerPiece[FTR] == 'l':
-                currentCubeIndex = FTM
-            elif cornerPiece[FTR] == 'r':
-                currentCubeIndex = BTM
+            directions = {'f': RTM, 'b': LTM, 'l': FTM, 'r': BTM}
+            currentCubeIndex = directions.get(cornerPiece[FTR])
 
             directionList += cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()
-            parms = {cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()}
-            theCube = _rotate(parms)[cube]
+            theCube = _rotate({cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()})[cube]
             break
+
         elif theCube[cornerPiece[FTL]] is theCube[DMM]:
-            if cornerPiece[FML] == 'F':
-                currentCubeIndex = LTM
-            elif cornerPiece[FML] == 'B':
-                currentCubeIndex = RTM
-            elif cornerPiece[FML] == 'L':
-                currentCubeIndex = BTM
-            elif cornerPiece[FML] == 'R':
-                currentCubeIndex = FTM
+            directions = {'F': LTM, 'B': RTM, 'L': BTM, 'R': FTM}
+            currentCubeIndex = directions.get(cornerPiece[FML])
 
             directionList += cornerPiece[FML] + 'U' + cornerPiece[FML].lower()
-            parms = {cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()}
-            theCube = _rotate(parms)[cube]
+            theCube = _rotate({cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()})[cube]
             break
-        
+
     return theCube, currentCubeIndex, directionList
 
 def _rotateMiddleTopMiddle(theCube):
