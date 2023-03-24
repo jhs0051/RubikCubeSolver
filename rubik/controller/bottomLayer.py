@@ -62,9 +62,8 @@ def _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
 
     while sorted(bottomEdgePieces[int((currentCubeIndex - FTR) / RTL)]) \
             != sorted(topEdgePieces[int((currentCubeIndex - FTR) / RTL)]):
-        directionList = directionList + 'U'
-        theCube = {cube: theCube, direction: 'U'}
-        theCube = _rotate(theCube)[cube]
+        directionList += 'U'
+        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
         
         if currentCubeIndex != FTR:
             currentCubeIndex = currentCubeIndex - RTL
@@ -90,8 +89,7 @@ def _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     elif currentCubeIndex is FTR:
         directionList += 'RUru'
 
-    parms = {cube: theCube, direction: directionList}
-    theCube = _rotate(parms)[cube]
+    theCube = _rotate({cube: theCube, direction: directionList})[cube]
     currentCubeIndex += FBL
 
     return theCube, currentCubeIndex, directionList
@@ -130,8 +128,7 @@ def _rotateBottomEdgeCW(theCube, currentCubeIndex):
     elif currentCubeIndex is FBR:
         directionList += 'RUruRUru'
 
-    parms = {cube: theCube, direction: directionList}
-    theCube = _rotate(parms)[cube]
+    theCube = _rotate({cube: theCube, direction: directionList})[cube]
 
     return theCube, currentCubeIndex, directionList
 
