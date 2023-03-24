@@ -60,14 +60,9 @@ def _rotateMiddlePieceFromMiddleToTop(theCube, currentCubeIndex):
     rotatedCubeIndex = currentCubeIndex - FMM
     theCube, directionList = _rotateMiddlePieceFromTopToMiddle(theCube, rotatedCubeIndex)
 
-    if currentCubeIndex is LMR:
-        currentCubeIndex = RTM
-    elif currentCubeIndex is RMR:
-        currentCubeIndex = LTM
-    elif currentCubeIndex is BMR:
-        currentCubeIndex = FTM
-    elif currentCubeIndex is FMR:
-        currentCubeIndex = BTM
+    directions = {LMR: RTM, RMR: LTM, BMR: FTM, FMR: BTM}
+    currentCubeIndex = directions.get(currentCubeIndex)
+    
     return theCube, currentCubeIndex, directionList
 
 def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
