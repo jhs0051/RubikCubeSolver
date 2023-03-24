@@ -80,14 +80,8 @@ def _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     direction = 'dir'
     directionList = ''
 
-    if currentCubeIndex is LTR:
-        directionList += 'FUfu'
-    elif currentCubeIndex is RTR:
-        directionList += 'BUbu'
-    elif currentCubeIndex is BTR:
-        directionList += 'LUlu'
-    elif currentCubeIndex is FTR:
-        directionList += 'RUru'
+    directions = {LTR: 'FUfu', RTR: 'BUbu', BTR: 'LUlu', FTR: 'RUru'}
+    directionList += directions[currentCubeIndex]
 
     theCube = _rotate({cube: theCube, direction: directionList})[cube]
     currentCubeIndex += FBL
@@ -119,14 +113,8 @@ def _rotateBottomEdgeCW(theCube, currentCubeIndex):
     direction = 'dir'
     directionList = ''
 
-    if currentCubeIndex is LBR:
-        directionList += 'FUfuFUfu'
-    elif currentCubeIndex is RBR:
-        directionList += 'BUbuBUbu'
-    elif currentCubeIndex is BBR:
-        directionList += 'LUluLUlu'
-    elif currentCubeIndex is FBR:
-        directionList += 'RUruRUru'
+    directions = {LBR: 'FUfuFUfu', RBR: 'BUbuBUbu', BBR: 'LUluLUlu', FBR: 'RUruRUru'}
+    directionList += directions[currentCubeIndex]
 
     theCube = _rotate({cube: theCube, direction: directionList})[cube]
 
