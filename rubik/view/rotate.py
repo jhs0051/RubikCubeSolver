@@ -33,7 +33,7 @@ def _rotate(parms):
     return result
 
 def _cubeLengthValidation(encodedCube):
-    if encodedCube == None or encodedCube == '':
+    if encodedCube is None or encodedCube is '':
         return False
     return True
 
@@ -47,7 +47,7 @@ def _validKeys(parms):
     return True
 
 def _isCubeValid(encodedCube, directions):
-    if Cube._validation(encodedCube, directions) == False:
+    if Cube._validation(encodedCube, directions) is False:
         return False
     return True
     
