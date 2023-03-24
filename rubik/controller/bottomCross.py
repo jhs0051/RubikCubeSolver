@@ -124,21 +124,12 @@ def _rotateMiddleTopMiddle(theCube):
             return theCube, cornerPiece[FTL], directionList
 
         elif theCube[cornerPiece[FTL]] is theCube[DMM]:
-            if cornerPiece[FTR] == 'F':
-                directionList += 'FRurf'
-                currentCubeIndex = BTM
-            elif cornerPiece[FTR] == 'B':
-                directionList += 'BLulb'
-                currentCubeIndex = FTM
-            elif cornerPiece[FTR] == 'L':
-                directionList += 'LFufl'
-                currentCubeIndex = RTM
-            elif cornerPiece[FTR] == 'R':
-                directionList += 'RBubr'
-                currentCubeIndex = LTM
+            directions = {'F': ('FRurf', BTM), 'B': ('BLulb', FTM), 'L': ('LFufl', RTM), 'R': ('RBubr', LTM)}
 
-            parms = {cube: theCube, direction: directionList}
-            theCube = _rotate(parms)[cube]
-            break
+            if cornerPiece[FTR] in directions:
+                rotation, currentCubeIndex = directions[cornerPiece[FTR]]
+                directionList += rotation
+                theCube = _rotate({cube: theCube, direction: directionList})[cube]
+                break
 
     return theCube, currentCubeIndex, directionList
