@@ -7,8 +7,8 @@ needed to transform the input cube to a solved state.
 import os
 import json
 from flask import Flask, request
-from rubik.view.solve import solve
-from rubik.view.rotate import rotate
+from rubik.view.solve import _solve
+from rubik.view.rotate import _rotate
 
 app = Flask(__name__)
 
@@ -44,7 +44,7 @@ def solveServer():
     '''Return face rotation solution set'''
     try:
         userParms = _parseParms(request.args)
-        result = solve(userParms)
+        result = _solve(userParms)
         print("Response -->", str(result))
         return str(result)
     except Exception as anyException:
@@ -61,7 +61,7 @@ def rotateServer():
     '''Return rotated cube'''
     try:
         userParms = _parseParms(request.args)
-        result = rotate(userParms)
+        result = _rotate(userParms)
         print("Response -->", str(result))
         return str(result)
     except Exception as anyException:
