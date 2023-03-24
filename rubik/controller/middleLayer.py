@@ -52,8 +52,7 @@ def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
         else:
             directionList += 'URurufUF'
 
-    theCube = {cube: theCube, direction: directionList}
-    theCube = _rotate(theCube)[cube]
+    theCube = _rotate({cube: theCube, direction: directionList})[cube]
 
     return theCube, directionList    
 
@@ -77,14 +76,13 @@ def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
     directionList = ''
 
     while theCube[currentCubeIndex + FML] != theCube[currentCubeIndex]:
-        directionList += 'U'
-        theCube = {cube: theCube, direction: 'U'}
-        theCube = _rotate(theCube)[cube]
-
         if currentCubeIndex != FTM:
             currentCubeIndex = currentCubeIndex - RTL
         else:
             currentCubeIndex = LTM
+
+        directionList += 'U'
+        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
 
     return theCube, currentCubeIndex, directionList
 
