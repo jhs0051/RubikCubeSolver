@@ -1,5 +1,5 @@
 from unittest import TestCase
-from rubik.view.rotate import _rotate
+from rubik.view.rotate import rotate
  
 class RotateTest(TestCase):
       
@@ -12,7 +12,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: cube can not be empty'
             
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
 
     def test_rotate_020_ErrorWithExtraneousKey(self):
@@ -26,7 +26,7 @@ class RotateTest(TestCase):
         expectedResult['cube'] = 'wwoyrgbywgyrobgbrwoogbgwyrworrryogwobbyyowbgyrggbwoybr'
         expectedResult['status'] = 'error: invalid key'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_030_ErrorOnShortCube(self):
@@ -38,7 +38,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_040_ErrorOnLongCube(self):
@@ -50,7 +50,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_050_NoDirectionGivenReturnsOkStatus(self):
@@ -62,7 +62,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
         
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_060_NonStandardCubeLettersReturnsOk(self):
@@ -74,7 +74,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
         
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     # Sad Path Tests  
@@ -87,7 +87,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_920_ErrorWhenMultipleRotationIsInvalid(self):
@@ -99,7 +99,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_930_ErrorWithMoreThan9ValidColorLetters(self):
@@ -111,7 +111,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_940_ErrorOnNonUniqueStandardMiddleColors(self):
@@ -123,7 +123,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_950_ErrorOnNonUniqueNonStandardMiddleColors(self):
@@ -135,7 +135,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
         
@@ -148,7 +148,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_970_RotateOnDirection_d_notSupported(self):
@@ -160,7 +160,7 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_rotate_980_ErrorOnIllegalCharacters(self):
@@ -172,6 +172,6 @@ class RotateTest(TestCase):
         expectedResult = {}
         expectedResult['status'] = 'error: invalid cube'
 
-        actualResult = _rotate(parms)
+        actualResult = rotate(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
