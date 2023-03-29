@@ -1,5 +1,5 @@
 from rubik.model.constants import *
-from rubik.view.rotate import _rotate
+from rubik.view.rotate import rotate
 
 def _solveMiddleLayer(theCube, solution) -> str:
     if _isMiddleLayerSolved(theCube):
@@ -52,7 +52,7 @@ def _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex):
         else:
             directionList += 'URurufUF'
 
-    theCube = _rotate({cube: theCube, direction: directionList})[cube]
+    theCube = rotate({cube: theCube, direction: directionList})[cube]
 
     return theCube, directionList    
 
@@ -77,7 +77,7 @@ def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
             currentCubeIndex = LTM
 
         directionList += 'U'
-        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
+        theCube = rotate({cube: theCube, direction: 'U'})[cube]
 
     return theCube, currentCubeIndex, directionList
 

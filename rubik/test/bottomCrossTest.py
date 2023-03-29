@@ -20,7 +20,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_bottomCross_010_SolvedCubeContainsASolvedDaisyPattern(self):
@@ -90,7 +90,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'LbUBUULLBUbUFFfuFUUUBBUUURR'
         expectResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
@@ -113,7 +113,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'LUlUUULLluLFFFRurfBB'
         expectResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
@@ -136,7 +136,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'RUrUUURRruRUUFFLUlUUULLFRurfBB'
         expectResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
@@ -159,7 +159,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'LLUBBBUbUFFLUlURRULL'
         expectResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])

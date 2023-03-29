@@ -6,7 +6,7 @@ from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.view.rotate import _cubeLengthValidation, _isCubeValid, _validKeys
  
-def _solve(parms):
+def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
     theCube =  parms.get('cube')

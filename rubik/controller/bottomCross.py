@@ -1,5 +1,5 @@
 from rubik.model.constants import *
-from rubik.view.rotate import _rotate
+from rubik.view.rotate import rotate
 
 def _solveBottomCross(theCube, solution) -> str:
     directionList = ''
@@ -49,12 +49,12 @@ def _makeBottomDaisy(theCube):
             if theCube[cornerPiece[FTM]] != middleCubeIndexes[edgePiece]:
                 directionList += {'F': 'FF', 'B': 'BB', 'L': 'LL', 'R': 'RR'}[cornerPiece[FTR]]
                 currentCubeIndex = {'F': FTM, 'B': BTM, 'L': LTM, 'R': RTM}[cornerPiece[FTR]]
-                theCube = _rotate({cube: theCube, direction: directionList})[cube]
+                theCube = rotate({cube: theCube, direction: directionList})[cube]
                 break
         elif theCube[cornerPiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[cornerPiece[FTM]] == theCube[DMM]:
             directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[cornerPiece[FTR]]
             currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[cornerPiece[FTR]]
-            theCube = _rotate({cube: theCube, direction: directionList})[cube]
+            theCube = rotate({cube: theCube, direction: directionList})[cube]
             break
 
     return theCube, currentCubeIndex, directionList
@@ -66,7 +66,7 @@ def _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
 
     while theCube[currentCubeIndex] is not theCube[currentCubeIndex + FML]:
         directionList += 'U'
-        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
+        theCube = rotate({cube: theCube, direction: 'U'})[cube]
         currentCubeIndex = currentCubeIndex - RTL \
             if currentCubeIndex != FTM \
             else LTM
@@ -82,7 +82,7 @@ def _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
 
     if currentCubeIndex in directions:
         directionList += directions[currentCubeIndex]
-        theCube = _rotate({cube: theCube, direction: directionList})[cube]
+        theCube = rotate({cube: theCube, direction: directionList})[cube]
     
     return theCube, currentCubeIndex, directionList
 
@@ -99,7 +99,7 @@ def _rotateMiddleLeftCorner(theCube):
             currentCubeIndex = directions.get(cornerPiece[FTR])
 
             directionList += cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()
-            theCube = _rotate({cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()})[cube]
+            theCube = rotate({cube: theCube, direction: cornerPiece[FTR] + 'u' + cornerPiece[FTR].upper()})[cube]
             break
 
         elif theCube[cornerPiece[FTL]] is theCube[DMM]:
@@ -107,7 +107,7 @@ def _rotateMiddleLeftCorner(theCube):
             currentCubeIndex = directions.get(cornerPiece[FML])
 
             directionList += cornerPiece[FML] + 'U' + cornerPiece[FML].lower()
-            theCube = _rotate({cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()})[cube]
+            theCube = rotate({cube: theCube, direction: cornerPiece[FML] + 'U' + cornerPiece[FML].lower()})[cube]
             break
 
     return theCube, currentCubeIndex, directionList
@@ -129,7 +129,7 @@ def _rotateMiddleTopMiddle(theCube):
             if cornerPiece[FTR] in directions:
                 rotation, currentCubeIndex = directions[cornerPiece[FTR]]
                 directionList += rotation
-                theCube = _rotate({cube: theCube, direction: directionList})[cube]
+                theCube = rotate({cube: theCube, direction: directionList})[cube]
                 break
 
     return theCube, currentCubeIndex, directionList

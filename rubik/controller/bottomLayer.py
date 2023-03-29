@@ -1,5 +1,5 @@
 from rubik.model.constants import *
-from rubik.view.rotate import _rotate
+from rubik.view.rotate import rotate
 
 def _solveBottomLayer(theCube, solution) -> str:
     startingCubeIndex = FTL
@@ -63,7 +63,7 @@ def _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
     while sorted(bottomEdgePieces[int((currentCubeIndex - FTR) / RTL)]) \
             != sorted(topEdgePieces[int((currentCubeIndex - FTR) / RTL)]):
         directionList += 'U'
-        theCube = _rotate({cube: theCube, direction: 'U'})[cube]
+        theCube = rotate({cube: theCube, direction: 'U'})[cube]
         
         if currentCubeIndex != FTR:
             currentCubeIndex = currentCubeIndex - RTL
@@ -83,7 +83,7 @@ def _rotateBottomEdgePieceToTopEdgePiece(theCube, currentCubeIndex):
     directions = {LTR: 'FUfu', RTR: 'BUbu', BTR: 'LUlu', FTR: 'RUru'}
     directionList += directions[currentCubeIndex]
 
-    theCube = _rotate({cube: theCube, direction: directionList})[cube]
+    theCube = rotate({cube: theCube, direction: directionList})[cube]
     currentCubeIndex += FBL
 
     return theCube, currentCubeIndex, directionList
@@ -116,7 +116,7 @@ def _rotateBottomEdgeCW(theCube, currentCubeIndex):
     directions = {LBR: 'FUfuFUfu', RBR: 'BUbuBUbu', BBR: 'LUluLUlu', FBR: 'RUruRUru'}
     directionList += directions[currentCubeIndex]
 
-    theCube = _rotate({cube: theCube, direction: directionList})[cube]
+    theCube = rotate({cube: theCube, direction: directionList})[cube]
 
     return theCube, currentCubeIndex, directionList
 

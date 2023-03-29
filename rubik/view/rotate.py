@@ -1,6 +1,6 @@
 from rubik.model.cube import Cube
 
-def _rotate(parms):
+def rotate(parms):
     """Return rotated cube""" 
     result = {}
     encodedCube = parms.get('cube')
