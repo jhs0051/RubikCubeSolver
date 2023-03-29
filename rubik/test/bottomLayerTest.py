@@ -6,7 +6,7 @@ Created on Feb 28, 2023
 import unittest
 import rubik.view.solve as solve
 import rubik.controller.bottomLayer as bottomLayer
-from rubik.view.rotate import _rotate
+from rubik.view.rotate import rotate
 from rubik.model.constants import *
 
 
@@ -21,7 +21,7 @@ class BottomLayerTest(unittest.TestCase):
         expectedResult = {}
         expectedResult['status'] = 'ok'
 
-        actualResult = solve._solve(parms)
+        actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_bottomLayer_010_SolvedCubeDoesNotContainRotations(self):
@@ -150,12 +150,12 @@ class BottomLayerTest(unittest.TestCase):
             expectResult = {}
             expectResult['status'] = 'ok'
     
-            actualResult = solve._solve(parms)
+            actualResult = solve.solve(parms)
     
             rotatedCube = {}
             rotatedCube['cube'] = parms.get('cube')
             rotatedCube['dir'] = actualResult.get('solution')
-            actualCube = _rotate(rotatedCube).get('cube')
+            actualCube = rotate(rotatedCube).get('cube')
     
             bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
                                is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
