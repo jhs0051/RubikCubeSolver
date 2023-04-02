@@ -9,3 +9,6 @@ def _isUpCrossSolved(theCube):
     topEdges = [theCube[UMM], theCube[UTM], theCube[UML], theCube[UMR], theCube[UBM]]
 
     return all(edge == topEdges[FTL] for edge in topEdges)
+
+def _getUpFaceDaisyInCorrectPosition(theCube):
+    pass
