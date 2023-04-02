@@ -1,12 +1,11 @@
-import rubik.model.constants
-from rubik.model.cube import Cube
+from rubik.model.constants import *
+from rubik.view.rotate import rotate
 
-def solveUpCross(theCube: Cube) -> str:
-    '''
-        This is the top-level function  for rotating
-        a cube into the up-face cross configuration.
-        
-        input:  an instance of the cube class with the middle layer solved
-        output: the rotations required to solve the up-face cross  
-    '''  
-    return 'L'      #TODO:  remove this stubbed value
+def solveUpCross(theCube, solution) -> str:
+    if _isUpCrossSolved(theCube):
+        return theCube, solution
+
+def _isUpCrossSolved(theCube):
+    topEdges = [theCube[UMM], theCube[UTM], theCube[UML], theCube[UMR], theCube[UBM]]
+
+    return all(edge == topEdges[FTL] for edge in topEdges)
