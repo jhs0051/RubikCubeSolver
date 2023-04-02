@@ -30,7 +30,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedCube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         expectedRotations = ''
         
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -49,7 +49,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'RfUFUURR'
         expectedCube = 'ryoobbybgwyyrrgrrrbggyggwgywrgoobbogorryybwobowywwwowb'
 
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -68,7 +68,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'RUrUUBBRR'
         expectedCube = 'ybybbybbwoyrrrogrrggoyggwggyrrroowoogoybygbybwwowwwrwb'
 
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -91,7 +91,7 @@ class BottomCrossTest(unittest.TestCase):
         expectResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -114,7 +114,7 @@ class BottomCrossTest(unittest.TestCase):
         expectResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -137,7 +137,7 @@ class BottomCrossTest(unittest.TestCase):
         expectResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -160,7 +160,7 @@ class BottomCrossTest(unittest.TestCase):
         expectResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
@@ -182,7 +182,7 @@ class BottomCrossTest(unittest.TestCase):
         expectedRotations = 'BBUUFFLLUURRFUfLL'
         expectResult['status'] = 'ok'
 
-        actualCube, actualRotations = bottomCross._solveBottomCross(cube, rotations)
+        actualCube, actualRotations = bottomCross.solveBottomCross(cube, rotations)
         self.assertEqual(actualCube[FMM], actualCube[FBM])
         self.assertEqual(actualCube[RMM], actualCube[RBM])
         self.assertEqual(actualCube[BMM], actualCube[BBM])
