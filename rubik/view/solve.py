@@ -25,11 +25,11 @@ def solve(parms):
         theCube, bottomCrossRotations = solveBottomCross(theCube, rotationList)      #iteration 2
         theCube, bottomLayerRotations = solveBottomLayer(theCube, rotationList)      #iteration 3
         theCube, middleLayerRotations = solveMiddleLayer(theCube, rotationList)      #iteration 4
-        futureRotations = solveUpCross(theCube)          #iteration 5
+        theCube, upFaceCrossRotations = solveUpCross(theCube, rotationList)          #iteration 5
         futureRotations = solveUpSurface(theCube)        #iteration 5
         futureRotations = solveUpperLayer(theCube)       #iteration 6
         
-        finalSolution = bottomCrossRotations + bottomLayerRotations + middleLayerRotations
+        finalSolution = bottomCrossRotations + bottomLayerRotations + middleLayerRotations + upFaceCrossRotations
     
         result['solution'] = finalSolution
         result['status'] = 'ok'    
