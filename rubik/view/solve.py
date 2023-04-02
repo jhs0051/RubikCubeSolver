@@ -1,6 +1,6 @@
-from rubik.controller.bottomCross import _solveBottomCross
-from rubik.controller.bottomLayer import _solveBottomLayer
-from rubik.controller.middleLayer import _solveMiddleLayer
+from rubik.controller.bottomCross import solveBottomCross
+from rubik.controller.bottomLayer import solveBottomLayer
+from rubik.controller.middleLayer import solveMiddleLayer
 from rubik.controller.upFaceCross import solveUpCross
 from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
@@ -22,9 +22,9 @@ def solve(parms):
         result['status'] = 'error: invalid key'
         return result
     else:
-        theCube, bottomCrossRotations = _solveBottomCross(theCube, rotationList)      #iteration 2
-        theCube, bottomLayerRotations = _solveBottomLayer(theCube, rotationList)      #iteration 3
-        theCube, middleLayerRotations = _solveMiddleLayer(theCube, rotationList)      #iteration 4
+        theCube, bottomCrossRotations = solveBottomCross(theCube, rotationList)      #iteration 2
+        theCube, bottomLayerRotations = solveBottomLayer(theCube, rotationList)      #iteration 3
+        theCube, middleLayerRotations = solveMiddleLayer(theCube, rotationList)      #iteration 4
         futureRotations = solveUpCross(theCube)          #iteration 5
         futureRotations = solveUpSurface(theCube)        #iteration 5
         futureRotations = solveUpperLayer(theCube)       #iteration 6

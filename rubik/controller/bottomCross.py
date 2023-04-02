@@ -1,7 +1,7 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
 
-def _solveBottomCross(theCube, solution) -> str:
+def solveBottomCross(theCube, solution) -> str:
     directionList = ''
     
     if _doesBottomCrossExist(theCube):
@@ -26,7 +26,7 @@ def _solveBottomCross(theCube, solution) -> str:
     
     solution += directionList
     
-    return _solveBottomCross(theCube, solution)
+    return solveBottomCross(theCube, solution)
         
 
 def _doesBottomCrossExist(cube):

@@ -31,7 +31,7 @@ class MiddleLayerTest(unittest.TestCase):
         expectedCube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         expectedRotations = ''
         
-        actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
+        actualCube, actualRotations = middleLayer.solveMiddleLayer(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
         
@@ -125,7 +125,7 @@ class MiddleLayerTest(unittest.TestCase):
         expectedRotations = 'ulULUFuf'
         expectResult['status'] = 'ok'
 
-        actualCube, actualRotations = middleLayer._solveMiddleLayer(cube, rotations)
+        actualCube, actualRotations = middleLayer.solveMiddleLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
         
     def test_middleLayer_100_CubeFullySolvesMiddleLayerAndBelow(self):

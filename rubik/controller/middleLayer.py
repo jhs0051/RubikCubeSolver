@@ -1,7 +1,7 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
 
-def _solveMiddleLayer(theCube, solution) -> str:
+def solveMiddleLayer(theCube, solution) -> str:
     if _isMiddleLayerSolved(theCube):
         return theCube, solution
 
@@ -18,7 +18,7 @@ def _solveMiddleLayer(theCube, solution) -> str:
     theCube, currentDirectionList = _rotateMiddlePieceFromTopToMiddle(theCube, currentCubeIndex)
     solution += currentDirectionList
 
-    return _solveMiddleLayer(theCube, solution)
+    return solveMiddleLayer(theCube, solution)
 
 def _isMiddleLayerSolved(theCube):
     for currentCubeFace, matchingCubeFace in [(FML, FMM), (LML, LMM), (RML, RMM), (BML, BMM)]:

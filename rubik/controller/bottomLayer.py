@@ -1,7 +1,7 @@
 from rubik.model.constants import *
 from rubik.view.rotate import rotate
 
-def _solveBottomLayer(theCube, solution) -> str:
+def solveBottomLayer(theCube, solution) -> str:
     startingCubeIndex = FTL
     
     if _isBottomLayerSolved(theCube):
@@ -28,7 +28,7 @@ def _solveBottomLayer(theCube, solution) -> str:
             solution += currentDirectionList
             startingCubeIndex += FTM
 
-    return _solveBottomLayer(theCube, solution)
+    return solveBottomLayer(theCube, solution)
 
 def _isBottomLayerSolved(theCube):
     for currentCubeFace, matchingCubeFace in [(FMM, FBL), (FMM, FBR), (RMM, RBL), (RMM, RBR), (BMM, BBL), (BMM, BBR),
