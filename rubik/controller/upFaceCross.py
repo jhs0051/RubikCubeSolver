@@ -4,6 +4,10 @@ from rubik.view.rotate import rotate
 def solveUpCross(theCube, solution) -> str:
     if _isUpCrossSolved(theCube):
         return theCube, solution
+    else:
+        theCube, solution = _makeUpFaceDaisy(theCube, solution)
+    
+    return solveUpCross(theCube, solution)
 
 def _isUpCrossSolved(theCube):
     topEdges = [theCube[UMM], theCube[UTM], theCube[UML], theCube[UMR], theCube[UBM]]
