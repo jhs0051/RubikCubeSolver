@@ -29,3 +29,6 @@ def _getUpFaceDaisyInCorrectPosition(theCube):
         return FML
     else:
         return FTL
+    
+def _makeUpFaceDaisy(theCube, directionList):
+    pass

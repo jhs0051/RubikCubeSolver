@@ -35,10 +35,21 @@ class UpFaceCrossTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
         
-    def test_upFaceCross_020_cubeIndexForUpFaceCrossIsInCorrectPosition(self):
+    def test_upFaceCross_020_CubeIndexForUpFaceCrossIsInCorrectPosition(self):
         cube = 'rybggggggrgoooooooyoobbbbbbbyyrrrrrryygryygbywwwwwwwww'
         expectedCubeIndex = FML
 
         actualCubeIndex = upFaceCross._getUpFaceDaisyInCorrectPosition(cube)
 
         self.assertEqual(expectedCubeIndex, actualCubeIndex)
+        
+    def test_upFaceCross_040_UpFaceDaisyProducesCorrectSolution(self):
+        cube = 'rybggggggrgoooooooyoobbbbbbbyyrrrrrryygryygbywwwwwwwww'
+
+        expectedSolution = 'UUUFRUrufFRUruf'
+        expectedCube = 'ybrggggggggyoooooobrgbbbbbboobrrrrrryyryyyoyywwwwwwwww'
+
+        actualCube, actualsolution = upFaceCross._makeUpFaceDaisy(cube, '')
+
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedSolution, actualsolution)
