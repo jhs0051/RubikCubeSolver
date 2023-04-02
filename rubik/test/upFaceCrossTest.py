@@ -13,7 +13,7 @@ from rubik.controller import upFaceCross
 class UpFaceCrossTest(unittest.TestCase):
 
     # Happy Path Tests  
-    def test_middleLayer_000_SolvedCubeShouldReturnOkStatus(self):
+    def test_upFaceCross_000_SolvedCubeShouldReturnOkStatus(self):
         parms = {}
         parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         parms['dir'] = 'R'
@@ -24,7 +24,7 @@ class UpFaceCrossTest(unittest.TestCase):
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
-    def test_middleLayer_010_SolvedCubeDoesNotContainRotations(self):
+    def test_upFaceCross_010_SolvedCubeDoesNotContainRotations(self):
         cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         rotations = ''
         
