@@ -31,4 +31,14 @@ def _getUpFaceDaisyInCorrectPosition(theCube):
         return FTL
     
 def _makeUpFaceDaisy(theCube, directionList):
-    pass
+    cube = 'cube'
+    direction = 'dir'
+    rotationCount = _getUpFaceDaisyInCorrectPosition(theCube)
+
+    if rotationCount is None:
+        return theCube, directionList
+    else:
+        directionList += 'U' * rotationCount + 'FRUruf'
+        theCube = rotate({cube: theCube, direction: 'U' * rotationCount + 'FRUruf'})[cube]
+
+    return _makeUpFaceDaisy(theCube, directionList)
