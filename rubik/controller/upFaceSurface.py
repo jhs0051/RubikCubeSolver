@@ -12,4 +12,23 @@ def _isUpFaceSolved(theCube):
     return all(piece == topPieces[FMM] for piece in topPieces)
 
 def _solveUpFaceEdgePieces(theCube, directionList):
-    pass
+    topCorners = [theCube[UMM], theCube[UTL], theCube[UTR], theCube[UBL], theCube[UBR]]
+    topCornerCount = topCorners.count(topCorners[FTL])
+
+    while True:
+        if topCornerCount is FTM:
+            if theCube[LTR] is theCube[UMM]:
+                break
+        elif topCornerCount is FTR:
+            if theCube[UBL] is theCube[UMM]:
+                break
+        elif topCornerCount is FML:
+            if theCube[UBR] is theCube[UMM]:
+                break
+        directionList += 'U'
+        theCube = rotate({'cube': theCube, 'dir': 'U'})['cube']
+
+    directionList += 'RUrURUUr'
+    theCube = rotate({'cube': theCube, 'dir': 'RUrURUUr'})['cube']
+
+    return _solveUpFaceEdgePieces(theCube, directionList)
