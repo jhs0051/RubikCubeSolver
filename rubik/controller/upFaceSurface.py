@@ -10,3 +10,6 @@ def _isUpFaceSolved(theCube):
                  theCube[UBL], theCube[UBM], theCube[UBR]]
 
     return all(piece == topPieces[FMM] for piece in topPieces)
+
+def _solveUpFaceEdgePieces(theCube, directionList):
+    pass

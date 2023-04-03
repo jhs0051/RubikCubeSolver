@@ -34,3 +34,15 @@ class UpFaceSurfaceTest(unittest.TestCase):
         actualCube, actualRotations = upFaceSurface.solveUpSurface(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
+        
+    def test_upFaceSurface_020_TestEdgePiecesMatch(self):
+        cube = 'rybggggggrgoooooooyoobbbbbbbyyrrrrrryygryygbywwwwwwwww'
+        rotations = ''
+
+        expectedCube = 'oyoggggggbgroooooogobbbbbbbrygrrrrrryyyryyybywwwwwwwww'
+        expectedSolution = 'RUrURUUrRUrURUUrRUrURUUr'
+
+        actualCube, actualSolution = upFaceSurface._solveUpFaceEdgePieces(cube, rotations)
+
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedSolution, actualSolution)
