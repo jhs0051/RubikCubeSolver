@@ -54,6 +54,18 @@ class UpFaceCrossTest(unittest.TestCase):
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedSolution, actualsolution)
         
+    def test_upFaceCross_045_UpFaceDaisyProducesNoSolutionNeeded(self):
+        cube = 'gbobbbbbbbrorrrrrryoyggggggbgroooooorygyyyyyywwwwwwwww'
+        rotations = ''
+
+        expectedSolution = ''
+        expectedCube = 'gbobbbbbbbrorrrrrryoyggggggbgroooooorygyyyyyywwwwwwwww'
+
+        actualCube, actualsolution = upFaceCross._makeUpFaceDaisy(cube, rotations)
+
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedSolution, actualsolution)
+        
     def test_upFaceCross_050_SolveUpFaceCross(self):
         cubes = ['orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww',
                  'U2ig99iU9F9iUgFUiFggF92F92292F2FUgg2U99gUi2U2gFgiiFUii',
