@@ -4,6 +4,12 @@ from rubik.view.rotate import rotate
 def solveUpSurface(theCube, solution) -> str:
     if _isUpFaceSolved(theCube):
         return theCube, solution
+    elif _doUpFaceEdgePiecesMatch(theCube):
+        return theCube, solution
+    else:
+        theCube, solution = _solveUpFaceEdgePieces(theCube, solution)
+
+    return solveUpSurface(theCube, solution)
     
 def _isUpFaceSolved(theCube):
     topPieces = [theCube[UTL], theCube[UTM], theCube[UTR], theCube[UML], theCube[UMM], theCube[UMR],
