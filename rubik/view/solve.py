@@ -1,9 +1,12 @@
+import hashlib
+import random
 from rubik.controller.bottomCross import solveBottomCross
 from rubik.controller.bottomLayer import solveBottomLayer
 from rubik.controller.middleLayer import solveMiddleLayer
 from rubik.controller.upFaceCross import solveUpCross
 from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
+from rubik.model.constants import *
 from rubik.view.rotate import _cubeLengthValidation, _isCubeValid, _validKeys
  
 def solve(parms):
@@ -38,5 +41,11 @@ def solve(parms):
     return result
 
 def _getIntegrity(theCube, solution):
-    pass
+    myAUName = "Jhs0051"
+    itemToTokenize = theCube + solution + myAUName
+    sha256Hash = hashlib.sha256(itemToTokenize.encode())
+    hashToHex = sha256Hash.hexdigest()
+    pickRandomString = random.randint(FTL, len(hashToHex) - FBR)
+
+    return hashToHex
     
