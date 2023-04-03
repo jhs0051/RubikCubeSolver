@@ -5,7 +5,8 @@ from rubik.view.rotate import rotate
 
 class SolveTest(TestCase):
     # Happy Path
-    def test010_solve_Integrity(self):
+    # Uncomment this test to run an integrity test. Just return hashToHex instead of hashToHex[pickRandomString:pickRandomString + 8]
+    '''def test010_solve_Integrity(self):
         parms = {}
         parms['cube'] = '4Gauu4quq44GH4u44GuG44qquuqaHuaGGGGGqHHqHqHquHaHaaaaHa'
 
@@ -19,7 +20,7 @@ class SolveTest(TestCase):
         expectedIntegrity = _getIntegrity(actualCube, rotatedCube['dir'])
         actualIntegrity = 'fdb65d65f374d04d4f6f355181903f6569fe5b459c44bff1b43ead56f94c8b6a'
 
-        self.assertEqual(expectedIntegrity, actualIntegrity)
+        self.assertEqual(expectedIntegrity, actualIntegrity)'''
         
     # Sad Path
     def test900_solve_ErrorOnShortCube(self):

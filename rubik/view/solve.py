@@ -47,5 +47,5 @@ def _getIntegrity(theCube, solution):
     hashToHex = sha256Hash.hexdigest()
     pickRandomString = random.randint(FTL, len(hashToHex) - FBR)
 
-    return hashToHex
+    return hashToHex[pickRandomString:pickRandomString + 8]
     
