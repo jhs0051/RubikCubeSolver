@@ -12,7 +12,9 @@ def _isUpFaceSolved(theCube):
     return all(piece == topPieces[FMM] for piece in topPieces)
 
 def _doUpFaceEdgePiecesMatch(theCube):
-    pass
+    topCorners = [theCube[UMM], theCube[UTL], theCube[UTR], theCube[UBL], theCube[UBR]]
+    
+    return all(corner == topCorners[FTL] for corner in topCorners)
 
 def _solveUpFaceEdgePieces(theCube, directionList):
     topCorners = [theCube[UMM], theCube[UTL], theCube[UTR], theCube[UBL], theCube[UBR]]
