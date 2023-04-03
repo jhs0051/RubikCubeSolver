@@ -76,28 +76,18 @@ class UpFaceSurfaceTest(unittest.TestCase):
             rotatedCube['dir'] = actualResult.get('solution')
             actualCube = rotate(rotatedCube).get('cube')
 
-            bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[
-                DMM] \
-                               is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-            frontCubeColors = actualCube[FML] is actualCube[FMM] is actualCube[FMR] is actualCube[FBL] is actualCube[
-                FBM] \
-                              is actualCube[FBR]
-            rightCubeColors = actualCube[RML] is actualCube[RMM] is actualCube[RMR] is actualCube[RBL] is actualCube[
-                RBM] \
-                              is actualCube[RBR]
-            backCubeColors = actualCube[BML] is actualCube[BMM] is actualCube[BMR] is actualCube[BBL] is actualCube[BBM] \
-                             is actualCube[BBR]
-            leftCubeColors = actualCube[LML] is actualCube[LMM] is actualCube[LMR] is actualCube[LBL] is actualCube[LBM] \
-                             is actualCube[LBR]
-            upFaceCrossColors = actualCube[UTM] is actualCube[UML] is actualCube[UMM] is actualCube[UMR] is actualCube[UBM]
-            upFaceSurfaceColors = actualCube[UTL] is actualCube[UTR] is actualCube[UBL] is actualCube[UBR]
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FML, FMM, FMR, FBL, FBM, FBR],
+                "right": [RML, RMM, RMR, RBL, RBM, RBR],
+                "back": [BML, BMM, BMR, BBL, BBM, BBR],
+                "left": [LML, LMM, LMR, LBL, LBM, LBR],
+                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+                }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
             
-            self.assertTrue(bottomCubeColors)
-            self.assertTrue(frontCubeColors)
-            self.assertTrue(rightCubeColors)
-            self.assertTrue(backCubeColors)
-            self.assertTrue(leftCubeColors)
-            self.assertTrue(upFaceCrossColors)
-            self.assertTrue(upFaceSurfaceColors)
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
