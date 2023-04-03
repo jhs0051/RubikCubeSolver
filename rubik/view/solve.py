@@ -15,15 +15,9 @@ def solve(parms):
     theCube =  parms.get('cube')
     rotationList = ''
     
-    if not _cubeLengthValidation(theCube):
-        result['status'] = 'error: cube can not be empty'
-        return result
-    if not _isCubeValid(theCube, rotationList):
-        result['status'] = 'error: invalid cube'
-        return result
-    if not _validKeys(parms):
-        result['status'] = 'error: invalid key'
-        return result
+    validityResult = _solveValidity(theCube, rotationList, parms)
+    if validityResult:
+        return validityResult
     else:
         theCube, bottomCrossRotations   = solveBottomCross(theCube, rotationList)      #iteration 2
         theCube, bottomLayerRotations   = solveBottomLayer(theCube, rotationList)      #iteration 3
@@ -48,4 +42,19 @@ def _getIntegrity(theCube, solution):
     pickRandomString = random.randint(FTL, len(hashToHex) - FBR)
 
     return hashToHex[pickRandomString:pickRandomString + 8]
+
+def _solveValidity(theCube, rotationList, parms):
+    result = {}
+
+    if not _cubeLengthValidation(theCube):
+        result['status'] = 'error: cube can not be empty'
+        return result
+    elif not _isCubeValid(theCube, rotationList):
+        result['status'] = 'error: invalid cube'
+        return result
+    elif not _validKeys(parms):
+        result['status'] = 'error: invalid key'
+        return result
+
+    return None
     
