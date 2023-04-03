@@ -157,17 +157,17 @@ class BottomLayerTest(unittest.TestCase):
             rotatedCube['dir'] = actualResult.get('solution')
             actualCube = rotate(rotatedCube).get('cube')
     
-            bottomCubeColors = actualCube[DTL] is actualCube[DTM] is actualCube[DTR] is actualCube[DML] is actualCube[DMM] \
-                               is actualCube[DMR] is actualCube[DBL] is actualCube[DBM] is actualCube[DBR]
-            frontCubeColors = actualCube[FBL] is actualCube[FBM] is actualCube[FBR]
-            rightCubeColors = actualCube[RBL] is actualCube[RBM] is actualCube[RBR]
-            backCubeColors = actualCube[BBL] is actualCube[BBM] is actualCube[BBR]
-            leftCubeColors = actualCube[LBL] is actualCube[LBM] is actualCube[LBR]
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FBL, FBM, FBR],
+                "right": [RBL, RBM, RBR],
+                "back": [BBL, BBM, BBR],
+                "left": [LBL, LBM, LBR],
+                }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
     
-            self.assertTrue(bottomCubeColors)
-            self.assertTrue(frontCubeColors)
-            self.assertTrue(rightCubeColors)
-            self.assertTrue(backCubeColors)
-            self.assertTrue(leftCubeColors)
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))  
     
