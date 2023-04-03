@@ -156,7 +156,7 @@ class MiddleLayerTest(unittest.TestCase):
                 "right": [RML, RMM, RMR, RBL, RBM, RBR],
                 "back": [BML, BMM, BMR, BBL, BBM, BBR],
                 "left": [LML, LMM, LMR, LBL, LBM, LBR]
-                }
+            }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
