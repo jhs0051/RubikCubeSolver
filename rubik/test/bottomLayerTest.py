@@ -162,7 +162,7 @@ class BottomLayerTest(unittest.TestCase):
                 "front": [FBL, FBM, FBR],
                 "right": [RBL, RBM, RBR],
                 "back": [BBL, BBM, BBR],
-                "left": [LBL, LBM, LBR],
+                "left": [LBL, LBM, LBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
