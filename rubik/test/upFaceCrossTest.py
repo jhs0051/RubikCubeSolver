@@ -83,7 +83,7 @@ class UpFaceCrossTest(unittest.TestCase):
                 "back": [BML, BMM, BMR, BBL, BBM, BBR],
                 "left": [LML, LMM, LMR, LBL, LBM, LBR],
                 "up": [UTM, UML, UMM, UMR, UBM],
-                }
+            }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]

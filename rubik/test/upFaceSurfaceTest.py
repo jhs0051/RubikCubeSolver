@@ -82,8 +82,8 @@ class UpFaceSurfaceTest(unittest.TestCase):
                 "right": [RML, RMM, RMR, RBL, RBM, RBR],
                 "back": [BML, BMM, BMR, BBL, BBM, BBR],
                 "left": [LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
-                }
+                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
+            }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
