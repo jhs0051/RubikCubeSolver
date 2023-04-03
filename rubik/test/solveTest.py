@@ -1,8 +1,26 @@
 from unittest import TestCase
-from rubik.view.solve import solve
+from rubik.view.solve import solve, _getIntegrity
+from rubik.view.rotate import rotate
  
 
 class SolveTest(TestCase):
+    # Happy Path
+    def test010_solve_Integrity(self):
+        parms = {}
+        parms['cube'] = '4Gauu4quq44GH4u44GuG44qquuqaHuaGGGGGqHHqHqHquHaHaaaaHa'
+
+        actualResult = solve(parms)
+
+        rotatedCube = {}
+        rotatedCube['cube'] = parms.get('cube')
+        rotatedCube['dir'] = actualResult.get('solution')
+        actualCube = rotate(rotatedCube).get('cube')
+
+        expectedIntegrity = _getIntegrity(actualCube, rotatedCube['dir'])
+        actualIntegrity = 'fdb65d65f374d04d4f6f355181903f6569fe5b459c44bff1b43ead56f94c8b6a'
+
+        self.assertEqual(expectedIntegrity, actualIntegrity)
+        
     # Sad Path
     def test900_solve_ErrorOnShortCube(self):
         parms = {}
