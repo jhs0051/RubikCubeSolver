@@ -31,15 +31,12 @@ def _solveUpFaceEdgePieces(theCube, directionList):
     topCornerCount = topCorners.count(topCorners[FTL])
 
     while True:
-        if topCornerCount is FTM:
-            if theCube[LTR] is theCube[UMM]:
-                break
-        elif topCornerCount is FTR:
-            if theCube[UBL] is theCube[UMM]:
-                break
-        elif topCornerCount is FML:
-            if theCube[UBR] is theCube[UMM]:
-                break
+        if topCornerCount is FTM and theCube[LTR] is theCube[UMM]:
+            break
+        elif topCornerCount is FTR and theCube[UBL] is theCube[UMM]:
+            break
+        elif topCornerCount is FML and theCube[UBR] is theCube[UMM]:
+            break
         directionList += 'U'
         theCube = rotate({'cube': theCube, 'dir': 'U'})['cube']
 
