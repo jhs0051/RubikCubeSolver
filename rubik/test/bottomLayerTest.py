@@ -163,7 +163,7 @@ class BottomLayerTest(unittest.TestCase):
                 "right": [RBL, RBM, RBR],
                 "back": [BBL, BBM, BBR],
                 "left": [LBL, LBM, LBR],
-                }
+            }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
