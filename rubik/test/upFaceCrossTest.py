@@ -82,7 +82,7 @@ class UpFaceCrossTest(unittest.TestCase):
                 "right": [RML, RMM, RMR, RBL, RBM, RBR],
                 "back": [BML, BMM, BMR, BBL, BBM, BBR],
                 "left": [LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTM, UML, UMM, UMR, UBM],
+                "up": [UTM, UML, UMM, UMR, UBM]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
