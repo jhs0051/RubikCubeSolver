@@ -18,6 +18,10 @@ def _doUpFaceEdgePiecesMatch(theCube):
 
 def _solveUpFaceEdgePieces(theCube, directionList):
     topCorners = [theCube[UMM], theCube[UTL], theCube[UTR], theCube[UBL], theCube[UBR]]
+    
+    if _doUpFaceEdgePiecesMatch(theCube):
+        return theCube, directionList
+    
     topCornerCount = topCorners.count(topCorners[FTL])
 
     while True:
