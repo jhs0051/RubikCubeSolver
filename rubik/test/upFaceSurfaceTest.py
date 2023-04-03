@@ -46,3 +46,10 @@ class UpFaceSurfaceTest(unittest.TestCase):
 
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedSolution, actualSolution)
+        
+    def test_upFaceSurface_030_AreUpEdgePiecesSolved(self):
+        cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+
+        actualResult = upFaceSurface._doUpFaceEdgePiecesMatch(cube)
+
+        self.assertTrue(actualResult)
