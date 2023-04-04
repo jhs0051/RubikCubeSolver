@@ -21,8 +21,10 @@ def solveMiddleLayer(theCube, solution) -> str:
     return solveMiddleLayer(theCube, solution)
 
 def _isMiddleLayerSolved(theCube):
-    for currentCubeFace, matchingCubeFace in [(FML, FMM), (LML, LMM), (RML, RMM), (BML, BMM)]:
-        if theCube[currentCubeFace] is not theCube[matchingCubeFace]:
+    middleLayerCubeIndexes = [(FML, FMM), (FMR, FMM), (RML, RMM), (RMR, RMM), (BML, BMM), (BMR, BMM), (LML, LMM),
+                              (LMR, LMM)]
+    for matchingCubeFace, currentCubeFace in middleLayerCubeIndexes:
+        if theCube[matchingCubeFace] != theCube[currentCubeFace]:
             return False
     return True
 
