@@ -162,4 +162,39 @@ class MiddleLayerTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+         
+    # Sad Path Tests   
+    def test_middleLayer_900_FailingCubesNowPass(self):
+        cubes = ['bfLfELcLvbcfvbELbEEcbvLbvELLfvLcbfcEfvbLffEEvfccEvvcbc',
+                 'VSmVFSSFFUUUUmVemmemUSUeUUmSmmSSUeeFVVSFVmFFVVVSFeeFee',
+                 'XxXGJXxJTJxxJxXGGyXyJyGJGJyXyGxyXTGTxGGTTXyTyJyxxXTJTT',
+                 'J3x33hh3xhB3xbxJB3BhbbxxJ33hxxBBBBJbxbhJJhbJB3bBbhJJhb'
+                 ]
+        for cube in cubes:
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+
+            expectResult = {}
+            expectResult['status'] = 'ok'
+
+            actualResult = solve.solve(parms)
+
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = rotate(rotatedCube).get('cube')
+
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FML, FMM, FMR, FBL, FBM, FBR],
+                "right": [RML, RMM, RMR, RBL, RBM, RBR],
+                "back": [BML, BMM, BMR, BBL, BBM, BBR],
+                "left": [LML, LMM, LMR, LBL, LBM, LBR]
+            }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
