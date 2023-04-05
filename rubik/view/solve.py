@@ -41,7 +41,7 @@ def _getIntegrity(theCube, solution):
     hashToHex = sha256Hash.hexdigest()
     hashStartingPoint = random.randint(0, len(hashToHex) - 8)
 
-    return hashToHex
+    return hashToHex[hashStartingPoint:hashStartingPoint + 8]
 
 def _solveValidity(theCube, rotationList, parms):
     result = {}
