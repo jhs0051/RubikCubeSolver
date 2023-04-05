@@ -39,9 +39,9 @@ def _getIntegrity(theCube, solution):
     itemToTokenize = theCube + solution + myAUName
     sha256Hash = hashlib.sha256(itemToTokenize.encode())
     hashToHex = sha256Hash.hexdigest()
-    hashStartingPoint = random.randint(0, len(hashToHex) - 8)
+    hashStartingPoint = random.randint(startingHash, len(hashToHex) - hashLength)
 
-    return hashToHex[hashStartingPoint:hashStartingPoint + 8]
+    return hashToHex[hashStartingPoint:hashStartingPoint + hashLength]
 
 def _solveValidity(theCube, rotationList, parms):
     result = {}
