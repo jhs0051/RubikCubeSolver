@@ -1,27 +1,22 @@
 from unittest import TestCase
 from rubik.view.solve import solve, _getIntegrity
-from rubik.view.rotate import rotate
  
 
 class SolveTest(TestCase):
     # Happy Path
-    # Uncomment this test to run an integrity test. Just return hashToHex instead of hashToHex[pickRandomString:pickRandomString + 8]
-    '''def test010_solve_Integrity(self):
+    def test010_solve_Integrity(self):
         parms = {}
         parms['cube'] = 'y7ea8RR8eR8y7aR87RaRya7y7ya7R7ee788eae88Reee78ayyyyRaa'
 
         actualResult = solve(parms)
 
-        rotatedCube = {}
-        rotatedCube['cube'] = parms.get('cube')
-        rotatedCube['dir'] = actualResult.get('solution')
+        theCube = parms.get('cube')
+        solution = actualResult.get('solution')
 
-        expectedIntegrity = _getIntegrity(parms['cube'], rotatedCube['dir'])
-        actualIntegrity = '520159208310f840fbec95d5e91807cbca53c2591fcfd00349080ad0b701fb19'
-        manualTestIntegrityValue = '2591fcfd'
+        expectedToken = '520159208310f840fbec95d5e91807cbca53c2591fcfd00349080ad0b701fb19'
 
-        self.assertEqual(expectedIntegrity, actualIntegrity)
-        self.assertIn(manualTestIntegrityValue, actualIntegrity)'''
+        actualToken = _getIntegrity(theCube, solution)
+        self.assertEqual(expectedToken, actualToken)
         
     # Sad Path
     def test900_solve_ErrorOnShortCube(self):
