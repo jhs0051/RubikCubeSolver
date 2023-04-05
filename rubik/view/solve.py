@@ -30,7 +30,7 @@ def solve(parms):
     
         result['solution'] = finalSolution
         result['status'] = 'ok'    
-        result['integrity'] = _getIntegrity(theCube, rotationList)                     #iteration 5
+        result['integrity'] = _getIntegrity(parms.get('cube'), finalSolution)                     #iteration 5
                      
     return result
 
@@ -39,9 +39,9 @@ def _getIntegrity(theCube, solution):
     itemToTokenize = theCube + solution + myAUName
     sha256Hash = hashlib.sha256(itemToTokenize.encode())
     hashToHex = sha256Hash.hexdigest()
-    pickRandomString = random.randint(FTL, len(hashToHex) - FBR)
+    hashStartingPoint = random.randint(0, len(hashToHex) - 8)
 
-    return hashToHex[pickRandomString:pickRandomString + 8]
+    return hashToHex
 
 def _solveValidity(theCube, rotationList, parms):
     result = {}
