@@ -102,4 +102,39 @@ class UpFaceSurfaceTest(unittest.TestCase):
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
             
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            
+    def test_upFaceCross_060_SolveUpFaceSurfaceWithFailingTestCubes(self):
+        cubes = ['DQZDtZQtQKKQQKBBDZBKttZKKBBKKtZQttBDDBtDDtQDBZQZZBZKQD',
+                 'ZZfYYu55YY5fmmmm5ZmuuYufu5YmfYYZZZmZ5ZuufZ5fmuu5f5Yfmf',
+                 '27a2T7Tsa7asDD77DT7ssa77sDDDas22TTsaTDDTa27s222DTsTaa2'
+                 ]
+        for cube in cubes:
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+
+            expectResult = {}
+            expectResult['status'] = 'ok'
+
+            actualResult = solve.solve(parms)
+
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = rotate(rotatedCube).get('cube')
+
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FML, FMM, FMR, FBL, FBM, FBR],
+                "right": [RML, RMM, RMR, RBL, RBM, RBR],
+                "back": [BML, BMM, BMR, BBL, BBM, BBR],
+                "left": [LML, LMM, LMR, LBL, LBM, LBR],
+                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
+            }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
+
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
