@@ -35,7 +35,7 @@ def solve(parms):
     return result
 
 def _getIntegrity(theCube, solution):
-    myAUName = "Jhs0051"
+    myAUName = "jhs0051"
     itemToTokenize = theCube + solution + myAUName
     sha256Hash = hashlib.sha256(itemToTokenize.encode())
     hashToHex = sha256Hash.hexdigest()
