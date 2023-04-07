@@ -18,7 +18,7 @@ class SolveTest(TestCase):
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
         
-    '''def test020_solve_Integrity(self):
+    def test020_solve_Integrity(self):
         parms = {}
         parms['cube'] = 'poap344343343aOOaoaaaoo3poo4OOaOOOpO3oo44O34p3poap4ppa'
 
@@ -27,10 +27,10 @@ class SolveTest(TestCase):
         theCube = parms.get('cube')
         solution = actualResult.get('solution')
 
-        expectedToken = 'e6d515a906d2765ad1c9c74f4cc2be8a6e2f86833c3be5103ceccad3f84c8abd'
+        expectedToken = 'a0ffa96160cca7eded8539660051ea2579a403c5074717628e91a823bb642e80'
 
         actualToken = _getIntegrity(theCube, solution)
-        self.assertIn(actualToken, expectedToken)'''
+        self.assertIn(actualToken, expectedToken)
         
     # Sad Path
     def test900_solve_ErrorOnShortCube(self):
