@@ -44,16 +44,16 @@ def _makeBottomDaisy(theCube):
     middleCubeIndexes = [theCube[FMM], theCube[BMM], theCube[LMM], theCube[RMM]]
     currentCubeIndex = None
 
-    for edgePiece, cornerPiece in enumerate(bottomDaisyListOfTupleCombos):
-        if theCube[cornerPiece[FTL]] is theCube[DMM]:
-            if theCube[cornerPiece[FTM]] != middleCubeIndexes[edgePiece]:
-                directionList += {'F': 'FF', 'B': 'BB', 'L': 'LL', 'R': 'RR'}[cornerPiece[FTR]]
-                currentCubeIndex = {'F': FTM, 'B': BTM, 'L': LTM, 'R': RTM}[cornerPiece[FTR]]
+    for edgePiece, middlePiece in enumerate(bottomDaisyListOfTupleCombos):
+        if theCube[middlePiece[FTL]] is theCube[DMM]:
+            if theCube[middlePiece[FTM]] != middleCubeIndexes[edgePiece]:
+                directionList += {'F': 'FF', 'B': 'BB', 'L': 'LL', 'R': 'RR'}[middlePiece[FTR]]
+                currentCubeIndex = {'F': FTM, 'B': BTM, 'L': LTM, 'R': RTM}[middlePiece[FTR]]
                 theCube = rotate({cube: theCube, direction: directionList})[cube]
                 break
-        elif theCube[cornerPiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[cornerPiece[FTM]] == theCube[DMM]:
-            directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[cornerPiece[FTR]]
-            currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[cornerPiece[FTR]]
+        elif theCube[middlePiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[middlePiece[FTM]] == theCube[DMM]:
+            directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[middlePiece[FTR]]
+            currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[middlePiece[FTR]]
             theCube = rotate({cube: theCube, direction: directionList})[cube]
             break
 
