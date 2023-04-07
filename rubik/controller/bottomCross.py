@@ -59,10 +59,32 @@ def _makeBottomDaisy(theCube):
 
     return theCube, currentCubeIndex, directionList
 
+def _centerCubePieceIsNotInCorrectPosition(theCube):
+    cube = 'cube'
+    direction = 'dir'
+    directionList = ''
+    bottomDaisyListOfTupleCombos = [(DTM, FBM, 'F'), (DBM, BBM, 'B'), (DML, LBM, 'L'), (DMR, RBM, 'R')]
+    currentCubeIndex = None
+    centerCube = FBM
+
+    for edgePiece, middlePiece in enumerate(bottomDaisyListOfTupleCombos):
+        if theCube[centerCube] is theCube[DMM]:
+            directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[middlePiece[FTR]]
+            currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[middlePiece[FTR]]
+            theCube = rotate({cube: theCube, direction: directionList})[cube]
+            break
+        centerCube += RTL
+        if centerCube > LBR:
+            break
+    return theCube, currentCubeIndex, directionList
+
 def _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
     cube = 'cube'
     direction = 'dir'
     directionList = ''
+    
+    if currentCubeIndex is None:
+        theCube, currentCubeIndex, directionList = _centerCubePieceIsNotInCorrectPosition(theCube)
 
     while theCube[currentCubeIndex] is not theCube[currentCubeIndex + FML]:
         directionList += 'U'
