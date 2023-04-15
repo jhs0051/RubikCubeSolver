@@ -13,7 +13,7 @@ from rubik.controller import upperLayer
 class UpperLayerTest(unittest.TestCase):
 
     # Happy Path Tests  
-    def test_upFaceSurface_000_SolvedCubeShouldReturnOkStatus(self):
+    def test_upperLayer_000_SolvedCubeShouldReturnOkStatus(self):
         parms = {}
         parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
         parms['dir'] = 'R'
@@ -22,4 +22,4 @@ class UpperLayerTest(unittest.TestCase):
         expectedResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))_
