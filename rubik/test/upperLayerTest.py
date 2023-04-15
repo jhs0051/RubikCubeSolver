@@ -22,4 +22,5 @@ class UpperLayerTest(unittest.TestCase):
         expectedResult['status'] = 'ok'
 
         actualResult = solve.solve(parms)
-        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))_
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+        
