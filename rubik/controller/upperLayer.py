@@ -26,3 +26,6 @@ def _isTopLayerSolved(theCube):
             or topLayerPieces[RTL:RML].count(theCube[LMM]) != FML:
         return False
     return True
+
+def _areTopLayerEdgePiecesSolved(self):
+    pass
