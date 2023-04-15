@@ -10,3 +10,6 @@ def solveUpperLayer(theCube: Cube) -> str:
         output: the rotations required to solve the upper layer  
     '''  
     return 'D'      #TODO:  remove this stubbed value
+
+def _isTopLayerSolved(self):
+    pass

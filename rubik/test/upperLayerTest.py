@@ -24,3 +24,11 @@ class UpperLayerTest(unittest.TestCase):
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
+    def test_upperLayer_010_upperLayerNotSolvedReturnsFalse(self):
+        cube = 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww'
+
+        expectedResult = False
+
+        actualResult = upperLayer._isTopLayerSolved(cube)
+        self.assertEqual(expectedResult, actualResult)
+        
