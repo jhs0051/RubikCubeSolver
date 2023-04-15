@@ -41,4 +41,11 @@ class UpperLayerTest(unittest.TestCase):
 
             actualResult = upperLayer._isTopLayerSolved(cube)
             self.assertEqual(expectedResult, actualResult)
+            
+    def test_upperLayer_015_upperLayerSolvedReturnsTrue(self):
+        cube = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
+        expectedResult = True
+
+        actualResult = upperLayer._isTopLayerSolved(cube)
+        self.assertEqual(expectedResult, actualResult)
         
