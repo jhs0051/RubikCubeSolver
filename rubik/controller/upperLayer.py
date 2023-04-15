@@ -27,5 +27,8 @@ def _isTopLayerSolved(theCube):
         return False
     return True
 
-def _areTopLayerEdgePiecesSolved(self):
-    pass
+def _areTopLayerEdgePiecesSolved(theCube):
+    if theCube[FTL] != theCube[FTR] or theCube[RTL] != theCube[RTR] or theCube[BTL] != theCube[BTR] \
+        or theCube[LTL] != theCube[LTR]:
+        return False
+    return True
