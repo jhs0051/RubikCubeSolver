@@ -33,5 +33,11 @@ def _areTopLayerEdgePiecesSolved(theCube):
         return False
     return True
 
-def _alignTopRow(self):
-    pass
+def _alignTopRow(theCube):
+    if theCube[LTL] is theCube[LTM] is theCube[LTR]:
+        return FTM
+    elif theCube[FTL] is theCube[FTM] is theCube[FTR]:
+        return FTR
+    elif theCube[RTL] is theCube[RTM] is theCube[RTR]:
+        return FML
+    return FTL
