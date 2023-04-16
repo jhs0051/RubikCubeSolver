@@ -68,3 +68,12 @@ class UpperLayerTest(unittest.TestCase):
         actualResult = upperLayer._areTopLayerEdgePiecesSolved(cube)
         self.assertEqual(expectedResult, actualResult)
         
+    def test_upperLayer_030_AlignedTopLeftFaceRowProduces1(self):
+        cube = 'rrrbbbbbggobrrrrrrogoggggggbbbooooooyyyyyyyyywwwwwwwww'
+
+        expectResult = 1
+
+        actualResult = upperLayer._alignTopRow(cube)
+        self.assertEqual(expectResult, actualResult)
+        
+        

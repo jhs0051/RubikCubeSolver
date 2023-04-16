@@ -32,3 +32,6 @@ def _areTopLayerEdgePiecesSolved(theCube):
         or theCube[LTL] != theCube[LTR]:
         return False
     return True
+
+def _alignTopRow(self):
+    pass
