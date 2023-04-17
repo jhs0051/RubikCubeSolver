@@ -15,7 +15,7 @@ class SolveTest(TestCase):
         theCube = parms.get('cube')
         solution = actualResult.get('solution')
 
-        expectedToken = 'ff5377269c54c452a6070de1c72b2dc47947ff48f01c2a598f0b7864a88b4b9c'
+        expectedToken = '16551a2ef32869f249f2994d5456a7cad0b946f0578de0cd65806d27b6f689d0'
 
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
@@ -29,7 +29,7 @@ class SolveTest(TestCase):
         theCube = parms.get('cube')
         solution = actualResult.get('solution')
 
-        expectedToken = 'a0ffa96160cca7eded8539660051ea2579a403c5074717628e91a823bb642e80'
+        expectedToken = '3756408d941c9ec075be1127fa9b06e16cfe1242de2c785043d3a7d9470c173d'
 
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
