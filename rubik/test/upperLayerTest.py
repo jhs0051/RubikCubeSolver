@@ -213,3 +213,14 @@ class UpperLayerTest(unittest.TestCase):
         actualCube, actualRotations = upperLayer._rotateTopRow(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
+        
+    def test_upperLayer_080_SolveUpperLayerProducesSameSolutionAsComponents(self): 
+        cube = 'yyybbbbbbroroooooobrbyyyyyyoborrrrrrwwwwwwwwwggggggggg'
+        rotations = ''
+
+        expectedCube = 'bbbbbbbbboooooooooyyyyyyyyyrrrrrrrrrwwwwwwwwwggggggggg'
+        expectedRotations = 'UURuRURURuruRRRuRURURuruRR'
+
+        actualCube, actualRotations = upperLayer.solveUpperLayer(cube, rotations)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedRotations, actualRotations)
