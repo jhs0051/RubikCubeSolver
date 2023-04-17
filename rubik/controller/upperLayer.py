@@ -50,6 +50,9 @@ def _doTopLayerSidesMatch(theCube):
 
     return all(len(set(edges)) is FTM for edges in edgePairings)
 
+def _alignTopEdgePieces(self):
+    pass
+
 def _rotateTopEdge(theCube, directionList):
     if _areTopLayerEdgePiecesSolved(theCube):
         return theCube, directionList
