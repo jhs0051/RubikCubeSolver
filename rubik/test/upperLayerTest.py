@@ -108,7 +108,7 @@ class UpperLayerTest(unittest.TestCase):
         actualResult = upperLayer._doTopLayerSidesMatch(cube)
         self.assertEqual(expectedResult, actualResult) 
         
-    def test_upperLayer_040_TopLayerNotSolvedWithNonMatchingSidesReturnsFalse(self): 
+    def test_upperLayer_045_TopLayerNotSolvedWithNonMatchingSidesReturnsFalse(self): 
         cube = 'NTGGlNTlG444444AAAllGTTGlNlAl4AATGANlNNGGGTNTA4TlNT4AN'
 
         expectedResult = False
