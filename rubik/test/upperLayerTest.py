@@ -100,7 +100,7 @@ class UpperLayerTest(unittest.TestCase):
         actualResult = upperLayer._alignTopRow(cube)
         self.assertEqual(expectResult, actualResult)
         
-    def test_upperLayer_040_TopLayerSolvesMatchesSidesReturnsTrue(self): 
+    def test_upperLayer_040_TopLayerSolvedWithMatchingSidesReturnsTrue(self): 
         cube = 'ggggrggggrrrrrrgrrbbbbbbobbooooobooowwwwywwwwyyyyyywyy'
 
         expectedResult = True
