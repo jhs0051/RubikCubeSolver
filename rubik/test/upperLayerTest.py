@@ -116,3 +116,14 @@ class UpperLayerTest(unittest.TestCase):
         actualResult = upperLayer._doTopLayerSidesMatch(cube)
         self.assertEqual(expectedResult, actualResult)
         
+    def test_upperLayer_050_RotateTopEdgeProducesRotationsToSolveTopEdges(self): 
+        cube = 'orrbbbbbbgobrrrrrrrgoggggggbbgooooooyyyyyyyyywwwwwwwww'
+        rotations = ''
+
+        expectedCube = 'rorbbbbbbgggrrrrrroboggggggbrbooooooyyyyyyyyywwwwwwwww'
+        expectedRotations = 'rFrBBRfrBBRRUrFrBBRfrBBRR'
+
+        actualCube, actualRotations = upperLayer._rotateTopEdge(cube, rotations)
+        self.assertEqual(expectedCube, actualCube)
+        self.assertEqual(expectedRotations, actualRotations)
+        

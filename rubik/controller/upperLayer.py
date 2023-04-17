@@ -49,3 +49,6 @@ def _doTopLayerSidesMatch(theCube):
     edgePairings = [edgePieces[FTL:FML], edgePieces[FML:FBL], edgePieces[FBL:RTL], edgePieces[RTL:RML]]
 
     return all(len(set(edges)) is FTM for edges in edgePairings)
+
+def _rotateTopEdge(self):
+    pass
