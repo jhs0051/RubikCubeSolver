@@ -109,12 +109,12 @@ class UpFaceCrossTest(unittest.TestCase):
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FML, FMM, FMR, FBL, FBM, FBR],
-                "right": [RML, RMM, RMR, RBL, RBM, RBR],
-                "back": [BML, BMM, BMR, BBL, BBM, BBR],
-                "left": [LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTM, UML, UMM, UMR, UBM]
+                "Bottom Face": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face": [FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face": [RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face": [BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face": [LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face": [UTM, UML, UMM, UMR, UBM]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
