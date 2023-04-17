@@ -69,3 +69,6 @@ def _rotateTopEdge(theCube, directionList):
     theCube = rotate({'cube': theCube, 'dir': 'U' * currentCubeIndex + 'rFrBBRfrBBRR'})['cube']
 
     return _rotateTopEdge(theCube, directionList)
+
+def _rotateTopRow(self):
+    pass
