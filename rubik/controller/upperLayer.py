@@ -50,5 +50,13 @@ def _doTopLayerSidesMatch(theCube):
 
     return all(len(set(edges)) is FTM for edges in edgePairings)
 
-def _rotateTopEdge(self):
-    pass
+def _rotateTopEdge(theCube, directionList):
+    if _areTopLayerEdgePiecesSolved(theCube):
+        return theCube, directionList
+    
+    rotationCount = _alignTopRow(theCube)
+
+    directionList += 'U' * rotationCount + 'rFrBBRfrBBRR'
+    theCube = rotate({'cube': theCube, 'dir': 'U' * rotationCount + 'rFrBBRfrBBRR'})['cube']
+
+    return _rotateTopEdge(theCube, directionList)
