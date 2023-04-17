@@ -158,11 +158,11 @@ class BottomLayerTest(unittest.TestCase):
             actualCube = rotate(rotatedCube).get('cube')
     
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FBL, FBM, FBR],
-                "right": [RBL, RBM, RBR],
-                "back": [BBL, BBM, BBR],
-                "left": [LBL, LBM, LBR]
+                "Bottom Face": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face": [FBL, FBM, FBR],
+                "Right  Face": [RBL, RBM, RBR],
+                "Back   Face": [BBL, BBM, BBR],
+                "Left   Face": [LBL, LBM, LBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
