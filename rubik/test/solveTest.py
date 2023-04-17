@@ -34,6 +34,51 @@ class SolveTest(TestCase):
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
         
+    def test030_unsolvedCubesFromIteration1AreFullySolved(self):
+        cubes = ['Q5KQQKQfftQKtfyyyQ5f5KKfytfK55Ktf5tyfytQyttKyt5K55QQyf',
+                 '33vvvyDrrtDyDrtyrrDvvv3vv3tDDtDDy33ytrvty3rrr3t3ytyDty',
+                 'cXEdrXrrXr1cr1E1EX1cdXd1ddXEd1dEXr1EcrdEcrr1cXEdcXc1cE',
+                 'dVVdTTTVWeTVddTedVlVelVVeeVTeWeelWedlddWlWTlllWTTWWdlW',
+                 'GGAA9LL9ALkaAAAkLL9aAkLLa99G9akaGkGA9GGkGaLLGkA99kaaak',
+                 'zooz3I33myzImzm3z33yz3o3zmoyIIzmoIoIo3zoIyoymmIymyImyy',
+                 'yQhhnh8nh00yyy8008QyhQ8nQynyQ8h000hQnnn0Q8hy8yQn8hnQ80',
+                 'xx3IFFII444PPPxFFPF3I333FFPFI3Ixx33xx4IP4P44P3FxPIxI44',
+                 '70h0qGhGqGGGzz77hzqz7hh00qhGzqz770q0hqzhG70hz7qG70Gz0q',
+                 'OoNbbNNbPbiOiNNbObiiioOOPiObNiPPPPPoNbNOiOPboONoooooPi',
+                 'UU66UUKYi0KiiY0KKYKK6iKYU6YKYii00iU60iYU6Y00UY606i0UK6',
+                 'IMMIMiMiMIMIufiImfmImfimumifIufIuuufiMimmuifumImfuifMM',
+                 'ggt88I8c8gIIcIcII8ttqgcqqtgI8c8ggqggccctq8qqctqtttq8II'
+                ]
+        for cube in cubes:
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+
+            expectResult = {}
+            expectResult['status'] = 'ok'
+
+            actualResult = solve(parms)
+
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = rotate(rotatedCube).get('cube')
+
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+            }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
+
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        
     # Sad Path
     def test900_solve_ErrorOnShortCube(self):
         parms = {}
