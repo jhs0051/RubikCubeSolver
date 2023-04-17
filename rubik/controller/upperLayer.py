@@ -41,3 +41,6 @@ def _alignTopRow(theCube):
     elif theCube[RTL] is theCube[RTM] is theCube[RTR]:
         return FML
     return FTL
+
+def _doTopLayerSidesMatch(self):
+    pass
