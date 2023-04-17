@@ -42,5 +42,10 @@ def _alignTopRow(theCube):
         return FML
     return FTL
 
-def _doTopLayerSidesMatch(self):
-    pass
+def _doTopLayerSidesMatch(theCube):
+    edgePieces = [theCube[FTL], theCube[FTM], theCube[FTR], theCube[RTL], theCube[RTM], theCube[RTR], theCube[BTL],
+                  theCube[BTM], theCube[BTR], theCube[LTL], theCube[LTM], theCube[LTR]]
+
+    edgePairings = [edgePieces[FTL:FML], edgePieces[FML:FBL], edgePieces[FBL:RTL], edgePieces[RTL:RML]]
+
+    return all(len(set(edges)) is FTM for edges in edgePairings)
