@@ -63,9 +63,9 @@ def _rotateTopEdge(theCube, directionList):
     if _areTopLayerEdgePiecesSolved(theCube):
         return theCube, directionList
     
-    rotationCount = _alignTopRow(theCube)
+    currentCubeIndex = _alignTopEdgePieces(theCube)
 
-    directionList += 'U' * rotationCount + 'rFrBBRfrBBRR'
-    theCube = rotate({'cube': theCube, 'dir': 'U' * rotationCount + 'rFrBBRfrBBRR'})['cube']
+    directionList += 'U' * currentCubeIndex + 'rFrBBRfrBBRR'
+    theCube = rotate({'cube': theCube, 'dir': 'U' * currentCubeIndex + 'rFrBBRfrBBRR'})['cube']
 
     return _rotateTopEdge(theCube, directionList)
