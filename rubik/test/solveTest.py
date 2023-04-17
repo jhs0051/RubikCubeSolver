@@ -1,4 +1,6 @@
 from unittest import TestCase
+from rubik.view.rotate import rotate
+from rubik.model.constants import *
 from rubik.view.solve import solve, _getIntegrity
  
 
