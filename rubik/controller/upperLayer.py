@@ -70,5 +70,13 @@ def _rotateTopEdge(theCube, directionList):
 
     return _rotateTopEdge(theCube, directionList)
 
-def _rotateTopRow(self):
-    pass
+def _rotateTopRow(theCube, directionList):
+    if _doTopLayerSidesMatch(theCube):
+        return theCube, directionList
+
+    currentCubeIndex = _alignTopRow(theCube)
+
+    directionList += 'U' * currentCubeIndex + 'RuRURURuruRR'
+    theCube = rotate({'cube': theCube, 'dir': 'U' * currentCubeIndex + 'RuRURURuruRR'})['cube']
+
+    return _rotateTopRow(theCube, directionList)
