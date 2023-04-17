@@ -6,7 +6,7 @@ from rubik.view.solve import solve, _getIntegrity
 
 class SolveTest(TestCase):
     # Happy Path
-    def test010_solve_Integrity(self):
+    def test_010_solve_Integrity(self):
         parms = {}
         parms['cube'] = 'ccpattYcpYaaYaatcYotaoootcocYtppYpptopYoYtaaoapcYcoctp'
 
@@ -20,7 +20,7 @@ class SolveTest(TestCase):
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
         
-    def test020_solve_Integrity(self):
+    def test_020_solve_Integrity(self):
         parms = {}
         parms['cube'] = 'poap344343343aOOaoaaaoo3poo4OOaOOOpO3oo44O34p3poap4ppa'
 
@@ -34,7 +34,7 @@ class SolveTest(TestCase):
         actualToken = _getIntegrity(theCube, solution)
         self.assertIn(actualToken, expectedToken)
         
-    def test030_unsolvedCubesFromIteration1AreFullySolved(self):
+    def test_030_unsolvedCubesFromIteration1AreFullySolved(self):
         cubes = ['Q5KQQKQfftQKtfyyyQ5f5KKfytfK55Ktf5tyfytQyttKyt5K55QQyf',
                  '33vvvyDrrtDyDrtyrrDvvv3vv3tDDtDDy33ytrvty3rrr3t3ytyDty',
                  'cXEdrXrrXr1cr1E1EX1cdXd1ddXEd1dEXr1EcrdEcrr1cXEdcXc1cE',
@@ -78,44 +78,96 @@ class SolveTest(TestCase):
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            
+    def test_040_unsolvedCubesFromIteration2AreFullySolved(self):
+        cubes = ['bwbWbbwUUVffwVbWWWwVwVUfUUVfVWbfbWfVbWUwwwfUwUVVUWfbWf',
+                 'BFeBBzFBzzzxeeKKzxKeFFzKKxBBBxxKxeezKBBKxFeexeFFxFKFzz',
+                 'Co3ooo773B7UCUBUUB73CC7o77ooC7UB3UCUBB3733BBoCBoUC3CU3',
+                 'N4ra422r4hrhhaN2arrhh4rN2h44NrahrNaaN42rN2a2N4hh422aNa',
+                 'uHphhppNhHWuWuupuhWhhWWhNNhuuWppHuWWHuHHHHNpWNhHNNNNpp',
+                 'MvdbuubuubRvRvbRudMRuRbdbvMRvuMdMbdvvvuMMdduRRddbRMvbM',
+                 '42RRR624b4b6hhb26R2R6222h4bRbh4b6644bhhR46Rhbhh4R622b6',
+                 'zSzZZZNNJZJJSzNNXNSZZzNSJXXzSNzJXZXXXzZNXZSJSzJXzSJJNS',
+                 '44NN47MNN7M4MxNxMMN2227747774Mx2xx47MM22Nx2x2x74NM4N2x',
+                 'v3DccJDDv3366JJ3DDDc6c6633Jvvcv3v6Jc3DJ3D6JDcJJcvv6vc6',
+                 'RN1NNUXUUR1ssUXXsR1XUN1Us1NXUNXRRURRNRUNXRssXN11ss1sX1',
+                 'AA11YYQA3QHAA13Y1A3YHQQ3HH11YY1AYYA1Y3QH3QHQ3HHA3HQ31Q',
+                 '5XzXKyXyz55yKzgXKgggKzgzXKK55yKyzy5Kzy5yXzKggzXgg5XX5y',
+                 'FFGGMFVTTMTTZVGZVFZFMMFMZTVVZGVZZGGFTVMMTMVTZTZFFGGMVG',
+                 'LgCCdCZgdmmmLmZZCCLCZdLZLLCggCmgggLLdmZdZdmZdgLmZCddmg',
+                 'HHgoVVoVHAHuuooouAgHVuHAVguoVgHgAggAugVouuAoVHAuAAgHVo',
+                 'etYeDNYNAettAtYDDYDDteeAtYeNNteAtAAAetNeYNYYADDNDNYNAD',
+                 'Www3WwWWw33u3MWMMw3uMuBB3MMBwMu3BB33wMBBwWuWWuMWuuwuBB',
+                 '3YotuuYoovv3ttY3YuY3YoovYov3uutY3tYvuuovvotuto3tv33utv',
+                 'WLWLV00oLVW0VLLWWoVLLVMW0MWVoVVoWoMM00oVWMoMLL0Mo0oM0M'
+                ]
+        for cube in cubes:
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+
+            expectResult = {}
+            expectResult['status'] = 'ok'
+
+            actualResult = solve(parms)
+
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = rotate(rotatedCube).get('cube')
+
+            cubeFaces = {
+                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+            }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
+
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
         
     # Sad Path
-    def test900_solve_ErrorOnShortCube(self):
+    def test_900_solve_ErrorOnShortCube(self):
         parms = {}
         parms['cube'] = 'w5i1w5i1S1iwa5iaSSSi1aa5iw15wSSia5waw1i5'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
-    def test910_solve_ErrorOnLongCube(self):
+    def test_910_solve_ErrorOnLongCube(self):
         parms = {}
         parms['cube'] = 'PFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPUPrFLLFUPPFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPU'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
-    def test920_solve_ErrorOnCubeWithIllegalCharacters(self):
+    def test_920_solve_ErrorOnCubeWithIllegalCharacters(self):
         parms = {}
         parms['cube'] = 'bbbbbbbbb*********rrrrrrrrroooooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
-    def test930_solve_ErrorOnMoreThan9OfAColor(self):
+    def test_930_solve_ErrorOnMoreThan9OfAColor(self):
         parms = {}
         parms['cube'] = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwwb'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
-    def test940_solve_ErrorOnNonUniqueMiddleCharacter(self):
+    def test_940_solve_ErrorOnNonUniqueMiddleCharacter(self):
         parms = {}
         parms['cube'] = 'rbbbbbbbbrrrrbrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
         result = solve(parms)
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
-    def test950_solve_ErrorOnInvalidKey(self):
+    def test_950_solve_ErrorOnInvalidKey(self):
         parms = {}
         parms['cube'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr'
         parms['extra'] = 'key'
