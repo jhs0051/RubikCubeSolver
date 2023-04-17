@@ -235,3 +235,41 @@ class UpperLayerTest(unittest.TestCase):
         actualCube, actualRotations = upperLayer.solveUpperLayer(cube, rotations)
         self.assertEqual(expectedCube, actualCube)
         self.assertEqual(expectedRotations, actualRotations)
+        
+    def test_upperLayer_090_SolveTopLayer(self):
+        cubes = ['orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww',
+                 'U2ig99iU9F9iUgFUiFggF92F92292F2FUgg2U99gUi2U2gFgiiFUii',
+                 'kauEgkaEkEavvukggkkkgaauEEavuaakguvuugavEvEEgvuvgvuEkg',
+                 'cxlM9MM9c99Kclx9Kc9Kc9MxlKKllxcxxllKMMxcclMKKxcxMK9Ml9',
+                 'C0hhXX0XC22CC2C22h22y20000hhyXyyy2yyX00CChyhXChXXhX0Cy',
+                 'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522']
+        for cube in cubes:
+            parms = {}
+            parms['op'] = 'solve'
+            parms['cube'] = cube
+
+            expectResult = {}
+            expectResult['status'] = 'ok'
+
+            actualResult = solve.solve(parms)
+
+            rotatedCube = {}
+            rotatedCube['cube'] = parms.get('cube')
+            rotatedCube['dir'] = actualResult.get('solution')
+            actualCube = rotate(rotatedCube).get('cube')
+
+            cubeFaces = {
+                "Bottom Face":  [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face":  [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face":  [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face":  [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face":  [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face":  [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
+            }
+
+            for cubeFaces, cubeIndexes in cubeFaces.items():
+                faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
+                self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
+
+            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            
