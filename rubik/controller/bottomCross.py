@@ -46,12 +46,12 @@ def _makeBottomDaisy(theCube):
 
     for edgePiece, middlePiece in enumerate(bottomDaisyListOfTupleCombos):
         if theCube[middlePiece[FTL]] is theCube[DMM]:
-            if theCube[middlePiece[FTM]] != middleCubeIndexes[edgePiece]:
+            if theCube[middlePiece[FTM]] is not middleCubeIndexes[edgePiece]:
                 directionList += {'F': 'FF', 'B': 'BB', 'L': 'LL', 'R': 'RR'}[middlePiece[FTR]]
                 currentCubeIndex = {'F': FTM, 'B': BTM, 'L': LTM, 'R': RTM}[middlePiece[FTR]]
                 theCube = rotate({cube: theCube, direction: directionList})[cube]
                 break
-        elif theCube[middlePiece[FTL]] == middleCubeIndexes[edgePiece] and theCube[middlePiece[FTM]] == theCube[DMM]:
+        elif theCube[middlePiece[FTL]] is middleCubeIndexes[edgePiece] and theCube[middlePiece[FTM]] is theCube[DMM]:
             directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[middlePiece[FTR]]
             currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[middlePiece[FTR]]
             theCube = rotate({cube: theCube, direction: directionList})[cube]
@@ -93,7 +93,7 @@ def _rotateTopCornerPieceToBottomCross(theCube, currentCubeIndex):
         directionList += 'U'
         theCube = rotate({cube: theCube, direction: 'U'})[cube]
         currentCubeIndex = currentCubeIndex - RTL \
-            if currentCubeIndex != FTM \
+            if currentCubeIndex is not FTM \
             else LTM
 
     return theCube, currentCubeIndex, directionList
