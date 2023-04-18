@@ -84,7 +84,8 @@ class BottomCrossTest(unittest.TestCase):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'yoyoyggwbogrrobooowooywbbwrwybwrwgbwgbbrgyrggrrwrbyygy'
-        cube, rotations = parms['cube'], ''
+        cube = parms['cube']
+        rotations = ''
 
         expectResult = {}
         expectedRotations = 'LbUBUULLBUbUFFfuFUUUBBUUURR'
@@ -107,8 +108,9 @@ class BottomCrossTest(unittest.TestCase):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'gwgywyyrrooroywyyrwogbgrwwwryobbwbbobgbgobbrywgggrrooy'
-        cube, rotations = parms['cube'], ''
-
+        cube = parms['cube']
+        rotations = ''
+        
         expectResult = {}
         expectedRotations = 'LUlUUULLluLFFFRurfBB'
         expectResult['status'] = 'ok'
@@ -130,7 +132,8 @@ class BottomCrossTest(unittest.TestCase):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
-        cube, rotations = parms['cube'], ''
+        cube = parms['cube']
+        rotations = ''
         
         expectResult = {}
         expectedRotations = 'RUrUUURRruRUUFFLUlUUULLFRurfBB'
@@ -153,7 +156,8 @@ class BottomCrossTest(unittest.TestCase):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'rgwgggbwbbyoywwgbrgyborbowwrbygyoorwyryyboowgrryoorgbw'
-        cube, rotations = parms['cube'], ''
+        cube = parms['cube']
+        rotations = ''
 
         expectResult = {}
         expectedRotations = 'LLUBBBUbUFFLUlURRULL'
@@ -176,7 +180,8 @@ class BottomCrossTest(unittest.TestCase):
         parms = {}
         parms['op'] = 'solve'
         parms['cube'] = 'dk999dif7f9k9i7if77kidkfd9ffkkddiki997ddfffid7ik77ki79'
-        cube, rotations = parms['cube'], ''
+        cube = parms['cube']
+        rotations = ''
 
         expectResult = {}
         expectedRotations = 'BBUUFFLLUURRFUfLL'
