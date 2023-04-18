@@ -25,16 +25,17 @@ class UpperLayerTest(unittest.TestCase):
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     def test_upperLayer_010_upperLayerNotSolvedReturnsFalse(self):
-        cubes = ['orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww',
-                 'llKllkklleexxxKJkKJkKxkkxKkkxxJexeKKeKkJKJJelxJeeJeJll',
-                 'dPNfdttffffN55Pt55dtPNPPNd5ffttfNPN5tdfPtt55PPdddNNN5d',
-                 'uG3Uuu3YYUG8333uU3YYG888uU8YGUGG8Guu833YYUGu8U8GYUuU3Y',
-                 'O5rFor5rgooForO5gOO5rgOogOFO55Fgggro5rrg55gOFrFoOFooFF',
-                 '45G44D344EDDG55G45433DEE3EDEE5DGG5E4GGGG34D3D5333D5E5E',
-                 'sjssjjbbjKSKKKbSjbsKSSQQQSSKsjKbjKbQjsjQsQbSQSsbQSbQKs',
-                 'aJ0LJJa0MMaMMqMLLLLa00aaqa0q000MMMLLJMaJLqqqaqqJq0JJLJ',
-                 'GEPETFPFFFGnPnPnnPETPGFPFEnGFTTPPFTTTnTnEFnnGEEEGGGGTE',
-                 'sjjJPPJsPPxxJjAAjsPsJPsjxAjPsJJAAxAAAxjJxPjPJsjxsJxsxA']
+        cubes = [ 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww',
+                  'llKllkklleexxxKJkKJkKxkkxKkkxxJexeKKeKkJKJJelxJeeJeJll',
+                  'dPNfdttffffN55Pt55dtPNPPNd5ffttfNPN5tdfPtt55PPdddNNN5d',
+                  'uG3Uuu3YYUG8333uU3YYG888uU8YGUGG8Guu833YYUGu8U8GYUuU3Y',
+                  'O5rFor5rgooForO5gOO5rgOogOFO55Fgggro5rrg55gOFrFoOFooFF',
+                  '45G44D344EDDG55G45433DEE3EDEE5DGG5E4GGGG34D3D5333D5E5E',
+                  'sjssjjbbjKSKKKbSjbsKSSQQQSSKsjKbjKbQjsjQsQbSQSsbQSbQKs',
+                  'aJ0LJJa0MMaMMqMLLLLa00aaqa0q000MMMLLJMaJLqqqaqqJq0JJLJ',
+                  'GEPETFPFFFGnPnPnnPETPGFPFEnGFTTPPFTTTnTnEFnnGEEEGGGGTE',
+                  'sjjJPPJsPPxxJjAAjsPsJPsjxAjPsJJAAxAAAxjJxPjPJsjxsJxsxA'
+                ]
 
         for cube in cubes:
             expectedResult = False
@@ -51,8 +52,9 @@ class UpperLayerTest(unittest.TestCase):
         
     def test_upperLayer_020_upperLayerEdgePiecesNotSolvedReturnsFalse(self):
         cubes = ['orrbbbbbbgobrrrrrrrgoggggggbbgooooooyyyyyyyyywwwwwwwww',
-                 'bbbrrrrrrrogggggggoroooooooggrbbbbbbyyyyyyyyywwwwwwwww'
-                 'rrrbbbbbggobrrrrrrogoggggggbbbooooooyyyyyyyyywwwwwwwww']
+                 'bbbrrrrrrrogggggggoroooooooggrbbbbbbyyyyyyyyywwwwwwwww',
+                 'rrrbbbbbggobrrrrrrogoggggggbbbooooooyyyyyyyyywwwwwwwww'
+                ]
 
         for cube in cubes:
 
@@ -242,7 +244,8 @@ class UpperLayerTest(unittest.TestCase):
                  'kauEgkaEkEavvukggkkkgaauEEavuaakguvuugavEvEEgvuvgvuEkg',
                  'cxlM9MM9c99Kclx9Kc9Kc9MxlKKllxcxxllKMMxcclMKKxcxMK9Ml9',
                  'C0hhXX0XC22CC2C22h22y20000hhyXyyy2yyX00CChyhXChXXhX0Cy',
-                 'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522']
+                 'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522'
+                ]
         for cube in cubes:
             parms = {}
             parms['op'] = 'solve'
