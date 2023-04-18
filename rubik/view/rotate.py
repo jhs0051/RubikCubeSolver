@@ -33,7 +33,7 @@ def rotate(parms):
     return result
 
 def _cubeLengthValidation(encodedCube):
-    if encodedCube is None or encodedCube == '':
+    if encodedCube is None or not encodedCube:
         return False
     return True
 
