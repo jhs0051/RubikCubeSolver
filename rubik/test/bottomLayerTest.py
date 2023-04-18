@@ -141,7 +141,8 @@ class BottomLayerTest(unittest.TestCase):
                  'brwybbywogoywrwgoyrywggrbrgbwryogoobobgrybwbrroygwywgo',
                  'yyggybgyorgyoorbowrbrwgyywbgrrwwogbowgworrorobbywbywgb',
                  'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr',
-                 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory']
+                 'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
+                ]
         for cube in cubes:
             parms = {}
             parms['op'] = 'solve'
