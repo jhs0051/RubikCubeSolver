@@ -59,61 +59,61 @@ class MiddleLayerTest(unittest.TestCase):
         
     def test_middleLayer_040_CubeIndexProducesCorrectCubeIndexToRotateMiddlePieceToTopPiece(self):
         cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
-        location = BMR
+        cubeIndex = BMR
 
         expectedCube = 'rrwbbbgggrygorororwobggbbbboggwororowyowyrwgbyyywwwyyy'
-        expectedLocation = FTM
+        expectedCubeIndex = FTM
 
-        actualCube, actualLocation, _ = middleLayer._rotateMiddlePieceFromMiddleToTop(cube, location)
+        actualCube, actualCubeIndex, actualSolution = middleLayer._rotateMiddlePieceFromMiddleToTop(cube, cubeIndex)
 
         self.assertEqual(expectedCube, actualCube)
-        self.assertEqual(expectedLocation, actualLocation)
+        self.assertEqual(expectedCubeIndex, actualCubeIndex)
         
     def test_middleLayer_050_CubeIndexProducesCorrectCubeIndexToMatchTopEdgePieceWithCorrespondingPiece(self):
         cube = 'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr'
-        location = BTM
+        cubeIndex = BTM
 
         expectedCube = 'bgwogrgggrwwwwyyrboyybbryobrgwyyboorgggwoborbwooyrbywr'
-        expectedLocation = FTM
+        expectedCubeIndex = FTM
         expectedSolution = 'UU'
 
-        actualCube, actualLocation, actualSolution = middleLayer._alignEdgePieceWithAnotherTopPiece(cube, location)
+        actualCube, actualCubeIndex, actualSolution = middleLayer._alignEdgePieceWithAnotherTopPiece(cube, cubeIndex)
 
         self.assertEqual(expectedCube, actualCube)
-        self.assertEqual(expectedLocation, actualLocation)
+        self.assertEqual(expectedCubeIndex, actualCubeIndex)
         self.assertEqual(expectedSolution, actualSolution)
         
     def test_middleLayer_060_CubeIndexProducesNoRotationsToMatchTopEdgePieceWithCorrespondingPiece(self):
         cube = 'bbbbbbgggoroorororggggggbbbrorrororowwwyyywwwyyywwwyyy'
-        location = FTM
+        cubeIndex = FTM
 
         expectedCube = 'bbbbbbgggoroorororggggggbbbrorrororowwwyyywwwyyywwwyyy'
-        expectedLocation = FTM
+        expectedCubeIndex = FTM
         expectedSolution = ''
 
-        actualCube, actualLocation, actualSolution = middleLayer._alignEdgePieceWithAnotherTopPiece(cube, location)
+        actualCube, actualCubeIndex, actualSolution = middleLayer._alignEdgePieceWithAnotherTopPiece(cube, cubeIndex)
 
         self.assertEqual(expectedCube, actualCube)
-        self.assertEqual(expectedLocation, actualLocation)
+        self.assertEqual(expectedCubeIndex, actualCubeIndex)
         self.assertEqual(expectedSolution, actualSolution)
         
     def test_middleLayer_070_CubeIndexMatchesExpectedCubeIndex(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
 
-        expectedLocation = BTM
+        expectedCubeIndex = BTM
 
         actualCubeIndex = middleLayer._matchCenterMiddlePieceWithOtherMiddleCenters(cube)
 
-        self.assertEqual(expectedLocation, actualCubeIndex)
+        self.assertEqual(expectedCubeIndex, actualCubeIndex)
         
     def test_middleLayer_080_CubeIndexMatchesExpectedCubeIndex(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
 
-        expectedLocation = FMR
+        expectedCubeIndex = FMR
 
         actualCubeIndex = middleLayer._alignCenterMiddlePieceWithEdgeMiddlePieces(cube)
 
-        self.assertEqual(expectedLocation, actualCubeIndex)
+        self.assertEqual(expectedCubeIndex, actualCubeIndex)
         
     def test_middleLayer_090_CubeProducesRotationsToSolveMiddleLayer(self):
         parms = {}
