@@ -21,17 +21,17 @@ def _isTopLayerSolved(theCube):
     topLayerPieces = [theCube[FTL], theCube[FTM], theCube[FTR], theCube[RTL], theCube[RTM], theCube[RTR], theCube[BTL],
                   theCube[BTM], theCube[BTR], theCube[LTL], theCube[LTM], theCube[LTR]]
 
-    if upFacePieces.count(upFacePieces[FMM]) != len(upFacePieces) \
-            or topLayerPieces[FTL:FML].count(theCube[FMM]) != FML \
-            or topLayerPieces[FML:FBL].count(theCube[RMM]) != FML \
-            or topLayerPieces[FBL:RTL].count(theCube[BMM]) != FML \
-            or topLayerPieces[RTL:RML].count(theCube[LMM]) != FML:
+    if upFacePieces.count(upFacePieces[FMM]) is not len(upFacePieces) \
+            or topLayerPieces[FTL:FML].count(theCube[FMM]) is not FML \
+            or topLayerPieces[FML:FBL].count(theCube[RMM]) is not FML \
+            or topLayerPieces[FBL:RTL].count(theCube[BMM]) is not FML \
+            or topLayerPieces[RTL:RML].count(theCube[LMM]) is not FML:
         return False
     return True
 
 def _areTopLayerEdgePiecesSolved(theCube):
-    if theCube[FTL] != theCube[FTR] or theCube[RTL] != theCube[RTR] or theCube[BTL] != theCube[BTR] \
-        or theCube[LTL] != theCube[LTR]:
+    if theCube[FTL] is not theCube[FTR] or theCube[RTL] is not theCube[RTR] or theCube[BTL] is not theCube[BTR] \
+        or theCube[LTL] is not theCube[LTR]:
         return False
     return True
 
