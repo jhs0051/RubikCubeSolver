@@ -69,6 +69,9 @@ def _centerCubePieceIsNotInCorrectPosition(theCube):
 
     for edgePiece, middlePiece in enumerate(bottomDaisyListOfTupleCombos):
         if theCube[centerCube] is theCube[DMM]:
+            if edgePiece is FTM:
+                currentCubeIndex = -FTR
+                break
             directionList += {'F': 'FlUL', 'B': 'BrUR', 'L': 'LbUB', 'R': 'RfUF'}[middlePiece[FTR]]
             currentCubeIndex = {'F': BTM, 'B': FTM, 'L': RTM, 'R': LTM}[middlePiece[FTR]]
             theCube = rotate({cube: theCube, direction: directionList})[cube]
@@ -105,6 +108,9 @@ def _rotateMiddleTopMiddleFromTopToBottom(theCube, currentCubeIndex):
     if currentCubeIndex in directions:
         directionList += directions[currentCubeIndex]
         theCube = rotate({cube: theCube, direction: directionList})[cube]
+    else:
+        directionList += 'LL'
+        theCube = rotate({cube: theCube, direction: 'LL'})[cube]
     
     return theCube, currentCubeIndex, directionList
 
