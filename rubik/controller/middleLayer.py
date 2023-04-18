@@ -24,7 +24,7 @@ def _isMiddleLayerSolved(theCube):
     middleLayerCubeIndexes = [(FML, FMM), (FMR, FMM), (RML, RMM), (RMR, RMM), (BML, BMM), (BMR, BMM), (LML, LMM),
                               (LMR, LMM)]
     for matchingCubeFace, currentCubeFace in middleLayerCubeIndexes:
-        if theCube[matchingCubeFace] != theCube[currentCubeFace]:
+        if theCube[matchingCubeFace] is not theCube[currentCubeFace]:
             return False
     return True
 
@@ -72,8 +72,8 @@ def _alignEdgePieceWithAnotherTopPiece(theCube, currentCubeIndex):
     direction = 'dir'
     directionList = ''
 
-    while theCube[currentCubeIndex + FML] != theCube[currentCubeIndex]:
-        if currentCubeIndex != FTM:
+    while theCube[currentCubeIndex + FML] is not theCube[currentCubeIndex]:
+        if currentCubeIndex is not FTM:
             currentCubeIndex = currentCubeIndex - RTL
         else:
             currentCubeIndex = LTM
@@ -111,7 +111,7 @@ def _alignCenterMiddlePieceWithEdgeMiddlePieces(theCube):
     for cubePiece, middlePiece in enumerate(middleRowPieces):
         centerMiddlePiece = centerMiddlePieces[cubePiece]
 
-        if middlePiece != centerMiddlePiece:
+        if middlePiece is not centerMiddlePiece:
             if theCube[UMM] not in middlePiece:
                 currentCubeIndex = FMR + cubePiece * RTL
                 break
