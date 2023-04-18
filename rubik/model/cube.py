@@ -17,7 +17,7 @@ class Cube:
         cube = encodedCube
         middleColorsList = list()
         
-        if len(cube) != validCubeLength:
+        if len(cube) is not validCubeLength:
             return False
         
         middleColorsList.append(cube[FMM])
@@ -32,13 +32,13 @@ class Cube:
                 return False   
         
         for value in Counter(cube).values():
-            if value != validCubeColorCount:
+            if value is not validCubeColorCount:
                 return False
         
         if any(character not in validCharacters for character in cube):
             return False
         
-        if directions == '' or directions == None:
+        if not directions or directions is None:
             return True
         elif any(letter not in validDirections for letter in directions):
             return False 
@@ -46,7 +46,7 @@ class Cube:
             return True
         
     def _rotate(self, directions):
-        if directions == '' or directions == None:
+        if not directions or directions is None:
             self._rotate_F()
         else:
             for rotationDirection in directions:
