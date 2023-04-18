@@ -106,8 +106,9 @@ class UpFaceSurfaceTest(unittest.TestCase):
     def test_upFaceCross_060_SolveUpFaceSurfaceWithFailingTestCubes(self):
         cubes = ['DQZDtZQtQKKQQKBBDZBKttZKKBBKKtZQttBDDBtDDtQDBZQZZBZKQD',
                  'ZZfYYu55YY5fmmmm5ZmuuYufu5YmfYYZZZmZ5ZuufZ5fmuu5f5Yfmf',
-                 '27a2T7Tsa7asDD77DT7ssa77sDDDas22TTsaTDDTa27s222DTsTaa2'
-                 ]
+                 '27a2T7Tsa7asDD77DT7ssa77sDDDas22TTsaTDDTa27s222DTsTaa2',
+                 '1Y1zGGzaaaaazzYYnazYzGaYzGnYGYa1a1nGGznnYnG1nn11zn1G1Y'
+                ]
         for cube in cubes:
             parms = {}
             parms['op'] = 'solve'
