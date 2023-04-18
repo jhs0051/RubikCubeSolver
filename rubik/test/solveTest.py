@@ -65,12 +65,12 @@ class SolveTest(TestCase):
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
-                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
-                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
-                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+                "Bottom Face":  [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face":  [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face":  [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face":  [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face":  [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face":  [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
@@ -117,12 +117,12 @@ class SolveTest(TestCase):
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
-                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
-                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
-                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+                "Bottom Face":  [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face":  [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face":  [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face":  [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face":  [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face":  [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
@@ -169,12 +169,12 @@ class SolveTest(TestCase):
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
-                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
-                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
-                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+                "Bottom Face":  [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face":  [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face":  [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face":  [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face":  [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face":  [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
@@ -221,12 +221,12 @@ class SolveTest(TestCase):
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
-                "bottom": [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
-                "front": [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
-                "right": [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
-                "back": [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
-                "left": [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
-                "up": [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR],
+                "Bottom Face":  [DTL, DTM, DTR, DML, DMM, DMR, DBL, DBM, DBR],
+                "Front  Face":  [FTL, FTM, FTR, FML, FMM, FMR, FBL, FBM, FBR],
+                "Right  Face":  [RTL, RTM, RTR, RML, RMM, RMR, RBL, RBM, RBR],
+                "Back   Face":  [BTL, BTM, BTR, BML, BMM, BMR, BBL, BBM, BBR],
+                "Left   Face":  [LTL, LTM, LTR, LML, LMM, LMR, LBL, LBM, LBR],
+                "Up     Face":  [UTL, UTM, UTR, UML, UMM, UMR, UBL, UBM, UBR]
             }
 
             for cubeFaces, cubeIndexes in cubeFaces.items():
