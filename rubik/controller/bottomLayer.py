@@ -65,7 +65,7 @@ def _rotateEdgePieceToDifferentFace(theCube, currentCubeIndex):
         directionList += 'U'
         theCube = rotate({cube: theCube, direction: 'U'})[cube]
         
-        if currentCubeIndex != FTR:
+        if currentCubeIndex is not FTR:
             currentCubeIndex = currentCubeIndex - RTL
         else:
             currentCubeIndex = LTR
@@ -145,7 +145,7 @@ def _rotateBottomEdgesInCorrectPosition(theCube):
 
     for cubePiece, edgePiece in enumerate(currentEdgePieces):
         if sorted(bottomEdgePieces[cubePiece]) == sorted(edgePiece):
-            if bottomEdgePieces[cubePiece][FTR] != edgePiece[FTR]:
+            if bottomEdgePieces[cubePiece][FTR] is not edgePiece[FTR]:
                 currentCubeIndex = FBR + cubePiece * RTL
                 break
 
