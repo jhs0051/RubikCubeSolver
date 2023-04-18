@@ -123,3 +123,4 @@ class UpFaceCrossTest(unittest.TestCase):
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
             self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            
