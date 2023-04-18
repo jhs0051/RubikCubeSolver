@@ -111,7 +111,7 @@ def _alignCenterMiddlePieceWithEdgeMiddlePieces(theCube):
     for cubePiece, middlePiece in enumerate(middleRowPieces):
         centerMiddlePiece = centerMiddlePieces[cubePiece]
 
-        if middlePiece is not centerMiddlePiece:
+        if middlePiece != centerMiddlePiece:
             if theCube[UMM] not in middlePiece:
                 currentCubeIndex = FMR + cubePiece * RTL
                 break
