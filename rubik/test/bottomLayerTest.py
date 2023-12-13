@@ -14,12 +14,9 @@ class BottomLayerTest(unittest.TestCase):
 
     # Happy Path Tests  
     def test_bottomLayer_000_SolvedCubeShouldReturnOkStatus(self):
-        parms = {}
-        parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
-        parms['dir'] = 'R'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'ok'
+        parms = {'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy', 'dir': 'R'}
+
+        expectedResult = {'status': 'ok'}
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
@@ -123,18 +120,17 @@ class BottomLayerTest(unittest.TestCase):
         self.assertEqual(expectedCubeIndex, currentCubeIndex)
 
     def test_bottomCorners_090_TestSolveBottomLayerProducesSolutionToSolvedBottomLayerCube(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = 'bbggrwogyryobgwwyoyybroogbbwbggwrwwgrowgbwroyyyroyrorb'
+        parms = {'op': 'solve', 'cube': 'bbggrwogyryobgwwyoyybroogbbwbggwrwwgrowgbwroyyyroyrorb'}
         cube, rotations = parms['cube'], ''
 
-        expectResult = {}
+        expectedResult = {'status': 'ok'}
         expectedRotations = 'RUruRUruRUruUFUfuUULUluLUluLUluLUluLUluBUbuBUbuBUbuBUbuBUbu'
-        expectResult['status'] = 'ok'
 
+        actualResult = solve.solve(parms)
         actualCube, actualRotations = bottomLayer.solveBottomLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
-        
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
+
     def test_bottomCorners_100_TestSolvedCubeColorsMatch(self):
         cubes = ['ggoorggyygbrooowyobbywywrobwbybbrwrooygrwgbryrwbwggryw',
                  'orgrrwoyrygygbwooorybrgwggbrwwowogrwygwyoogbwrbbyybybb',
@@ -144,18 +140,12 @@ class BottomLayerTest(unittest.TestCase):
                  'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-    
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
     
             actualResult = solve.solve(parms)
     
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
     
             cubeFaces = {
@@ -170,5 +160,5 @@ class BottomLayerTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
     
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))  
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))  
     

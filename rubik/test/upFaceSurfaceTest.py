@@ -14,12 +14,9 @@ class UpFaceSurfaceTest(unittest.TestCase):
 
     # Happy Path Tests  
     def test_upFaceSurface_000_SolvedCubeShouldReturnOkStatus(self):
-        parms = {}
-        parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
-        parms['dir'] = 'R'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'ok'
+        parms = {'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy', 'dir': 'R'}
+
+        expectedResult = {'status': 'ok'}
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
@@ -75,18 +72,12 @@ class UpFaceSurfaceTest(unittest.TestCase):
                  'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -102,7 +93,7 @@ class UpFaceSurfaceTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
             
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
     def test_upFaceCross_060_SolveUpFaceSurfaceWithFailingTestCubes(self):
         cubes = ['DQZDtZQtQKKQQKBBDZBKttZKKBBKKtZQttBDDBtDDtQDBZQZZBZKQD',
@@ -111,18 +102,12 @@ class UpFaceSurfaceTest(unittest.TestCase):
                  '1Y1zGGzaaaaazzYYnazYzGaYzGnYGYa1a1nGGznnYnG1nn11zn1G1Y'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -138,5 +123,5 @@ class UpFaceSurfaceTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         

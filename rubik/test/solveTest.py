@@ -7,8 +7,7 @@ from rubik.view.solve import solve, _getIntegrity
 class SolveTest(TestCase):
     # Happy Path
     def test_010_solve_Integrity(self):
-        parms = {}
-        parms['cube'] = 'ccpattYcpYaaYaatcYotaoootcocYtppYpptopYoYtaaoapcYcoctp'
+        parms = {'cube': 'ccpattYcpYaaYaatcYotaoootcocYtppYpptopYoYtaaoapcYcoctp'}
 
         actualResult = solve(parms)
 
@@ -21,8 +20,7 @@ class SolveTest(TestCase):
         self.assertIn(actualToken, expectedToken)
         
     def test_020_solve_Integrity(self):
-        parms = {}
-        parms['cube'] = 'poap344343343aOOaoaaaoo3poo4OOaOOOpO3oo44O34p3poap4ppa'
+        parms = {'cube': 'poap344343343aOOaoaaaoo3poo4OOaOOOpO3oo44O34p3poap4ppa'}
 
         actualResult = solve(parms)
 
@@ -50,18 +48,12 @@ class SolveTest(TestCase):
                  'ggt88I8c8gIIcIcII8ttqgcqqtgI8c8ggqggccctq8qqctqtttq8II'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -77,7 +69,7 @@ class SolveTest(TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
     def test_040_unsolvedCubesFromIteration2AreFullySolved(self):
         cubes = ['bwbWbbwUUVffwVbWWWwVwVUfUUVfVWbfbWfVbWUwwwfUwUVVUWfbWf',
@@ -102,18 +94,12 @@ class SolveTest(TestCase):
                  'WLWLV00oLVW0VLLWWoVLLVMW0MWVoVVoWoMM00oVWMoMLL0Mo0oM0M'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -129,7 +115,7 @@ class SolveTest(TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
     def test_050_unsolvedCubesFromIteration3AreFullySolved(self):
         cubes = ['WSWSiiWWWDDDcWQDiSQDciDQcciQcQWcDccSiQcDSWiiSiSQSQWSQD',
@@ -154,18 +140,12 @@ class SolveTest(TestCase):
                  'gngOngkgOncOkNncgnngOkcnNOgcONNkNccnknNkONcOkONNkgckcg'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -181,7 +161,7 @@ class SolveTest(TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
     def test060_unsolvedCubesFromIteration4AreFullySolved(self):
         cubes = ['DDo555TDDDoHHzHzzTzo5zDDo55ooHooTTzoHT55THzHH5TTDHTzzD',
@@ -206,18 +186,12 @@ class SolveTest(TestCase):
                  'PP775Pgg5PZSgPSS5ggPS5ZZ5S57gZSSP77SZ55Z77gZZZS75ggP7P'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -233,7 +207,7 @@ class SolveTest(TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
     def test070_unsolvedCubesFromIteration5AreFullySolved(self):
         cubes = ['bcjj9jc9PbbjPPPjjP9JJ9cJcc9PPJbbbJJbc9bcJc9JcJb9Pj9Pjj',
@@ -258,18 +232,12 @@ class SolveTest(TestCase):
                  'llKllkklleexxxKJkKJkKxkkxKkkxxJexeKKeKkJKJJelxJeeJeJll'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -285,71 +253,62 @@ class SolveTest(TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         
     # Sad Path
     def test_900_solve_ErrorOnShortCube(self):
-        parms = {}
-        parms['cube'] = 'w5i1w5i1S1iwa5iaSSSi1aa5iw15wSSia5waw1i5'
-        
+        parms = {'cube': 'w5i1w5i1S1iwa5iaSSSi1aa5iw15wSSia5waw1i5'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
     def test_910_solve_ErrorOnLongCube(self):
-        parms = {}
-        parms['cube'] = 'PFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPUPrFLLFUPPFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPU'
-        
+        parms = {
+            'cube': 'PFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPUPrFLLFUPPFUPFPLrL2rFUrrFPrrLL2PL22UUULrU222FPU2F2FrLPU'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
     def test_920_solve_ErrorOnCubeWithIllegalCharacters(self):
-        parms = {}
-        parms['cube'] = 'bbbbbbbbb*********rrrrrrrrroooooooooyyyyyyyyywwwwwwwww'
-        
+        parms = {'cube': 'bbbbbbbbb*********rrrrrrrrroooooooooyyyyyyyyywwwwwwwww'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
     def test_930_solve_ErrorOnMoreThan9OfAColor(self):
-        parms = {}
-        parms['cube'] = 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwwb'
-        
+        parms = {'cube': 'bbbbbbbbbrrrrrrrrrgggggggggoooooooooyyyyyyyyywwwwwwwwb'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
     def test_940_solve_ErrorOnNonUniqueMiddleCharacter(self):
-        parms = {}
-        parms['cube'] = 'rbbbbbbbbrrrrbrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'
-        
+        parms = {'cube': 'rbbbbbbbbrrrrbrrrrgggggggggoooooooooyyyyyyyyywwwwwwwww'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid cube', result['status'])
         
     def test_950_solve_ErrorOnInvalidKey(self):
-        parms = {}
-        parms['cube'] = 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr'
-        parms['extra'] = 'key'
-        
+        parms = {'cube': 'ogwwrywybgyrgbgrrwoogbgwyrworyryggwbbbyyowgobroobwoybr', 'extra': 'key'}
+
         result = solve(parms)
         
         self.assertIn('status', result)
         self.assertEqual('error: invalid key', result['status'])
         
     def test_bottomCross_960_ErrorOnEmptyString(self):
-        parms = {}
-        parms['op'] = 'solve'
-        parms['cube'] = ''
+        parms = {'op': 'solve', 'cube': ''}
 
-        expectResult = {}
-        expectResult['status'] = 'error: cube can not be empty'
+        expectedResult = {'status': 'error: cube can not be empty'}
 
         actualResult = solve(parms)
-        self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+        self.assertEqual(expectedResult.get('status'), actualResult.get('status'))

@@ -14,12 +14,9 @@ class MiddleLayerTest(unittest.TestCase):
 
     # Happy Path Tests  
     def test_middleLayer_000_SolvedCubeShouldReturnOkStatus(self):
-        parms = {}
-        parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
-        parms['dir'] = 'R'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'ok'
+        parms = {'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy', 'dir': 'R'}
+
+        expectedResult = {'status': 'ok'}
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
@@ -40,22 +37,22 @@ class MiddleLayerTest(unittest.TestCase):
         cubeIndex = RTM
 
         expectedCube = 'gwobbbgggwgrorororbroyggbbbggwrororowywoywrbbyyywwwyyy'
-        expectedsolution = 'UBuburUR'
+        expectedSolution = 'UBuburUR'
 
         actualCube, actualSolution = middleLayer._rotateMiddlePieceFromTopToMiddle(cube, cubeIndex)
         self.assertEqual(expectedCube, actualCube)
-        self.assertEqual(expectedsolution, actualSolution)
+        self.assertEqual(expectedSolution, actualSolution)
         
     def test_middleLayer_030_CubeIndexProducesCorrectRotationListWhenMiddleIsAllignedWithTopColor(self):
         cube = 'gggbbbgggrororororbbbgggbbborororowowrwyyywwwyyywwwyyy'
         cubeIndex = BTM
 
         expectedCube = 'woobbbgggggrorrrorbrwbggbbbgyororoworywoywbgwyyywwwyyy'
-        expectedsolution = 'urURUBub'
+        expectedSolution = 'urURUBub'
 
         actualCube, actualSolution = middleLayer._rotateMiddlePieceFromTopToMiddle(cube, cubeIndex)
         self.assertEqual(expectedCube, actualCube)
-        self.assertEqual(expectedsolution, actualSolution)
+        self.assertEqual(expectedSolution, actualSolution)
         
     def test_middleLayer_040_CubeIndexProducesCorrectCubeIndexToRotateMiddlePieceToTopPiece(self):
         cube = 'gggbbbgggrororororbbbgggbbbororororowwwyyywwwyyywwwyyy'
@@ -121,9 +118,9 @@ class MiddleLayerTest(unittest.TestCase):
         parms['cube'] = 'orbyrrrrrrgoggggggyrroooooogyybbobbbyygbyybbywwwwwwwww'
         cube, rotations = parms['cube'], ''
 
-        expectResult = {}
+        expectedResult = {}
         expectedRotations = 'ulULUFuf'
-        expectResult['status'] = 'ok'
+        expectedResult['status'] = 'ok'
 
         actualCube, actualRotations = middleLayer.solveMiddleLayer(cube, rotations)
         self.assertEqual(expectedRotations, actualRotations)
@@ -136,18 +133,12 @@ class MiddleLayerTest(unittest.TestCase):
                  'oyyogrgggrgwwwyyrbbgwbbryobrwwyyboorbrobowgggwooyrbywr',
                  'bgoogogggbgwbwyowrgoybbgbbbrwryyywyogwrbowwoyyrwrrrory']
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -161,7 +152,7 @@ class MiddleLayerTest(unittest.TestCase):
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
          
     # Sad Path Tests   
     def test_middleLayer_900_FailingCubesNowPass(self):
@@ -171,18 +162,12 @@ class MiddleLayerTest(unittest.TestCase):
                  'J3x33hh3xhB3xbxJB3BhbbxxJ33hxxBBBBJbxbhJJhbJB3bBbhJJhb'
                  ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
-
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            parms = {'op': 'solve', 'cube': cube}
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -196,5 +181,5 @@ class MiddleLayerTest(unittest.TestCase):
             for cubeFaces, cubeIndexes in cubeFaces.items():
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
         

@@ -13,12 +13,9 @@ from rubik.controller import upFaceCross
 class UpFaceCrossTest(unittest.TestCase):
     # Happy Path Tests  
     def test_upFaceCross_000_SolvedCubeShouldReturnOkStatus(self):
-        parms = {}
-        parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
-        parms['dir'] = 'R'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'ok'
+        parms = {'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy', 'dir': 'R'}
+
+        expectedResult = {'status': 'ok'}
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
@@ -95,18 +92,13 @@ class UpFaceCrossTest(unittest.TestCase):
                  'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
+            parms = {'op': 'solve', 'cube': cube}
 
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -122,5 +114,5 @@ class UpFaceCrossTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             

@@ -8,36 +8,38 @@ from rubik.controller.upFaceSurface import solveUpSurface
 from rubik.controller.upperLayer import solveUpperLayer
 from rubik.model.constants import *
 from rubik.view.rotate import _cubeLengthValidation, _isCubeValid, _validKeys
- 
+
+
 def solve(parms):
     """Return rotates needed to solve input cube"""
     result = {}
-    theCube =  parms.get('cube')
+    theCube = parms.get('cube')
     rotationList = ''
-    
+
     validityResult = _solveValidity(theCube, rotationList, parms)
     if validityResult:
         return validityResult
     else:
-        theCube, bottomCrossRotations   = solveBottomCross(theCube, rotationList) #iteration 2
-        theCube, bottomLayerRotations   = solveBottomLayer(theCube, rotationList) #iteration 3
-        theCube, middleLayerRotations   = solveMiddleLayer(theCube, rotationList) #iteration 4
-        theCube, upFaceCrossRotations   = solveUpCross(theCube, rotationList)     #iteration 5
-        theCube, upFaceSurfaceRotations = solveUpSurface(theCube, rotationList)   #iteration 5
-        theCube, upLayerRotations       = solveUpperLayer(theCube, rotationList)  #iteration 6
-    
+        theCube, bottomCrossRotations = solveBottomCross(theCube, rotationList)  # iteration 2
+        theCube, bottomLayerRotations = solveBottomLayer(theCube, rotationList)  # iteration 3
+        theCube, middleLayerRotations = solveMiddleLayer(theCube, rotationList)  # iteration 4
+        theCube, upFaceCrossRotations = solveUpCross(theCube, rotationList)  # iteration 5
+        theCube, upFaceSurfaceRotations = solveUpSurface(theCube, rotationList)  # iteration 5
+        theCube, upLayerRotations = solveUpperLayer(theCube, rotationList)  # iteration 6
+
         finalSolution = bottomCrossRotations \
                         + bottomLayerRotations \
                         + middleLayerRotations \
                         + upFaceCrossRotations \
                         + upFaceSurfaceRotations \
                         + upLayerRotations
-    
+
         result['solution'] = finalSolution
-        result['status'] = 'ok'    
-        result['integrity'] = _getIntegrity(parms.get('cube'), finalSolution)     #iteration 5
-                     
+        result['status'] = 'ok'
+        result['integrity'] = _getIntegrity(parms.get('cube'), finalSolution)  # iteration 5
+
     return result
+
 
 def _getIntegrity(theCube, solution):
     myAUName = "jhs0051"
@@ -47,6 +49,7 @@ def _getIntegrity(theCube, solution):
     hashStartingPoint = random.randint(startingHash, len(hashToHex) - hashLength)
 
     return hashToHex[hashStartingPoint:hashStartingPoint + hashLength]
+
 
 def _solveValidity(theCube, rotationList, parms):
     result = {}
@@ -62,4 +65,3 @@ def _solveValidity(theCube, rotationList, parms):
         return result
 
     return None
-    

@@ -14,12 +14,9 @@ class UpperLayerTest(unittest.TestCase):
 
     # Happy Path Tests  
     def test_upperLayer_000_SolvedCubeShouldReturnOkStatus(self):
-        parms = {}
-        parms['cube'] = 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy'
-        parms['dir'] = 'R'
-        
-        expectedResult = {}
-        expectedResult['status'] = 'ok'
+        parms = {'cube': 'gggggggggrrrrrrrrrbbbbbbbbbooooooooowwwwwwwwwyyyyyyyyy', 'dir': 'R'}
+
+        expectedResult = {'status': 'ok'}
 
         actualResult = solve.solve(parms)
         self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
@@ -73,34 +70,34 @@ class UpperLayerTest(unittest.TestCase):
     def test_upperLayer_030_AlignedTopLeftFaceRowProduces1(self):
         cube = 'rrrbbbbbggobrrrrrrogoggggggbbbooooooyyyyyyyyywwwwwwwww'
 
-        expectResult = 1
+        expectedResult = 1
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_035_AlignedTopMiddleFaceRowProduces2(self):
         cube = 'NNNGlNTlG444444AAAllGTTGlGlAl4AATGANlTNGGGTNTA4TlNT4AN'
 
-        expectResult = 2
+        expectedResult = 2
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_035_1_AlignedTopRightFaceRowProduces3(self):
         cube = 'NTGGlNTlG444444AAAllGTTGlNlAl4AATGANlNNGGGTNTA4TlNT4AN'
 
-        expectResult = 3
+        expectedResult = 3
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_035_2_NotAlignedTopFaceRowProduces0(self):
         cube = 'orrbbbbbbgobrrrrrrrgoggggggbbgooooooyyyyyyyyywwwwwwwww'
 
-        expectResult = 0
+        expectedResult = 0
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_040_TopLayerSolvedWithMatchingSidesReturnsTrue(self): 
         cube = 'ggggrggggrrrrrrgrrbbbbbbobbooooobooowwwwywwwwyyyyyywyy'
@@ -154,34 +151,34 @@ class UpperLayerTest(unittest.TestCase):
     def test_upperLayer_060_AlignedTopLeftFaceEdgePiecesProduces1(self):
         cube = 'rrrbbbbbggobrrrrrrogoggggggbbbooooooyyyyyyyyywwwwwwwww'
 
-        expectResult = 1
+        expectedResult = 1
 
         actualResult = upperLayer._alignTopEdgePieces(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_065_AlignedTopMiddleFaceEdgePiecesProduces2(self):
         cube = 'NNNGlNTlG444444AAAllGTTGlGlAl4AATGANlTNGGGTNTA4TlNT4AN'
 
-        expectResult = 2
+        expectedResult = 2
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_065_1_AlignedTopRightFaceEdgePiecesProduces3(self):
         cube = 'NTGGlNTlG444444AAAllGTTGlNlAl4AATGANlNNGGGTNTA4TlNT4AN'
 
-        expectResult = 3
+        expectedResult = 3
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_065_2_NotAlignedTopEdgesProduces0(self):
         cube = 'orrbbbbbbgobrrrrrrrgoggggggbbgooooooyyyyyyyyywwwwwwwww'
 
-        expectResult = 0
+        expectedResult = 0
 
         actualResult = upperLayer._alignTopRow(cube)
-        self.assertEqual(expectResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
         
     def test_upperLayer_070_RotateTopRowProducesRotationsToSolveTopRow(self): 
         cube = 'rbrrrrrrrorooooooogggggggggbobbbbbbbwwwwwwwwwyyyyyyyyy'
@@ -247,18 +244,13 @@ class UpperLayerTest(unittest.TestCase):
                  'm22wwmBwmwBBQ2Bw5w2mQ2Q5BQQ2mQmm2m5m5BQwBQB55wB5w5Q522'
                 ]
         for cube in cubes:
-            parms = {}
-            parms['op'] = 'solve'
-            parms['cube'] = cube
+            parms = {'op': 'solve', 'cube': cube}
 
-            expectResult = {}
-            expectResult['status'] = 'ok'
+            expectedResult = {'status': 'ok'}
 
             actualResult = solve.solve(parms)
 
-            rotatedCube = {}
-            rotatedCube['cube'] = parms.get('cube')
-            rotatedCube['dir'] = actualResult.get('solution')
+            rotatedCube = {'cube': parms.get('cube'), 'dir': actualResult.get('solution')}
             actualCube = rotate(rotatedCube).get('cube')
 
             cubeFaces = {
@@ -274,5 +266,5 @@ class UpperLayerTest(unittest.TestCase):
                 faceColors = [actualCube[cubeIndex] for cubeIndex in cubeIndexes]
                 self.assertTrue(all(color is faceColors[FTL] for color in faceColors))
 
-            self.assertEqual(expectResult.get('status'), actualResult.get('status'))
+            self.assertEqual(expectedResult.get('status'), actualResult.get('status'))
             
